@@ -7,7 +7,6 @@ public partial class RedBulletTower : StaticBody2D
 	private PackedScene RedBullet = GD.Load<PackedScene>("res://Towers/RedBullet.tscn");
 	private const int BulletDamage = 5;
 	private Node2D _currentTarget;
-	
 
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()

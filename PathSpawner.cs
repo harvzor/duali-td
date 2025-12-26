@@ -13,6 +13,6 @@ public partial class PathSpawner : Node2D
 	public void SpawnCritter()
 	{
 		Node instance = Stage1.Instantiate();
-		AddChild(instance);
+		this.AddChild(instance);
 	}
 }
