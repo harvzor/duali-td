@@ -1,0 +1,28 @@
+[gd_scene load_steps=2 format=3 uid="uid://c1he1ojb6jg53"]
+
+[ext_resource type="PackedScene" uid="uid://iexs7fm1ryop" path="res://UserInterface/SpawnCritter.tscn" id="1_j0awb"]
+
+[node name="UserInterface" type="CanvasLayer"]
+follow_viewport_enabled = true
+
+[node name="Panel" type="Panel" parent="."]
+offset_left = 2795.0
+offset_right = 4224.0
+offset_bottom = 4224.0
+
+[node name="FlowContainer" type="FlowContainer" parent="Panel"]
+layout_mode = 0
+offset_right = 476.333
+offset_bottom = 1408.0
+scale = Vector2(3, 3)
+theme_override_constants/h_separation = 0
+theme_override_constants/v_separation = 0
+
+[node name="SpawnCritter" parent="Panel/FlowContainer" instance=ExtResource("1_j0awb")]
+layout_mode = 2
+
+[node name="SpawnCritter2" parent="Panel/FlowContainer" instance=ExtResource("1_j0awb")]
+layout_mode = 2
+
+[node name="SpawnCritter3" parent="Panel/FlowContainer" instance=ExtResource("1_j0awb")]
+layout_mode = 2

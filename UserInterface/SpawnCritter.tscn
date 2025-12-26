@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://iexs7fm1ryop"]
+
+[ext_resource type="Script" uid="uid://dedc7d4rkeg7n" path="res://UserInterface/SpawnCritter.cs" id="1_ftgij"]
+[ext_resource type="Texture2D" uid="uid://pcnvd4nqwgs3" path="res://Mobs/Critter.png" id="1_t6rr3"]
+
+[node name="SpawnCritter" type="Panel"]
+custom_minimum_size = Vector2(238.167, 238.167)
+offset_right = 238.167
+offset_bottom = 238.167
+scale = Vector2(3, 3)
+script = ExtResource("1_ftgij")
+
+[node name="Critter" type="Sprite2D" parent="."]
+position = Vector2(119.084, 119.084)
+scale = Vector2(5, 5)
+texture = ExtResource("1_t6rr3")
+
+[connection signal="gui_input" from="." to="." method="OnGuiInput"]

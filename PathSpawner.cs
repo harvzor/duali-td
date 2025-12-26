@@ -7,6 +7,11 @@ public partial class PathSpawner : Node2D
 
 	public void OnTimerTimeout()
 	{
+		SpawnCritter();
+	}
+
+	public void SpawnCritter()
+	{
 		Node instance = Stage1.Instantiate();
 		AddChild(instance);
 	}
