@@ -1,28 +1,37 @@
-[gd_scene load_steps=4 format=3 uid="uid://c1he1ojb6jg53"]
+[gd_scene load_steps=7 format=3 uid="uid://c1he1ojb6jg53"]
 
 [ext_resource type="PackedScene" uid="uid://iexs7fm1ryop" path="res://UserInterface/SpawnCritter.tscn" id="1_j0awb"]
 [ext_resource type="Script" uid="uid://b5x8w1c1xg2nu" path="res://UserInterface/UserInterface.cs" id="1_te54r"]
 [ext_resource type="Script" uid="uid://du1epvyu2cbbx" path="res://UserInterface/TowerPlacement.cs" id="2_yseya"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_te54r"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_te54r"]
+bg_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_r6oiv"]
+bg_color = Color(0, 0, 0, 1)
 
 [node name="UserInterface" type="CanvasLayer"]
 follow_viewport_enabled = true
 script = ExtResource("1_te54r")
 
 [node name="TowerPlacement" type="Panel" parent="."]
-offset_right = 4224.0
-offset_bottom = 4224.0
+offset_right = 720.0
+offset_bottom = 1152.0
+theme_override_styles/panel = SubResource("StyleBoxEmpty_te54r")
 script = ExtResource("2_yseya")
 
 [node name="CritterMenu" type="Panel" parent="."]
-offset_left = 3456.0002
-offset_right = 3712.0002
-offset_bottom = 1152.0
-scale = Vector2(3, 3)
+offset_top = 1216.0
+offset_right = 720.0
+offset_bottom = 1280.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_te54r")
 
 [node name="FlowContainer" type="FlowContainer" parent="CritterMenu"]
 layout_mode = 0
-offset_right = 256.0
-offset_bottom = 1152.0
+offset_right = 64.0
+offset_bottom = 64.0
 theme_override_constants/h_separation = 0
 theme_override_constants/v_separation = 0
 
@@ -30,25 +39,25 @@ theme_override_constants/v_separation = 0
 layout_mode = 2
 
 [node name="Stats" type="Panel" parent="."]
-offset_top = 3456.0
-offset_right = 4224.0
-offset_bottom = 4224.0
+offset_top = 1152.0
+offset_right = 720.0
+offset_bottom = 1216.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_r6oiv")
 
 [node name="VFlowContainer" type="VFlowContainer" parent="Stats"]
 layout_mode = 0
-offset_left = 256.0
-offset_right = 768.0
-offset_bottom = 768.0
+offset_right = 64.0
+offset_bottom = 64.0
 alignment = 1
 
 [node name="Bank" type="Label" parent="Stats/VFlowContainer"]
 layout_mode = 2
-theme_override_font_sizes/font_size = 128
+theme_override_font_sizes/font_size = 16
 text = "123G"
 
 [node name="Income" type="Label" parent="Stats/VFlowContainer"]
 layout_mode = 2
-theme_override_font_sizes/font_size = 128
+theme_override_font_sizes/font_size = 16
 text = "456⬆️"
 
 [node name="FlowContainer" type="FlowContainer" parent="Stats"]

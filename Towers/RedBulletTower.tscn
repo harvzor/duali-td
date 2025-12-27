@@ -7,7 +7,7 @@
 size = Vector2(128, 128)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_kai3l"]
-radius = 640.0
+radius = 256.0
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1f3uh"]
 bg_color = Color(1, 0, 0, 0.24705882)
@@ -33,17 +33,17 @@ texture = ExtResource("1_s4eav")
 
 [node name="Tower" type="Area2D" parent="."]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Tower"]
+[node name="Range" type="CollisionShape2D" parent="Tower"]
 shape = SubResource("CircleShape2D_kai3l")
 
 [node name="BulletContainer" type="Node2D" parent="."]
 
 [node name="GhostRange" type="Panel" parent="."]
 visible = false
-offset_left = -640.0
-offset_top = -640.0
-offset_right = 640.0
-offset_bottom = 640.0
+offset_left = -256.0
+offset_top = -256.0
+offset_right = 256.0
+offset_bottom = 256.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_1f3uh")
 
 [connection signal="body_entered" from="Tower" to="." method="OnTowerBodyEntered"]

@@ -4,13 +4,13 @@
 [ext_resource type="Texture2D" uid="uid://pcnvd4nqwgs3" path="res://Mobs/Critter.png" id="1_ekp3m"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_7w8v4"]
-radius = 64.0
+radius = 32.0
 
 [node name="Critter" type="CharacterBody2D"]
 script = ExtResource("1_7iqim")
 
-[node name="TowerDefenseTile245" type="Sprite2D" parent="."]
-scale = Vector2(5, 5)
+[node name="Critter" type="Sprite2D" parent="."]
+scale = Vector2(2, 2)
 texture = ExtResource("1_ekp3m")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

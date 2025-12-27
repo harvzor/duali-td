@@ -13,7 +13,7 @@ public partial class TowerSpawner : Node2D
 
 	private Vector2 SnapPosition(Vector2 position)
 	{
-		return position.Snapped(new Vector2(128, 128)) + new Vector2(64, 64);;
+		return position.Snapped(new Vector2(64, 64)) + new Vector2(32, 32);;
 	}
 	
 	public void ShowTower(Vector2 position)

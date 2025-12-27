@@ -4,18 +4,15 @@
 
 [sub_resource type="Curve2D" id="Curve2D_bcbcq"]
 _data = {
-"points": PackedVector2Array(0, 0, 0, 0, 325, 316, 0, 0, 0, 0, 3891, 342, 0, 0, 0, 0, 3891, 2085, 0, 0, 0, 0, 336, 2127, 0, 0, 0, 0, 338, 3874, 0, 0, 0, 0, 3896, 3894)
+"points": PackedVector2Array(0, 0, 0, 0, 96, 96, 0, 0, 0, 0, 608, 96, 0, 0, 0, 0, 608, 352, 0, 0, 0, 0, 96, 352, 0, 0, 0, 0, 96, 608, 0, 0, 0, 0, 608, 608, 0, 0, 0, 0, 608, 864, 0, 0, 0, 0, 97, 864, 0, 0, 0, 0, 96, 1056)
 }
-point_count = 6
+point_count = 9
 
 [node name="Path2D" type="Path2D"]
-position = Vector2(2, 0)
 curve = SubResource("Curve2D_bcbcq")
 
 [node name="PathFollow2D" type="PathFollow2D" parent="."]
-position = Vector2(325, 316)
-rotation = 0.0072909533
+position = Vector2(96, 96)
 loop = false
 
 [node name="Critter" parent="PathFollow2D" instance=ExtResource("1_gjnl4")]
-rotation = -0.0072909533
