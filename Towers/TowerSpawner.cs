@@ -1,3 +1,5 @@
+using System;
+using System.Diagnostics.CodeAnalysis;
 using Godot;
 
 public partial class TowerSpawner : Node2D
@@ -13,7 +15,13 @@ public partial class TowerSpawner : Node2D
 
 	private Vector2 SnapPosition(Vector2 position)
 	{
-		return position.Snapped(new Vector2(64, 64)) + new Vector2(32, 32);;
+		const float cellSize = 128f;
+		const float offset = 96f;
+
+		float snappedX = MathF.Floor(position.X / cellSize) * cellSize + offset;
+		float snappedY = MathF.Floor(position.Y / cellSize) * cellSize + offset;
+
+		return new Vector2(snappedX, snappedY);
 	}
 	
 	public void ShowTower(Vector2 position)
@@ -38,7 +46,7 @@ public partial class TowerSpawner : Node2D
 	
 	public void SpawnTower(Vector2 position)
 	{
-		var tower = RedBulletTower.Instantiate<RedBulletTower>();
+		RedBulletTower tower = RedBulletTower.Instantiate<RedBulletTower>();
 		tower.Position = this.SnapPosition(position);
 
 		this.AddChild(tower);
