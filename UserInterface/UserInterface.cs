@@ -1,8 +1,10 @@
 using Godot;
-using System;
 
 public partial class UserInterface : CanvasLayer
 {
+    private int _health = 100;
+    private Label _healthLabel;
+    
     private int _bank = 100;
     private Label _bankLabel;
     
@@ -20,6 +22,9 @@ public partial class UserInterface : CanvasLayer
         this._incomeLabel = this.FindChild("Income") as Label;
         this.IncreaseIncome(0);
         
+        this._healthLabel = this.FindChild("Health") as Label;
+        this.SetHealth(this._health);
+        
         this._towerSpawner = this
             .GetTree()
             .GetRoot()
@@ -31,6 +36,17 @@ public partial class UserInterface : CanvasLayer
             .GetRoot()
             .GetChild(0)
             .GetNode<PathSpawner>(nameof(PathSpawner));
+    }
+    
+    private void SetHealth(int newHealth)
+    {
+        this._health = newHealth;
+        this._healthLabel.Text = this._health + "❤️";
+    }
+    
+    public void TakeDamage(int damage)
+    {
+        this.SetHealth(this._health - damage);
     }
 
     private void SetBank(int newBank)

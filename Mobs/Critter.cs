@@ -5,6 +5,11 @@ public partial class Critter : CharacterBody2D
 {
 	public const int Speed = 500;
 	public int Health = 5;
+	
+	/// <summary>
+	/// How much damage to do to the player's health.
+	/// </summary>
+	public int Damage = 10;
 
 	//// Called when the node enters the scene tree for the first time.
 	//public override void _Ready()

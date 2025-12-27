@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=4 uid="uid://sqxiarry5jwm"]
+[gd_scene load_steps=6 format=4 uid="uid://sqxiarry5jwm"]
 
 [ext_resource type="PackedScene" uid="uid://der2yftj7y0s3" path="res://Tiles/TileMapLayer.tscn" id="1_c6gwx"]
 [ext_resource type="Script" uid="uid://bfe148ywa34dp" path="res://PathSpawner.cs" id="2_2dftf"]
 [ext_resource type="Script" uid="uid://ncjiiovj8a3b" path="res://Towers/TowerSpawner.cs" id="3_js7pq"]
 [ext_resource type="PackedScene" uid="uid://c1he1ojb6jg53" path="res://UserInterface/UserInterface.tscn" id="5_eu7l1"]
+[ext_resource type="PackedScene" uid="uid://cq86j5n7p7eyl" path="res://Misc/Gate.tscn" id="5_p1v5b"]
 
 [node name="World" type="Node2D"]
 
@@ -22,5 +23,8 @@ script = ExtResource("2_2dftf")
 script = ExtResource("3_js7pq")
 
 [node name="UserInterface" parent="." instance=ExtResource("5_eu7l1")]
+
+[node name="Gate" parent="." instance=ExtResource("5_p1v5b")]
+position = Vector2(96, 1056)
 
 [connection signal="timeout" from="PathSpawner/Timer" to="PathSpawner" method="OnTimerTimeout"]
