@@ -1,8 +1,9 @@
 using Godot;
-using System;
 
 public partial class TowerSpawner : Node2D
 {
+	public int Cost = 10;
+	
 	private PackedScene RedBulletTower = GD.Load<PackedScene>("res://Towers/RedBulletTower.tscn");
 	
 	/// <summary>

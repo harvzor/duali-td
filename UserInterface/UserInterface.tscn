@@ -1,10 +1,12 @@
-[gd_scene load_steps=3 format=3 uid="uid://c1he1ojb6jg53"]
+[gd_scene load_steps=4 format=3 uid="uid://c1he1ojb6jg53"]
 
 [ext_resource type="PackedScene" uid="uid://iexs7fm1ryop" path="res://UserInterface/SpawnCritter.tscn" id="1_j0awb"]
+[ext_resource type="Script" uid="uid://b5x8w1c1xg2nu" path="res://UserInterface/UserInterface.cs" id="1_te54r"]
 [ext_resource type="Script" uid="uid://du1epvyu2cbbx" path="res://UserInterface/TowerPlacement.cs" id="2_yseya"]
 
 [node name="UserInterface" type="CanvasLayer"]
 follow_viewport_enabled = true
+script = ExtResource("1_te54r")
 
 [node name="TowerPlacement" type="Panel" parent="."]
 offset_right = 4224.0
@@ -12,20 +14,48 @@ offset_bottom = 4224.0
 script = ExtResource("2_yseya")
 
 [node name="CritterMenu" type="Panel" parent="."]
-offset_left = 3509.0
-offset_right = 4223.5
-offset_bottom = 4224.0
+offset_left = 3456.0002
+offset_right = 3712.0002
+offset_bottom = 1152.0
+scale = Vector2(3, 3)
 
 [node name="FlowContainer" type="FlowContainer" parent="CritterMenu"]
 layout_mode = 0
-offset_right = 238.167
-offset_bottom = 1408.0
-scale = Vector2(3, 3)
+offset_right = 256.0
+offset_bottom = 1152.0
 theme_override_constants/h_separation = 0
 theme_override_constants/v_separation = 0
 
 [node name="SpawnCritter" parent="CritterMenu/FlowContainer" instance=ExtResource("1_j0awb")]
 layout_mode = 2
+
+[node name="Stats" type="Panel" parent="."]
+offset_top = 3456.0
+offset_right = 4224.0
+offset_bottom = 4224.0
+
+[node name="VFlowContainer" type="VFlowContainer" parent="Stats"]
+layout_mode = 0
+offset_left = 256.0
+offset_right = 768.0
+offset_bottom = 768.0
+alignment = 1
+
+[node name="Bank" type="Label" parent="Stats/VFlowContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 128
+text = "123G"
+
+[node name="Income" type="Label" parent="Stats/VFlowContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 128
+text = "456⬆️"
+
+[node name="FlowContainer" type="FlowContainer" parent="Stats"]
+visible = false
+layout_mode = 0
+offset_right = 4224.0
+offset_bottom = 768.0
 
 [connection signal="gui_input" from="TowerPlacement" to="TowerPlacement" method="OnGuiInput"]
 [connection signal="mouse_exited" from="TowerPlacement" to="TowerPlacement" method="OnMouseExited"]

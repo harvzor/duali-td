@@ -5,9 +5,8 @@
 
 [node name="SpawnCritter" type="Panel"]
 custom_minimum_size = Vector2(238.167, 238.167)
-offset_right = 238.167
-offset_bottom = 238.167
-scale = Vector2(3, 3)
+offset_right = 256.0
+offset_bottom = 256.0
 script = ExtResource("1_ftgij")
 
 [node name="Critter" type="Sprite2D" parent="."]
