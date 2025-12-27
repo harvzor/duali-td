@@ -9,12 +9,15 @@ public partial class TowerPlacement : Panel
 
 	public void OnGuiInput(InputEvent inputEvent)
 	{
+		// On hover
 		if (inputEvent is InputEventMouseMotion inputEventMouseMotion)
 		{
 			_userInterface.ShowTower(inputEventMouseMotion.Position);
+			return;
 		}
 
-		if (inputEvent is InputEventMouseButton { ButtonIndex: MouseButton.Left, ButtonMask: MouseButtonMask.Left } inputEventMouseButton)
+		// On left click release
+		if (inputEvent is InputEventMouseButton { ButtonIndex: MouseButton.Left, ButtonMask: 0 } inputEventMouseButton)
 		{
 			_userInterface.TrySpawnTower(inputEventMouseButton.Position);
 		}
