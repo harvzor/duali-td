@@ -5,22 +5,31 @@ public partial class RedBulletTower : StaticBody2D
 	public bool Enabled = true;
 
 	private PackedScene RedBullet = GD.Load<PackedScene>("res://Towers/RedBullet.tscn");
-	private const int BulletDamage = 5;
+	private const int BulletDamage = 1;
 	private Node2D _currentTarget;
 
-	// Called when the node enters the scene tree for the first time.
-	public override void _Ready()
+	public void FireBullet()
 	{
+		if (!IsInstanceValid(_currentTarget))
+			return;
+
+		var bullet = RedBullet.Instantiate<RedBullet>();
+		bullet.Target = _currentTarget;
+		bullet.Damage = BulletDamage;
+		bullet.Position = this.GetNode<Marker2D>("Aim").Position;
+		
+		this.GetNode("BulletContainer").AddChild(bullet);
 	}
 
-	// Called every frame. 'delta' is the elapsed time since the previous frame.
 	public override void _Process(double delta)
 	{
 		if (!this.Enabled)
 			return;
 
 		if (IsInstanceValid(_currentTarget))
+		{
 			this.LookAt(_currentTarget.GlobalPosition);
+		}
 	}
 
 	public void Disable()
@@ -44,13 +53,6 @@ public partial class RedBulletTower : StaticBody2D
 		}
 
 		_currentTarget = body;
-
-		var bullet = RedBullet.Instantiate<RedBullet>();
-		bullet.Target = _currentTarget;
-		bullet.Damage = BulletDamage;
-		bullet.Position = this.GetNode<Marker2D>("Aim").Position;
-		
-		this.GetNode("BulletContainer").AddChild(bullet);
 	}
 
 	public void OnTowerBodyExited(Node2D body)
@@ -62,5 +64,10 @@ public partial class RedBulletTower : StaticBody2D
 		{
 			_currentTarget = null;
 		}
+	}
+
+	public void OnFireTimerTimeout()
+	{
+		this.FireBullet();
 	}
 }

@@ -3,8 +3,8 @@ using System;
 
 public partial class Critter : CharacterBody2D
 {
-	public const int Speed = 1000;
-	public int Health = 10;
+	public const int Speed = 500;
+	public int Health = 5;
 
 	//// Called when the node enters the scene tree for the first time.
 	//public override void _Ready()
