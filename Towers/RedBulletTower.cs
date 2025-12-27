@@ -1,5 +1,3 @@
-using Godot;
-
 public partial class RedBulletTower : StaticBody2D
 {
 	public bool Enabled = true;

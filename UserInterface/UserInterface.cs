@@ -1,5 +1,3 @@
-using Godot;
-
 public partial class UserInterface : CanvasLayer
 {
     private int _health = 100;

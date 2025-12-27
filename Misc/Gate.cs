@@ -1,5 +1,3 @@
-using Godot;
-
 public partial class Gate : Area2D
 {
     private UserInterface _userInterface;

@@ -1,5 +1,3 @@
-using Godot;
-
 public partial class SpawnCritter : Panel
 {
 	private UserInterface _userInterface;

@@ -1,6 +1,3 @@
-using Godot;
-using System;
-
 public partial class RedBullet : CharacterBody2D
 {
 	public const float Speed = 1000.0f;

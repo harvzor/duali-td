@@ -1,6 +1,3 @@
-using Godot;
-using System;
-
 public partial class PathSpawner : Node2D
 {
 	public int Cost = 10;
