@@ -1,9 +1,9 @@
 using Godot;
-using System;
-using System.Collections.Generic;
 
 public partial class RedBulletTower : StaticBody2D
 {
+	public bool Enabled = true;
+
 	private PackedScene RedBullet = GD.Load<PackedScene>("res://Towers/RedBullet.tscn");
 	private const int BulletDamage = 5;
 	private Node2D _currentTarget;
@@ -16,12 +16,24 @@ public partial class RedBulletTower : StaticBody2D
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
 	public override void _Process(double delta)
 	{
+		if (!this.Enabled)
+			return;
+
 		if (IsInstanceValid(_currentTarget))
 			this.LookAt(_currentTarget.GlobalPosition);
 	}
 
+	public void Disable()
+	{
+		this.Enabled = false;
+		this.GetNode<Panel>("GhostRange").Show();
+	}
+
 	public void OnTowerBodyEntered(Node2D body)
 	{
+		if (!this.Enabled)
+			return;
+		
 		// todo: could be better to keep track of enemies that have entered the area so if the current one has left, we can target the next without it needing to enter the area
 		if (IsInstanceValid(_currentTarget))
 			return;
@@ -43,6 +55,9 @@ public partial class RedBulletTower : StaticBody2D
 
 	public void OnTowerBodyExited(Node2D body)
 	{
+		if (!this.Enabled)
+			return;
+
 		if (_currentTarget == body)
 		{
 			_currentTarget = null;

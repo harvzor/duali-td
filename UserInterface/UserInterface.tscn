@@ -12,13 +12,13 @@ offset_bottom = 4224.0
 script = ExtResource("2_yseya")
 
 [node name="CritterMenu" type="Panel" parent="."]
-offset_left = 2795.0
-offset_right = 4224.0
+offset_left = 3509.0
+offset_right = 4223.5
 offset_bottom = 4224.0
 
 [node name="FlowContainer" type="FlowContainer" parent="CritterMenu"]
 layout_mode = 0
-offset_right = 476.333
+offset_right = 238.167
 offset_bottom = 1408.0
 scale = Vector2(3, 3)
 theme_override_constants/h_separation = 0
@@ -27,10 +27,5 @@ theme_override_constants/v_separation = 0
 [node name="SpawnCritter" parent="CritterMenu/FlowContainer" instance=ExtResource("1_j0awb")]
 layout_mode = 2
 
-[node name="SpawnCritter2" parent="CritterMenu/FlowContainer" instance=ExtResource("1_j0awb")]
-layout_mode = 2
-
-[node name="SpawnCritter3" parent="CritterMenu/FlowContainer" instance=ExtResource("1_j0awb")]
-layout_mode = 2
-
 [connection signal="gui_input" from="TowerPlacement" to="TowerPlacement" method="OnGuiInput"]
+[connection signal="mouse_exited" from="TowerPlacement" to="TowerPlacement" method="OnMouseExited"]

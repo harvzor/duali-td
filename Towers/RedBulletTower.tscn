@@ -1,13 +1,20 @@
-[gd_scene load_steps=5 format=3 uid="uid://bt0udmyktv1ao"]
+[gd_scene load_steps=6 format=3 uid="uid://bt0udmyktv1ao"]
 
 [ext_resource type="Script" uid="uid://c8mx8r5ktjwty" path="res://Towers/RedBulletTower.cs" id="1_1f3uh"]
 [ext_resource type="Texture2D" uid="uid://bbxyq4hee4wqf" path="res://Towers/RedBulletTower.png" id="1_s4eav"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2stt3"]
-size = Vector2(289, 222)
+size = Vector2(128, 128)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_kai3l"]
-radius = 1017.1106
+radius = 640.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1f3uh"]
+bg_color = Color(1, 0, 0, 0.24705882)
+corner_radius_top_left = 640
+corner_radius_top_right = 640
+corner_radius_bottom_right = 640
+corner_radius_bottom_left = 640
 
 [node name="RedBulletTower" type="StaticBody2D"]
 script = ExtResource("1_1f3uh")
@@ -21,7 +28,7 @@ position = Vector2(130, 0)
 
 [node name="Sprite" type="Sprite2D" parent="."]
 rotation = 1.5707964
-scale = Vector2(5, 5)
+scale = Vector2(2, 2)
 texture = ExtResource("1_s4eav")
 
 [node name="Tower" type="Area2D" parent="."]
@@ -30,6 +37,14 @@ texture = ExtResource("1_s4eav")
 shape = SubResource("CircleShape2D_kai3l")
 
 [node name="BulletContainer" type="Node2D" parent="."]
+
+[node name="GhostRange" type="Panel" parent="."]
+visible = false
+offset_left = -640.0
+offset_top = -640.0
+offset_right = 640.0
+offset_bottom = 640.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_1f3uh")
 
 [connection signal="body_entered" from="Tower" to="." method="OnTowerBodyEntered"]
 [connection signal="body_exited" from="Tower" to="." method="OnTowerBodyExited"]

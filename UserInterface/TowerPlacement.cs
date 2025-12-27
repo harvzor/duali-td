@@ -13,16 +13,30 @@ public partial class TowerPlacement : Panel
 	{
 	}
 
+	private TowerSpawner GetTowerSpawner()
+	{
+		return this
+			.GetTree()
+			.GetRoot()
+			.GetChild(0)
+			.GetNode<TowerSpawner>(nameof(TowerSpawner));
+	}
+
 	public void OnGuiInput(InputEvent inputEvent)
 	{
+		if (inputEvent is InputEventMouseMotion inputEventMouseMotion)
+		{
+			this.GetTowerSpawner().ShowTower(inputEventMouseMotion.Position);
+		}
+
 		if (inputEvent is InputEventMouseButton { ButtonIndex: MouseButton.Left, ButtonMask: MouseButtonMask.Left } inputEventMouseButton)
 		{
-			this
-				.GetTree()
-				.GetRoot()
-				.GetChild(0)
-				.GetNode<TowerSpawner>(nameof(TowerSpawner))
-				.SpawnTower(inputEventMouseButton.Position);
+			this.GetTowerSpawner().SpawnTower(inputEventMouseButton.Position);
 		}
+	}
+
+	public void OnMouseExited()
+	{
+		this.GetTowerSpawner().HideTower();
 	}
 }
