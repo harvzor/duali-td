@@ -1,12 +1,12 @@
-public partial class Critter : CharacterBody2D
+public partial class CritterBase : CharacterBody2D
 {
-	private const int Speed = 500;
-	public int Health = 5;
+	[Export] public int Speed = 500;
+	[Export] public int Health = 5;
 	
 	/// <summary>
 	/// How much damage to do to the player's health.
 	/// </summary>
-	public int Damage = 10;
+	[Export] public int Damage = 10;
 
 	public override void _Process(double delta)
 	{

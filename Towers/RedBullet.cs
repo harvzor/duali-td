@@ -26,7 +26,7 @@ public partial class RedBullet : CharacterBody2D
 		if (body != this.Target)
 			return;
 
-		if (this.Target is Critter critter)
+		if (this.Target is CritterBase critter)
 			critter.Health -= this.Damage;
 
 		this.QueueFree();

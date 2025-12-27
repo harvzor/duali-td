@@ -1,8 +1,12 @@
-[gd_scene load_steps=7 format=3 uid="uid://c1he1ojb6jg53"]
+[gd_scene load_steps=11 format=3 uid="uid://c1he1ojb6jg53"]
 
 [ext_resource type="PackedScene" uid="uid://iexs7fm1ryop" path="res://UserInterface/SpawnCritter.tscn" id="1_j0awb"]
 [ext_resource type="Script" uid="uid://b5x8w1c1xg2nu" path="res://UserInterface/UserInterface.cs" id="1_te54r"]
 [ext_resource type="Script" uid="uid://du1epvyu2cbbx" path="res://UserInterface/TowerPlacement.cs" id="2_yseya"]
+[ext_resource type="PackedScene" uid="uid://bpdiyfmjtalsw" path="res://Mobs/CritterCircle.tscn" id="4_r6oiv"]
+[ext_resource type="PackedScene" uid="uid://x7cceovuyuer" path="res://Mobs/CritterTriangle.tscn" id="5_0joph"]
+[ext_resource type="PackedScene" uid="uid://bk87hclrg88yh" path="res://Shapes/Circle.tscn" id="5_apued"]
+[ext_resource type="PackedScene" uid="uid://bvx4n75unbbab" path="res://Shapes/Triangle.tscn" id="7_oh8mj"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_te54r"]
 
@@ -30,13 +34,25 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_te54r")
 
 [node name="FlowContainer" type="FlowContainer" parent="CritterMenu"]
 layout_mode = 0
-offset_right = 64.0
+offset_right = 128.0
 offset_bottom = 64.0
 theme_override_constants/h_separation = 0
 theme_override_constants/v_separation = 0
 
 [node name="SpawnCritter" parent="CritterMenu/FlowContainer" instance=ExtResource("1_j0awb")]
 layout_mode = 2
+CritterScene = ExtResource("4_r6oiv")
+
+[node name="Circle" parent="CritterMenu/FlowContainer/SpawnCritter" instance=ExtResource("5_apued")]
+position = Vector2(32, 32)
+Color = Color(0, 0, 0, 1)
+
+[node name="SpawnCritter2" parent="CritterMenu/FlowContainer" instance=ExtResource("1_j0awb")]
+layout_mode = 2
+CritterScene = ExtResource("5_0joph")
+
+[node name="Triangle" parent="CritterMenu/FlowContainer/SpawnCritter2" instance=ExtResource("7_oh8mj")]
+position = Vector2(32, 32)
 
 [node name="Stats" type="Panel" parent="."]
 offset_top = 1152.0

@@ -78,7 +78,7 @@ public partial class UserInterface : CanvasLayer
         this._towerSpawner.SpawnTower(position);
     }
 
-    public void SpawnCritter()
+    public void SpawnCritter(PackedScene critterScene)
     {
         if (this._pathSpawner.Cost > this._bank)
             return;
@@ -86,6 +86,6 @@ public partial class UserInterface : CanvasLayer
         IncreaseIncome(this._pathSpawner.Cost);
         this.SetBank(this._bank - this._pathSpawner.Cost);
 
-        this._pathSpawner.SpawnCritter();
+        this._pathSpawner.SpawnCritter(critterScene);
     }
 }

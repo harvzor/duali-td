@@ -1,16 +1,11 @@
-[gd_scene load_steps=3 format=3 uid="uid://iexs7fm1ryop"]
+[gd_scene load_steps=2 format=3 uid="uid://iexs7fm1ryop"]
 
 [ext_resource type="Script" uid="uid://dedc7d4rkeg7n" path="res://UserInterface/SpawnCritter.cs" id="1_ftgij"]
-[ext_resource type="PackedScene" uid="uid://bk87hclrg88yh" path="res://Shapes/Circle.tscn" id="3_0w6qf"]
 
 [node name="SpawnCritter" type="Panel"]
 custom_minimum_size = Vector2(64, 64)
 offset_right = 64.0
 offset_bottom = 64.0
 script = ExtResource("1_ftgij")
-
-[node name="Circle" parent="." instance=ExtResource("3_0w6qf")]
-position = Vector2(32, 32)
-Color = Color(0, 0, 0, 1)
 
 [connection signal="gui_input" from="." to="." method="OnGuiInput"]

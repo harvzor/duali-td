@@ -17,8 +17,6 @@ position = Vector2(360, 640)
 [node name="PathSpawner" type="Node2D" parent="."]
 script = ExtResource("2_2dftf")
 
-[node name="Timer" type="Timer" parent="PathSpawner"]
-
 [node name="TowerSpawner" type="Node2D" parent="."]
 script = ExtResource("3_js7pq")
 
@@ -26,5 +24,3 @@ script = ExtResource("3_js7pq")
 
 [node name="Gate" parent="." instance=ExtResource("5_p1v5b")]
 position = Vector2(96, 1056)
-
-[connection signal="timeout" from="PathSpawner/Timer" to="PathSpawner" method="OnTimerTimeout"]

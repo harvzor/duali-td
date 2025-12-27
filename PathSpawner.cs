@@ -4,14 +4,10 @@ public partial class PathSpawner : Node2D
 
 	private PackedScene Stage1 = GD.Load<PackedScene>("res://Mobs/Stage1.tscn");
 
-	public void OnTimerTimeout()
+	public void SpawnCritter(PackedScene critterScene)
 	{
-		SpawnCritter();
-	}
-
-	public void SpawnCritter()
-	{
-		Node instance = Stage1.Instantiate();
-		this.AddChild(instance);
+		Stage1 stage1 = (Stage1.Instantiate() as Stage1)!;
+		stage1.CritterScene = critterScene;
+		this.AddChild(stage1);
 	}
 }

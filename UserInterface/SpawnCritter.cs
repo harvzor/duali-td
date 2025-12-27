@@ -1,6 +1,8 @@
 public partial class SpawnCritter : Panel
 {
 	private UserInterface _userInterface;
+
+	[Export] public PackedScene CritterScene;
 	
 	public override void _Ready()
 	{
@@ -11,7 +13,7 @@ public partial class SpawnCritter : Panel
 	{
 		if (inputEvent is InputEventMouseButton { ButtonIndex: MouseButton.Left, ButtonMask: MouseButtonMask.Left })
 		{
-			this._userInterface.SpawnCritter();
+			this._userInterface.SpawnCritter(CritterScene);
 		}
 	}
 }

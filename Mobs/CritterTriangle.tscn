@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://x7cceovuyuer"]
+
+[ext_resource type="Script" uid="uid://5pnauel6hipj" path="res://Mobs/CritterBase.cs" id="1_pjoxs"]
+[ext_resource type="PackedScene" uid="uid://bvx4n75unbbab" path="res://Shapes/Triangle.tscn" id="2_pjoxs"]
+
+[node name="CritterCircle" type="CharacterBody2D"]
+script = ExtResource("1_pjoxs")
+Health = 10
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+polygon = PackedVector2Array(0, -32, 32, 32, -32, 32)
+
+[node name="Triangle" parent="." instance=ExtResource("2_pjoxs")]

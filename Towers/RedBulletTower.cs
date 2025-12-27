@@ -45,7 +45,7 @@ public partial class RedBulletTower : StaticBody2D
 		if (IsInstanceValid(_currentTarget))
 			return;
 
-		if (body.Name != nameof(Critter))
+		if (body.GetType() != typeof(CritterBase))
 		{
 			return;
 		}

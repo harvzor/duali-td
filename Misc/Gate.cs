@@ -13,7 +13,7 @@ public partial class Gate : Area2D
 
     public void OnBodyEntered(Node2D body)
     {
-        if (body is not Critter critter)
+        if (body is not CritterBase critter)
             return;
         
         critter.QueueFree();
