@@ -1,6 +1,6 @@
 ﻿Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2012
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DyaTD", "DyaTD.csproj", "{087B5990-FB05-4DC2-BCB7-5E5B2D9B44F5}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DualiTD", "DualiTD.csproj", "{087B5990-FB05-4DC2-BCB7-5E5B2D9B44F5}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
