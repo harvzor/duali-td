@@ -168,46 +168,46 @@ theme_override_font_sizes/font_size = 16
 text = "500p/s"
 horizontal_alignment = 1
 
-[node name="Stats" type="Panel" parent="."]
+[node name="PlayerStats" type="Panel" parent="."]
 offset_top = 1152.0
 offset_right = 720.0
 offset_bottom = 1216.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_r6oiv")
 
-[node name="VFlowContainer" type="VFlowContainer" parent="Stats"]
+[node name="MoneyContainer" type="VFlowContainer" parent="PlayerStats"]
 layout_mode = 0
 offset_right = 64.0
 offset_bottom = 64.0
 alignment = 1
 
-[node name="Bank" type="Label" parent="Stats/VFlowContainer"]
+[node name="Bank" type="Label" parent="PlayerStats/MoneyContainer"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 16
 text = "123G"
 
-[node name="Income" type="Label" parent="Stats/VFlowContainer"]
+[node name="Income" type="Label" parent="PlayerStats/MoneyContainer"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 16
 text = "456⬆️"
 
-[node name="VFlowContainer2" type="VFlowContainer" parent="Stats"]
+[node name="HealthContainer" type="VFlowContainer" parent="PlayerStats"]
 layout_mode = 0
 offset_left = 64.0
 offset_right = 128.0
 offset_bottom = 64.0
 alignment = 1
 
-[node name="Health" type="Label" parent="Stats/VFlowContainer2"]
+[node name="Health" type="Label" parent="PlayerStats/HealthContainer"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 16
 text = "999❤️"
 
-[node name="IncomeContainer" type="Node" parent="Stats"]
+[node name="IncomeContainer" type="Node" parent="PlayerStats"]
 
-[node name="IncomeTimer" type="Timer" parent="Stats/IncomeContainer"]
+[node name="IncomeTimer" type="Timer" parent="PlayerStats/IncomeContainer"]
 autostart = true
 
-[node name="IncomeTimerRadial" type="Control" parent="Stats/IncomeContainer"]
+[node name="IncomeTimerRadial" type="Control" parent="PlayerStats/IncomeContainer"]
 layout_mode = 3
 anchors_preset = 0
 offset_left = 128.0
@@ -223,4 +223,4 @@ Ring = true
 
 [connection signal="gui_input" from="TowerPlacement" to="TowerPlacement" method="OnGuiInput"]
 [connection signal="mouse_exited" from="TowerPlacement" to="TowerPlacement" method="OnMouseExited"]
-[connection signal="timeout" from="Stats/IncomeContainer/IncomeTimer" to="." method="OnIncomeTimerTimeout"]
+[connection signal="timeout" from="PlayerStats/IncomeContainer/IncomeTimer" to="." method="OnIncomeTimerTimeout"]

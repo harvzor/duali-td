@@ -1,7 +1,6 @@
 public partial class RedBullet : CharacterBody2D
 {
 	public const float Speed = 1000.0f;
-	public const float JumpVelocity = -400.0f;
 	
 	/// <summary>
 	/// Who this bullet is being fired at.

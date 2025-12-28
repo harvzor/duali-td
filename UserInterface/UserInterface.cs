@@ -16,17 +16,16 @@ public partial class UserInterface : CanvasLayer
 
     public override void _Ready()
     {
-        this._bankLabel = (this.FindChild("Bank") as Label)!;
+        this._bankLabel = this.GetNode<Label>("PlayerStats/MoneyContainer/Bank");
         this.SetBank(this._bank);
         
-        this._incomeLabel = (this.FindChild("Income") as Label)!;
+        this._incomeLabel = this.GetNode<Label>("PlayerStats/MoneyContainer/Income");
         this.IncreaseIncome(0);
         
-        this._healthLabel = (this.FindChild("Health") as Label)!;
+        this._healthLabel = this.GetNode<Label>("PlayerStats/HealthContainer/Health");
         this.SetHealth(this._health);
 
-        Node incomeContainer = (this.FindChild("IncomeContainer"))!;
-        this._incomeTimerRadial = (incomeContainer.FindChild("IncomeTimerRadial") as RadialProgress)!;
+        this._incomeTimerRadial = this.GetNode<RadialProgress>("PlayerStats/IncomeContainer/IncomeTimerRadial");
         
         this._towerSpawner = this
             .GetTree()
