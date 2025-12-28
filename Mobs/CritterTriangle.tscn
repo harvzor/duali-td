@@ -4,6 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://bvx4n75unbbab" path="res://Shapes/Triangle.tscn" id="2_pjoxs"]
 
 [node name="CritterCircle" type="CharacterBody2D"]
+rotation = 1.5707964
 script = ExtResource("1_pjoxs")
 Health = 10
 
