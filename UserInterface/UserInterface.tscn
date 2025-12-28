@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://c1he1ojb6jg53"]
+[gd_scene load_steps=12 format=3 uid="uid://c1he1ojb6jg53"]
 
 [ext_resource type="PackedScene" uid="uid://iexs7fm1ryop" path="res://UserInterface/SpawnCritter.tscn" id="1_j0awb"]
 [ext_resource type="Script" uid="uid://b5x8w1c1xg2nu" path="res://UserInterface/UserInterface.cs" id="1_te54r"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://x7cceovuyuer" path="res://Mobs/CritterTriangle.tscn" id="5_0joph"]
 [ext_resource type="PackedScene" uid="uid://bk87hclrg88yh" path="res://Shapes/Circle.tscn" id="5_apued"]
 [ext_resource type="PackedScene" uid="uid://bvx4n75unbbab" path="res://Shapes/Triangle.tscn" id="7_oh8mj"]
+[ext_resource type="Script" uid="uid://bceysm7kn8ci" path="res://UserInterface/RadialProgress.cs" id="8_oh8mj"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_te54r"]
 
@@ -88,11 +89,24 @@ layout_mode = 2
 theme_override_font_sizes/font_size = 16
 text = "999❤️"
 
-[node name="FlowContainer" type="FlowContainer" parent="Stats"]
-visible = false
-layout_mode = 0
-offset_right = 4224.0
-offset_bottom = 768.0
+[node name="IncomeContainer" type="Node" parent="Stats"]
+
+[node name="IncomeTimer" type="Timer" parent="Stats/IncomeContainer"]
+autostart = true
+
+[node name="IncomeTimerRadial" type="Control" parent="Stats/IncomeContainer"]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 128.0
+offset_top = 1152.0
+offset_right = 192.0
+offset_bottom = 1216.0
+script = ExtResource("8_oh8mj")
+MaxValue = 10.0
+Radius = 32.0
+BgColor = Color(0.5019608, 0.5019608, 0.5019608, 0)
+Ring = true
 
 [connection signal="gui_input" from="TowerPlacement" to="TowerPlacement" method="OnGuiInput"]
 [connection signal="mouse_exited" from="TowerPlacement" to="TowerPlacement" method="OnMouseExited"]
+[connection signal="timeout" from="Stats/IncomeContainer/IncomeTimer" to="." method="OnIncomeTimerTimeout"]

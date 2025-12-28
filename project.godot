@@ -23,6 +23,7 @@ window/size/extend_to_title=true
 window/size/window_width_override=542
 window/size/window_height_override=965
 window/stretch/mode="viewport"
+window/stretch/aspect="expand"
 window/handheld/orientation=1
 
 [dotnet]

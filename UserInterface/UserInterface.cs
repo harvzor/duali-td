@@ -12,28 +12,33 @@ public partial class UserInterface : CanvasLayer
     private TowerSpawner _towerSpawner;
     private Map _map;
 
+    private RadialProgress _incomeTimerRadial;
+
     public override void _Ready()
     {
-        this._bankLabel = this.FindChild("Bank") as Label;
+        this._bankLabel = (this.FindChild("Bank") as Label)!;
         this.SetBank(this._bank);
         
-        this._incomeLabel = this.FindChild("Income") as Label;
+        this._incomeLabel = (this.FindChild("Income") as Label)!;
         this.IncreaseIncome(0);
         
-        this._healthLabel = this.FindChild("Health") as Label;
+        this._healthLabel = (this.FindChild("Health") as Label)!;
         this.SetHealth(this._health);
+
+        Node incomeContainer = (this.FindChild("IncomeContainer"))!;
+        this._incomeTimerRadial = (incomeContainer.FindChild("IncomeTimerRadial") as RadialProgress)!;
         
         this._towerSpawner = this
             .GetTree()
             .GetRoot()
             .GetChild(0)
-            .GetNode<TowerSpawner>(nameof(TowerSpawner));
+            .GetNode<TowerSpawner>(nameof(TowerSpawner))!;
 
         this._map = this
             .GetTree()
             .GetRoot()
             .GetChild(0)
-            .GetNode<Map>(nameof(Map));
+            .GetNode<Map>(nameof(Map))!;
     }
     
     private void SetHealth(int newHealth)
@@ -87,5 +92,16 @@ public partial class UserInterface : CanvasLayer
         this.SetBank(this._bank - this._map.Cost);
 
         this._map.SpawnCritter(critterScene);
+    }
+
+    public void OnIncomeTimerTimeout()
+    {
+        if (_incomeTimerRadial.Progress >= _incomeTimerRadial.MaxValue)
+        {
+            this._incomeTimerRadial.Progress = 0;
+            this.SetBank(this._bank += this._income);
+        }
+
+        this._incomeTimerRadial.Progress += 1;
     }
 }
