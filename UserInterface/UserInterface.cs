@@ -88,11 +88,11 @@ public partial class UserInterface : CanvasLayer
 
     public void TrySpawnCritter(PackedScene critterScene)
     {
-        if (this._map.Cost > this._bank)
+        if (Map.Cost > this._bank)
             return;
 
-        IncreaseIncome(this._map.Cost);
-        this.SetBank(this._bank - this._map.Cost);
+        IncreaseIncome(Map.Cost);
+        this.SetBank(this._bank - Map.Cost);
 
         this._map.SpawnCritter(critterScene);
     }

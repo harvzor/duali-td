@@ -1,6 +1,6 @@
 public partial class Map : Node2D
 {
-	public int Cost = 10;
+	public const int Cost = 10;
 
 	public void SpawnCritter(PackedScene critterScene)
 	{
