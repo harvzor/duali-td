@@ -101,6 +101,11 @@ public partial class RadialProgress : Control
 			points.Add(center + new Vector2(Mathf.Cos(anglePoint), Mathf.Sin(anglePoint)) * radius2);
 		}
 
-		DrawPolygon(points.ToArray(), colors);
+		// Couldn't see why error "Error: Invalid polygon data, triangulation failed" was being thrown
+		// https://forum.godotengine.org/t/error-invalid-polygon-data-triangulation-failed/19058/2
+		if (!Geometry2D.TriangulatePolygon(points.ToArray()).IsEmpty())
+		{
+			DrawPolygon(points.ToArray(), colors);
+		}
 	}
 }
