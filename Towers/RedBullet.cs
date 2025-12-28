@@ -26,12 +26,10 @@ public partial class RedBullet : CharacterBody2D
 
 	public void OnArea2DBodyEntered(Node2D body)
 	{
-		if (body != this.Target)
+		if (body is not CritterBase critter)
 			return;
 
-		if (this.Target is CritterBase critter)
-			critter.Health -= this.Damage;
-
+		critter.Health -= this.Damage;
 		this.QueueFree();
 	}
 }

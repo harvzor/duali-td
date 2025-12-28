@@ -21,6 +21,7 @@ script = ExtResource("1_1f3uh")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_2stt3")
+disabled = true
 
 [node name="Aim" type="Marker2D" parent="."]
 position = Vector2(32, 0)
