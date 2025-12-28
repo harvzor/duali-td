@@ -79,6 +79,9 @@ public partial class UserInterface : CanvasLayer
         if (this._towerSpawner.Cost > this._bank)
             return;
 
+        if (this._towerSpawner.TowerAlreadyExists(position))
+            return;
+
         this.SetBank(this._bank - this._towerSpawner.Cost);
         this._towerSpawner.SpawnTower(position);
     }

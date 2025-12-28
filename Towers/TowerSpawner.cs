@@ -1,4 +1,5 @@
 using System.Diagnostics.CodeAnalysis;
+using System.Linq;
 
 public partial class TowerSpawner : Node2D
 {
@@ -40,6 +41,15 @@ public partial class TowerSpawner : Node2D
 		{
 			this.GhostTower.QueueFree();
 		}
+	}
+
+	public bool TowerAlreadyExists(Vector2 position)
+	{
+		Vector2 snappedPosition = this.SnapPosition(position);
+
+		return this.GetChildren()
+			.Select(tower => (RedBulletTower)tower)
+			.Any(tower => tower.Enabled && tower.Position == snappedPosition);
 	}
 	
 	public void SpawnTower(Vector2 position)
