@@ -1,18 +1,23 @@
-[gd_scene load_steps=12 format=3 uid="uid://c1he1ojb6jg53"]
+[gd_scene load_steps=14 format=3 uid="uid://c1he1ojb6jg53"]
 
 [ext_resource type="PackedScene" uid="uid://iexs7fm1ryop" path="res://UserInterface/SpawnCritter.tscn" id="1_j0awb"]
 [ext_resource type="Script" uid="uid://b5x8w1c1xg2nu" path="res://UserInterface/UserInterface.cs" id="1_te54r"]
 [ext_resource type="Script" uid="uid://du1epvyu2cbbx" path="res://UserInterface/TowerPlacement.cs" id="2_yseya"]
-[ext_resource type="PackedScene" uid="uid://bpdiyfmjtalsw" path="res://Mobs/CritterCircle.tscn" id="4_r6oiv"]
-[ext_resource type="PackedScene" uid="uid://x7cceovuyuer" path="res://Mobs/CritterTriangle.tscn" id="5_0joph"]
-[ext_resource type="PackedScene" uid="uid://bk87hclrg88yh" path="res://Shapes/Circle.tscn" id="5_apued"]
-[ext_resource type="PackedScene" uid="uid://bvx4n75unbbab" path="res://Shapes/Triangle.tscn" id="7_oh8mj"]
+[ext_resource type="PackedScene" uid="uid://bpdiyfmjtalsw" path="res://Critters/CritterCircle.tscn" id="4_r6oiv"]
+[ext_resource type="PackedScene" uid="uid://x7cceovuyuer" path="res://Critters/CritterTriangle.tscn" id="5_0joph"]
+[ext_resource type="PackedScene" uid="uid://dhf5jw6bpntv4" path="res://Critters/CritterSquare.tscn" id="6_apued"]
 [ext_resource type="Script" uid="uid://bceysm7kn8ci" path="res://UserInterface/RadialProgress.cs" id="8_oh8mj"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_te54r"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_te54r"]
-bg_color = Color(0, 0, 0, 1)
+bg_color = Color(1, 1, 1, 1)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_apued"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_oh8mj"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_fsra1"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_r6oiv"]
 bg_color = Color(0, 0, 0, 1)
@@ -35,24 +40,33 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_te54r")
 
 [node name="FlowContainer" type="FlowContainer" parent="CritterMenu"]
 layout_mode = 0
-offset_right = 128.0
+offset_right = 720.0
 offset_bottom = 64.0
 theme_override_constants/h_separation = 0
 theme_override_constants/v_separation = 0
 
-[node name="SpawnCritter" parent="CritterMenu/FlowContainer" instance=ExtResource("1_j0awb")]
+[node name="SpawnCritterCircle" parent="CritterMenu/FlowContainer" instance=ExtResource("1_j0awb")]
 layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_apued")
 CritterScene = ExtResource("4_r6oiv")
 
-[node name="Circle" parent="CritterMenu/FlowContainer/SpawnCritter" instance=ExtResource("5_apued")]
+[node name="CritterCircle" parent="CritterMenu/FlowContainer/SpawnCritterCircle" instance=ExtResource("4_r6oiv")]
 position = Vector2(32, 32)
-Color = Color(0, 0, 0, 1)
 
-[node name="SpawnCritter2" parent="CritterMenu/FlowContainer" instance=ExtResource("1_j0awb")]
+[node name="SpawnCritterTriangle" parent="CritterMenu/FlowContainer" instance=ExtResource("1_j0awb")]
 layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_oh8mj")
 CritterScene = ExtResource("5_0joph")
 
-[node name="Triangle" parent="CritterMenu/FlowContainer/SpawnCritter2" instance=ExtResource("7_oh8mj")]
+[node name="CritterTriangle" parent="CritterMenu/FlowContainer/SpawnCritterTriangle" instance=ExtResource("5_0joph")]
+position = Vector2(32, 32)
+
+[node name="SpawnCritterSquare" parent="CritterMenu/FlowContainer" instance=ExtResource("1_j0awb")]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_fsra1")
+CritterScene = ExtResource("6_apued")
+
+[node name="CritterSquare" parent="CritterMenu/FlowContainer/SpawnCritterSquare" instance=ExtResource("6_apued")]
 position = Vector2(32, 32)
 
 [node name="Stats" type="Panel" parent="."]

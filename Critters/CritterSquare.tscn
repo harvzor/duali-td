@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://dhf5jw6bpntv4"]
+
+[ext_resource type="Script" uid="uid://5pnauel6hipj" path="res://Critters/CritterBase.cs" id="1_m00ge"]
+[ext_resource type="PackedScene" uid="uid://c8ideo1n8ahqw" path="res://Shapes/Square.tscn" id="2_m00ge"]
+
+[node name="CritterSquare" type="CharacterBody2D"]
+rotation = 1.5707964
+script = ExtResource("1_m00ge")
+Speed = 125
+Health = 20
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+polygon = PackedVector2Array(-31.999998, 32, -32, -31.999998, 31.999998, -32, 32, 31.999998)
+
+[node name="Square" parent="." instance=ExtResource("2_m00ge")]
+Color = Color(1, 0, 1, 1)
