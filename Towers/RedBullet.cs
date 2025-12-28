@@ -13,7 +13,10 @@ public partial class RedBullet : CharacterBody2D
 	public override void _PhysicsProcess(double delta)
 	{
 		if (!IsInstanceValid(Target))
+		{
 			this.QueueFree();
+			return;
+		}
 
 		Velocity = this.GlobalPosition.DirectionTo(Target.GlobalPosition) * Speed;
 		this.LookAt(Target.GlobalPosition);

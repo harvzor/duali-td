@@ -13,6 +13,6 @@ public partial class CritterBase : CharacterBody2D
 		this.GetParent<PathFollow2D>().Progress = this.GetParent<PathFollow2D>().Progress + Speed * (float)delta;
 		
 		if (this.Health <= 0)
-			this.GetParent<PathFollow2D>().GetParent<Path2D>().QueueFree();
+			this.GetParent<PathFollow2D>().QueueFree();
 	}
 }

@@ -10,7 +10,7 @@ public partial class UserInterface : CanvasLayer
     private Label _incomeLabel;
 
     private TowerSpawner _towerSpawner;
-    private PathSpawner _pathSpawner;
+    private Map _map;
 
     public override void _Ready()
     {
@@ -29,11 +29,11 @@ public partial class UserInterface : CanvasLayer
             .GetChild(0)
             .GetNode<TowerSpawner>(nameof(TowerSpawner));
 
-        this._pathSpawner = this
+        this._map = this
             .GetTree()
             .GetRoot()
             .GetChild(0)
-            .GetNode<PathSpawner>(nameof(PathSpawner));
+            .GetNode<Map>(nameof(Map));
     }
     
     private void SetHealth(int newHealth)
@@ -78,14 +78,14 @@ public partial class UserInterface : CanvasLayer
         this._towerSpawner.SpawnTower(position);
     }
 
-    public void SpawnCritter(PackedScene critterScene)
+    public void TrySpawnCritter(PackedScene critterScene)
     {
-        if (this._pathSpawner.Cost > this._bank)
+        if (this._map.Cost > this._bank)
             return;
 
-        IncreaseIncome(this._pathSpawner.Cost);
-        this.SetBank(this._bank - this._pathSpawner.Cost);
+        IncreaseIncome(this._map.Cost);
+        this.SetBank(this._bank - this._map.Cost);
 
-        this._pathSpawner.SpawnCritter(critterScene);
+        this._map.SpawnCritter(critterScene);
     }
 }

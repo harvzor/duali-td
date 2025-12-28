@@ -13,7 +13,7 @@ public partial class SpawnCritter : Panel
 	{
 		if (inputEvent is InputEventMouseButton { ButtonIndex: MouseButton.Left, ButtonMask: MouseButtonMask.Left })
 		{
-			this._userInterface.SpawnCritter(CritterScene);
+			this._userInterface.TrySpawnCritter(CritterScene);
 		}
 	}
 }

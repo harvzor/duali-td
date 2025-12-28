@@ -13,8 +13,8 @@ public partial class TowerSpawner : Node2D
 
 	private Vector2 SnapPosition(Vector2 position)
 	{
-		const float cellSize = 128f;
-		const float offset = 96f;
+		const float cellSize = 64;
+		const float offset = cellSize / 2f;
 
 		float snappedX = MathF.Floor(position.X / cellSize) * cellSize + offset;
 		float snappedY = MathF.Floor(position.Y / cellSize) * cellSize + offset;

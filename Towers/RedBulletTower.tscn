@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://bbxyq4hee4wqf" path="res://Towers/RedBulletTower.png" id="1_s4eav"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2stt3"]
-size = Vector2(128, 128)
+size = Vector2(64, 64)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_kai3l"]
 radius = 256.0
@@ -20,15 +20,13 @@ corner_radius_bottom_left = 640
 script = ExtResource("1_1f3uh")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-1.5, 0)
 shape = SubResource("RectangleShape2D_2stt3")
 
 [node name="Aim" type="Marker2D" parent="."]
-position = Vector2(130, 0)
+position = Vector2(32, 0)
 
 [node name="Sprite" type="Sprite2D" parent="."]
 rotation = 1.5707964
-scale = Vector2(2, 2)
 texture = ExtResource("1_s4eav")
 
 [node name="Tower" type="Area2D" parent="."]
