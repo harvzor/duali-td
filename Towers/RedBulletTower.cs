@@ -1,18 +1,26 @@
+using System.Collections.Generic;
+using System.Linq;
+
 public partial class RedBulletTower : StaticBody2D
 {
 	public bool Enabled = true;
 
 	private PackedScene RedBullet = GD.Load<PackedScene>("res://Towers/RedBullet.tscn");
 	private const int BulletDamage = 1;
-	private Node2D _currentTarget;
+	private readonly List<Node2D> _currentTargets = [];
 
 	public void FireBullet()
 	{
-		if (!IsInstanceValid(_currentTarget))
+		if (_currentTargets.Count == 0)
+			return;
+
+		var currentTarget = _currentTargets[0];
+
+		if (!IsInstanceValid(currentTarget))
 			return;
 
 		var bullet = RedBullet.Instantiate<RedBullet>();
-		bullet.Target = _currentTarget;
+		bullet.Target = currentTarget;
 		bullet.Damage = BulletDamage;
 		bullet.Position = this.GetNode<Marker2D>("Aim").Position;
 		
@@ -24,10 +32,16 @@ public partial class RedBulletTower : StaticBody2D
 		if (!this.Enabled)
 			return;
 
-		if (IsInstanceValid(_currentTarget))
+		if (_currentTargets.Count == 0)
+			return;
+
+		if (!IsInstanceValid(_currentTargets[0]))
 		{
-			this.LookAt(_currentTarget.GlobalPosition);
+			_currentTargets.RemoveAt(0);
+			return;
 		}
+
+		this.LookAt(_currentTargets[0].GlobalPosition);
 	}
 
 	public void Disable()
@@ -40,17 +54,11 @@ public partial class RedBulletTower : StaticBody2D
 	{
 		if (!this.Enabled)
 			return;
-		
-		// todo: could be better to keep track of enemies that have entered the area so if the current one has left, we can target the next without it needing to enter the area
-		if (IsInstanceValid(_currentTarget))
-			return;
 
 		if (body.GetType() != typeof(CritterBase))
-		{
 			return;
-		}
 
-		_currentTarget = body;
+		_currentTargets.Add(body);
 	}
 
 	public void OnTowerBodyExited(Node2D body)
@@ -58,10 +66,7 @@ public partial class RedBulletTower : StaticBody2D
 		if (!this.Enabled)
 			return;
 
-		if (_currentTarget == body)
-		{
-			_currentTarget = null;
-		}
+		_currentTargets.Remove(body);
 	}
 
 	public void OnFireTimerTimeout()
