@@ -44,6 +44,7 @@ public partial class TowerPlacement : Panel
 				return;
 
 			this._userInterface.TrySpawnTower(inputEventMouseButton.Position);
+			this._userInterface.HideTower();
 		}
 	}
 
