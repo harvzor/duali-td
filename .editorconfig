@@ -5,14 +5,23 @@ charset = utf-8
 
 [*.cs]
 
-# Require this. for fields
+############################
+# Require this.
+############################
 dotnet_style_qualification_for_field = true:error
-
-# Require this. for properties
 dotnet_style_qualification_for_property = true:error
-
-# Require this. for methods
 dotnet_style_qualification_for_method = true:error
-
-# Require this. for events
 dotnet_style_qualification_for_event = true:error
+
+############################
+# Disallow var
+############################
+
+# Disallow var for built-in types
+csharp_style_var_for_built_in_types = false:error
+
+# Disallow var when type is apparent (new Foo())
+csharp_style_var_when_type_is_apparent = false:error
+
+# Disallow var elsewhere
+csharp_style_var_elsewhere = false:error
