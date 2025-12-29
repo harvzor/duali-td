@@ -9,6 +9,7 @@
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(360, 640)
+enabled = false
 
 [node name="Map" parent="." instance=ExtResource("3_p1v5b")]
 
