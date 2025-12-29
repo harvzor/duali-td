@@ -22,7 +22,7 @@ public partial class TowerPlacement : Panel
 		this._userInterface = this.FindParent(nameof(UserInterface))! as UserInterface;
 	}
 
-	public void OnGuiInput(InputEvent inputEvent)
+	private void OnGuiInput(InputEvent inputEvent)
 	{
 		// On hover
 		if (inputEvent is InputEventMouseMotion inputEventMouseMotion)
@@ -47,7 +47,7 @@ public partial class TowerPlacement : Panel
 		}
 	}
 
-	public void OnMouseExited()
+	private void OnMouseExited()
 	{
 		_userInterface.HideTower();
 	}

@@ -11,7 +11,7 @@ public partial class Gate : Area2D
             .FindChild(nameof(UserInterface))! as UserInterface;
     }
 
-    public void OnBodyEntered(Node2D body)
+    private void OnBodyEntered(Node2D body)
     {
         if (body is not CritterBase critter)
             return;

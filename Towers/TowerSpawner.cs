@@ -5,12 +5,12 @@ public partial class TowerSpawner : Node2D
 {
 	public int Cost = 10;
 	
-	private PackedScene RedBulletTower = GD.Load<PackedScene>("res://Towers/RedBulletTower.tscn");
+	private PackedScene _redBulletTower = GD.Load<PackedScene>("res://Towers/RedBulletTower.tscn");
 	
 	/// <summary>
 	/// Tower that hasn't been properly placed, just the outline is shown.
 	/// </summary>
-	private RedBulletTower GhostTower;
+	private RedBulletTower _ghostTower;
 
 	private Vector2 SnapPosition(Vector2 position)
 	{
@@ -25,21 +25,21 @@ public partial class TowerSpawner : Node2D
 	
 	public void ShowTower(Vector2 position)
 	{
-		if (!IsInstanceValid(this.GhostTower))
+		if (!IsInstanceValid(this._ghostTower))
 		{
-			this.GhostTower = RedBulletTower.Instantiate<RedBulletTower>();
-			this.GhostTower.Disable();
-			this.AddChild(this.GhostTower);
+			this._ghostTower = _redBulletTower.Instantiate<RedBulletTower>();
+			this._ghostTower.Disable();
+			this.AddChild(this._ghostTower);
 		}
 		
-		this.GhostTower.Position = this.SnapPosition(position);
+		this._ghostTower.Position = this.SnapPosition(position);
 	}
 	
 	public void HideTower()
 	{
-		if (IsInstanceValid(this.GhostTower))
+		if (IsInstanceValid(this._ghostTower))
 		{
-			this.GhostTower.QueueFree();
+			this._ghostTower.QueueFree();
 		}
 	}
 
@@ -54,7 +54,7 @@ public partial class TowerSpawner : Node2D
 	
 	public void SpawnTower(Vector2 position)
 	{
-		RedBulletTower tower = RedBulletTower.Instantiate<RedBulletTower>();
+		RedBulletTower tower = _redBulletTower.Instantiate<RedBulletTower>();
 		tower.Position = this.SnapPosition(position);
 
 		this.AddChild(tower);

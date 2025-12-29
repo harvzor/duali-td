@@ -23,7 +23,7 @@ public partial class RedBullet : CharacterBody2D
 		this.MoveAndSlide();
 	}
 
-	public void OnArea2DBodyEntered(Node2D body)
+	private void OnArea2DBodyEntered(Node2D body)
 	{
 		if (body is not CritterBase critter)
 			return;

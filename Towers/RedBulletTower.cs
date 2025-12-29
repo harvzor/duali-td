@@ -50,7 +50,7 @@ public partial class RedBulletTower : StaticBody2D
 		this.GetNode<Panel>("GhostRange").Show();
 	}
 
-	public void OnTowerBodyEntered(Node2D body)
+	private void OnTowerBodyEntered(Node2D body)
 	{
 		if (!this.Enabled)
 			return;
@@ -61,7 +61,7 @@ public partial class RedBulletTower : StaticBody2D
 		_currentTargets.Add(body);
 	}
 
-	public void OnTowerBodyExited(Node2D body)
+	private void OnTowerBodyExited(Node2D body)
 	{
 		if (!this.Enabled)
 			return;
@@ -69,7 +69,7 @@ public partial class RedBulletTower : StaticBody2D
 		_currentTargets.Remove(body);
 	}
 
-	public void OnFireTimerTimeout()
+	private void OnFireTimerTimeout()
 	{
 		this.FireBullet();
 	}

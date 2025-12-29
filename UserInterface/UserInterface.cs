@@ -87,7 +87,7 @@ public partial class UserInterface : CanvasLayer
         this._map.SpawnCritter(critterScene);
     }
 
-    public void OnIncomeTimerTimeout()
+    private void OnIncomeTimerTimeout()
     {
         if (_incomeTimerRadial.Progress >= _incomeTimerRadial.MaxValue)
         {

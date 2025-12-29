@@ -23,7 +23,7 @@ public partial class SpawnCritter : Panel
 		speed.Text = critterBase.Speed + "p/s";
 	}
 
-	public void OnGuiInput(InputEvent inputEvent)
+	private void OnGuiInput(InputEvent inputEvent)
 	{
 		if (inputEvent is InputEventMouseButton { ButtonIndex: MouseButton.Left, ButtonMask: MouseButtonMask.Left })
 		{
