@@ -174,33 +174,32 @@ offset_right = 720.0
 offset_bottom = 1216.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_r6oiv")
 
-[node name="MoneyContainer" type="VFlowContainer" parent="PlayerStats"]
+[node name="MoneyContainer" type="HFlowContainer" parent="PlayerStats"]
 layout_mode = 0
 offset_right = 64.0
 offset_bottom = 64.0
+theme_override_constants/v_separation = 0
 alignment = 1
 
 [node name="Bank" type="Label" parent="PlayerStats/MoneyContainer"]
 layout_mode = 2
-theme_override_font_sizes/font_size = 16
+theme_override_font_sizes/font_size = 23
 text = "123G"
 
 [node name="Income" type="Label" parent="PlayerStats/MoneyContainer"]
 layout_mode = 2
-theme_override_font_sizes/font_size = 16
+theme_override_font_sizes/font_size = 23
 text = "456⬆️"
 
-[node name="HealthContainer" type="VFlowContainer" parent="PlayerStats"]
+[node name="Health" type="Label" parent="PlayerStats"]
 layout_mode = 0
 offset_left = 64.0
 offset_right = 128.0
 offset_bottom = 64.0
-alignment = 1
-
-[node name="Health" type="Label" parent="PlayerStats/HealthContainer"]
-layout_mode = 2
-theme_override_font_sizes/font_size = 16
+theme_override_font_sizes/font_size = 23
 text = "999❤️"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="IncomeContainer" type="Node" parent="PlayerStats"]
 

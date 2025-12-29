@@ -22,7 +22,7 @@ public partial class UserInterface : CanvasLayer
         this._incomeLabel = this.GetNode<Label>("PlayerStats/MoneyContainer/Income");
         this.IncreaseIncome(0);
         
-        this._healthLabel = this.GetNode<Label>("PlayerStats/HealthContainer/Health");
+        this._healthLabel = this.GetNode<Label>("PlayerStats/Health");
         this.SetHealth(this._health);
 
         this._incomeTimerRadial = this.GetNode<RadialProgress>("PlayerStats/IncomeContainer/IncomeTimerRadial");
