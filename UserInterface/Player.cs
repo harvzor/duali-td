@@ -18,4 +18,6 @@ public class Player
     {
         this.Income += amount;
     }
+    
+    public bool IsDead() => this.Health <= 0;
 }

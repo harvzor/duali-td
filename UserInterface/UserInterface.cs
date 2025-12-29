@@ -4,10 +4,12 @@ public partial class UserInterface : CanvasLayer
     private Label _healthLabel;
     private Label _bankLabel;
     private Label _incomeLabel;
+    private Panel _deadContainer;
 
     private TowerSpawner _towerSpawner;
     private Map _map;
 
+    private Timer _incomeTimer;
     private RadialProgress _incomeTimerRadial;
 
     public override void _Ready()
@@ -21,6 +23,7 @@ public partial class UserInterface : CanvasLayer
         this._healthLabel = this.GetNode<Label>("PlayerStats/Health");
         this.TakeDamage(0);
 
+        this._incomeTimer = this.GetNode<Timer>("PlayerStats/IncomeContainer/IncomeTimer");
         this._incomeTimerRadial = this.GetNode<RadialProgress>("PlayerStats/IncomeContainer/IncomeTimerRadial");
         
         this._towerSpawner = this
@@ -34,12 +37,20 @@ public partial class UserInterface : CanvasLayer
             .GetRoot()
             .GetChild(0)
             .GetNode<Map>(nameof(Map))!;
+        
+        this._deadContainer = this.GetNode<Panel>("DeadContainer");
     }
     
     public void TakeDamage(int damage)
     {
         this._player.TakeDamage(damage);
         this._healthLabel.Text = this._player.Health + "❤️";
+
+        if (this._player.IsDead())
+        {
+            this._deadContainer.Show();
+            this._incomeTimer.Paused = true;
+        }
     }
 
     private void IncreaseBank(int amount)

@@ -220,6 +220,20 @@ Progress = 100.0
 BgColor = Color(0.5019608, 0.5019608, 0.5019608, 0)
 Ring = true
 
+[node name="DeadContainer" type="Panel" parent="."]
+visible = false
+offset_right = 720.0
+offset_bottom = 1280.0
+
+[node name="DeadLabel" type="Label" parent="DeadContainer"]
+layout_mode = 0
+offset_right = 720.0
+offset_bottom = 1280.0
+theme_override_font_sizes/font_size = 128
+text = "DEAD"
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [connection signal="gui_input" from="TowerPlacement" to="TowerPlacement" method="OnGuiInput"]
 [connection signal="mouse_exited" from="TowerPlacement" to="TowerPlacement" method="OnMouseExited"]
 [connection signal="timeout" from="PlayerStats/IncomeContainer/IncomeTimer" to="." method="OnIncomeTimerTimeout"]
