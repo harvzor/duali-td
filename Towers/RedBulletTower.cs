@@ -11,15 +11,15 @@ public partial class RedBulletTower : StaticBody2D
 
 	public void FireBullet()
 	{
-		if (_currentTargets.Count == 0)
+		if (this._currentTargets.Count == 0)
 			return;
 
-		var currentTarget = _currentTargets[0];
+		var currentTarget = this._currentTargets[0];
 
 		if (!IsInstanceValid(currentTarget))
 			return;
 
-		var bullet = RedBullet.Instantiate<RedBullet>();
+		var bullet = this.RedBullet.Instantiate<RedBullet>();
 		bullet.Target = currentTarget;
 		bullet.Damage = BulletDamage;
 		bullet.Position = this.GetNode<Marker2D>("Aim").Position;
@@ -32,16 +32,16 @@ public partial class RedBulletTower : StaticBody2D
 		if (!this.Enabled)
 			return;
 
-		if (_currentTargets.Count == 0)
+		if (this._currentTargets.Count == 0)
 			return;
 
-		if (!IsInstanceValid(_currentTargets[0]))
+		if (!IsInstanceValid(this._currentTargets[0]))
 		{
-			_currentTargets.RemoveAt(0);
+			this._currentTargets.RemoveAt(0);
 			return;
 		}
 
-		this.LookAt(_currentTargets[0].GlobalPosition);
+		this.LookAt(this._currentTargets[0].GlobalPosition);
 	}
 
 	public void Disable()
@@ -58,7 +58,7 @@ public partial class RedBulletTower : StaticBody2D
 		if (body.GetType() != typeof(CritterBase))
 			return;
 
-		_currentTargets.Add(body);
+		this._currentTargets.Add(body);
 	}
 
 	private void OnTowerBodyExited(Node2D body)
@@ -66,7 +66,7 @@ public partial class RedBulletTower : StaticBody2D
 		if (!this.Enabled)
 			return;
 
-		_currentTargets.Remove(body);
+		this._currentTargets.Remove(body);
 	}
 
 	private void OnFireTimerTimeout()

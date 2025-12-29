@@ -2,3 +2,17 @@ root = true
 
 [*]
 charset = utf-8
+
+[*.cs]
+
+# Require this. for fields
+dotnet_style_qualification_for_field = true:error
+
+# Require this. for properties
+dotnet_style_qualification_for_property = true:error
+
+# Require this. for methods
+dotnet_style_qualification_for_method = true:error
+
+# Require this. for events
+dotnet_style_qualification_for_event = true:error

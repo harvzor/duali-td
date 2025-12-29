@@ -1,6 +1,6 @@
 public partial class RedBullet : CharacterBody2D
 {
-	public const float Speed = 1000.0f;
+	private const float Speed = 1000.0f;
 	
 	/// <summary>
 	/// Who this bullet is being fired at.
@@ -11,14 +11,14 @@ public partial class RedBullet : CharacterBody2D
 
 	public override void _PhysicsProcess(double delta)
 	{
-		if (!IsInstanceValid(Target))
+		if (!IsInstanceValid(this.Target))
 		{
 			this.QueueFree();
 			return;
 		}
 
-		Velocity = this.GlobalPosition.DirectionTo(Target.GlobalPosition) * Speed;
-		this.LookAt(Target.GlobalPosition);
+		this.Velocity = this.GlobalPosition.DirectionTo(this.Target.GlobalPosition) * Speed;
+		this.LookAt(this.Target.GlobalPosition);
 
 		this.MoveAndSlide();
 	}

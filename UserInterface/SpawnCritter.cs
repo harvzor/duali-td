@@ -11,7 +11,7 @@ public partial class SpawnCritter : Panel
 	{
 		this._userInterface = this.FindParent(nameof(UserInterface)) as UserInterface;
 
-		CritterBase critterBase = CritterScene.Instantiate<CritterBase>();
+		CritterBase critterBase = this.CritterScene.Instantiate<CritterBase>();
 
 		Label cost = this.GetNode<Label>("Stats/Cost");
 		cost.Text = Map.Cost + "G";
@@ -27,7 +27,7 @@ public partial class SpawnCritter : Panel
 	{
 		if (inputEvent is InputEventMouseButton { ButtonIndex: MouseButton.Left, ButtonMask: MouseButtonMask.Left })
 		{
-			this._userInterface.TrySpawnCritter(CritterScene);
+			this._userInterface.TrySpawnCritter(this.CritterScene);
 		}
 	}
 }

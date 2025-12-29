@@ -81,7 +81,7 @@ public partial class UserInterface : CanvasLayer
         if (Map.Cost > this._player.Bank)
             return;
 
-        IncreaseIncome(Map.Cost);
+        this.IncreaseIncome(Map.Cost);
         this.IncreaseBank(-Map.Cost);
 
         this._map.SpawnCritter(critterScene);
@@ -89,7 +89,7 @@ public partial class UserInterface : CanvasLayer
 
     private void OnIncomeTimerTimeout()
     {
-        if (_incomeTimerRadial.Progress >= _incomeTimerRadial.MaxValue)
+        if (this._incomeTimerRadial.Progress >= this._incomeTimerRadial.MaxValue)
         {
             this._incomeTimerRadial.Progress = 0;
             this.IncreaseBank(this._player.Income);

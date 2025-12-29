@@ -15,39 +15,39 @@ public partial class RadialProgress : Control
 
 	public override void _Draw()
 	{
-		Vector2 offset = new Vector2(Radius, Radius);
-		float angle = (Progress / MaxValue) * Mathf.Tau;
+		Vector2 offset = new Vector2(this.Radius, this.Radius);
+		float angle = (this.Progress / this.MaxValue) * Mathf.Tau;
 
-		if (Ring)
+		if (this.Ring)
 		{
-			DrawRingArc(offset, Radius, Radius - Thickness, 0.0f, Mathf.Tau, BgColor);
-			DrawRingArc(offset, Radius, Radius - Thickness, 0.0f, angle, BarColor);
+			this.DrawRingArc(offset, this.Radius, this.Radius - this.Thickness, 0.0f, Mathf.Tau, this.BgColor);
+			this.DrawRingArc(offset, this.Radius, this.Radius - this.Thickness, 0.0f, angle, this.BarColor);
 		}
 		else
 		{
-			DrawCircleArc(offset, Radius, 0.0f, Mathf.Tau, BgColor);
-			DrawCircleArc(offset, Radius, 0.0f, angle, BarColor);
-			DrawCircleArc(offset, Radius - Thickness, 0.0f, Mathf.Tau, BgColor);
+			this.DrawCircleArc(offset, this.Radius, 0.0f, Mathf.Tau, this.BgColor);
+			this.DrawCircleArc(offset, this.Radius, 0.0f, angle, this.BarColor);
+			this.DrawCircleArc(offset, this.Radius - this.Thickness, 0.0f, Mathf.Tau, this.BgColor);
 		}
 	}
 
 	public override void _Process(double delta)
 	{
-		QueueRedraw();
+		this.QueueRedraw();
 	}
 
 	public async Task Animate(float duration, bool clockwise = true, float initialValue = 0.0f)
 	{
-		float from = clockwise ? initialValue : MaxValue;
-		float to = clockwise ? MaxValue : initialValue;
+		float from = clockwise ? initialValue : this.MaxValue;
+		float to = clockwise ? this.MaxValue : initialValue;
 
-		Tween tween = CreateTween();
-		tween.TweenProperty(this, nameof(Progress), to, duration)
+		Tween tween = this.CreateTween();
+		tween.TweenProperty(this, nameof(this.Progress), to, duration)
 			 .From(from)
 			 .SetTrans(Tween.TransitionType.Linear)
 			 .SetEase(Tween.EaseType.In);
 
-		await ToSignal(tween, Tween.SignalName.Finished);
+		await this.ToSignal(tween, Tween.SignalName.Finished);
 	}
 
 	private void DrawCircleArc(
@@ -63,15 +63,15 @@ public partial class RadialProgress : Control
 		var colors = new[] { color };
 
 		float a = angleFrom - (Mathf.Pi / 2.0f);
-		float b = (angleTo - angleFrom) / NbPoints;
+		float b = (angleTo - angleFrom) / this.NbPoints;
 
-		for (int i = 0; i <= NbPoints; i++)
+		for (int i = 0; i <= this.NbPoints; i++)
 		{
 			float anglePoint = a + i * b;
 			points.Add(center + new Vector2(Mathf.Cos(anglePoint), Mathf.Sin(anglePoint)) * radius);
 		}
 
-		DrawPolygon(points.ToArray(), colors);
+		this.DrawPolygon(points.ToArray(), colors);
 	}
 
 	private void DrawRingArc(
@@ -87,15 +87,15 @@ public partial class RadialProgress : Control
 		var colors = new[] { color };
 
 		float a = angleFrom - (Mathf.Pi / 2.0f);
-		float b = (angleTo - angleFrom) / NbPoints;
+		float b = (angleTo - angleFrom) / this.NbPoints;
 
-		for (int i = 0; i <= NbPoints; i++)
+		for (int i = 0; i <= this.NbPoints; i++)
 		{
 			float anglePoint = a + i * b;
 			points.Add(center + new Vector2(Mathf.Cos(anglePoint), Mathf.Sin(anglePoint)) * radius1);
 		}
 
-		for (int i = NbPoints; i >= 0; i--)
+		for (int i = this.NbPoints; i >= 0; i--)
 		{
 			float anglePoint = a + i * b;
 			points.Add(center + new Vector2(Mathf.Cos(anglePoint), Mathf.Sin(anglePoint)) * radius2);
@@ -105,7 +105,7 @@ public partial class RadialProgress : Control
 		// https://forum.godotengine.org/t/error-invalid-polygon-data-triangulation-failed/19058/2
 		if (!Geometry2D.TriangulatePolygon(points.ToArray()).IsEmpty())
 		{
-			DrawPolygon(points.ToArray(), colors);
+			this.DrawPolygon(points.ToArray(), colors);
 		}
 	}
 }

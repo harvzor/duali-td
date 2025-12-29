@@ -6,7 +6,7 @@ public partial class Triangle : Node2D
     
     public override void _Ready()
     {
-        QueueRedraw();
+        this.QueueRedraw();
     }
     
     public override void _Draw()
@@ -14,13 +14,13 @@ public partial class Triangle : Node2D
         this.DrawPolygon(
         [
                 // Top
-                new Vector2(0, -Length),
+                new Vector2(0, -this.Length),
                 // Bottom right
-                new Vector2(Length, Length),
+                new Vector2(this.Length, this.Length),
                 // Bottom left
-                new Vector2(-Length, Length),
+                new Vector2(-this.Length, this.Length),
             ],
-        [Color]
+        [this.Color]
         );
     }
 }

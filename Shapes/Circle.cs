@@ -6,11 +6,11 @@ public partial class Circle : Node2D
     
     public override void _Ready()
     {
-        QueueRedraw();
+        this.QueueRedraw();
     }
 
     public override void _Draw()
     {
-        this.DrawCircle(new Vector2(0, 0), Radius, new Color(Color));
+        this.DrawCircle(new Vector2(0, 0), this.Radius, new Color(this.Color));
     }
 }

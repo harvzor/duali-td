@@ -27,7 +27,7 @@ public partial class TowerSpawner : Node2D
 	{
 		if (!IsInstanceValid(this._ghostTower))
 		{
-			this._ghostTower = _redBulletTower.Instantiate<RedBulletTower>();
+			this._ghostTower = this._redBulletTower.Instantiate<RedBulletTower>();
 			this._ghostTower.Disable();
 			this.AddChild(this._ghostTower);
 		}
@@ -54,7 +54,7 @@ public partial class TowerSpawner : Node2D
 	
 	public void SpawnTower(Vector2 position)
 	{
-		RedBulletTower tower = _redBulletTower.Instantiate<RedBulletTower>();
+		RedBulletTower tower = this._redBulletTower.Instantiate<RedBulletTower>();
 		tower.Position = this.SnapPosition(position);
 
 		this.AddChild(tower);

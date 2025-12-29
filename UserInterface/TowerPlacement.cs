@@ -11,7 +11,7 @@ public partial class TowerPlacement : Panel
 			.FindChild(nameof(Map))!
 			.FindChild("Buildable") as TileMapLayer)!;
 
-		Vector2 mouseLocal = buildable.ToLocal(GetGlobalMousePosition());
+		Vector2 mouseLocal = buildable.ToLocal(this.GetGlobalMousePosition());
 		Vector2I cell = buildable.LocalToMap(mouseLocal);
 
 		return buildable.GetCellSourceId(cell) != -1;
@@ -27,28 +27,28 @@ public partial class TowerPlacement : Panel
 		// On hover
 		if (inputEvent is InputEventMouseMotion inputEventMouseMotion)
 		{
-			if (!IsBuildable())
+			if (!this.IsBuildable())
 			{
-				_userInterface.HideTower();
+				this._userInterface.HideTower();
 				return;
 			}
 
-			_userInterface.ShowTower(inputEventMouseMotion.Position);
+			this._userInterface.ShowTower(inputEventMouseMotion.Position);
 			return;
 		}
 
 		// On left click release
 		if (inputEvent is InputEventMouseButton { ButtonIndex: MouseButton.Left, ButtonMask: 0 } inputEventMouseButton)
 		{
-			if (!IsBuildable())
+			if (!this.IsBuildable())
 				return;
 
-			_userInterface.TrySpawnTower(inputEventMouseButton.Position);
+			this._userInterface.TrySpawnTower(inputEventMouseButton.Position);
 		}
 	}
 
 	private void OnMouseExited()
 	{
-		_userInterface.HideTower();
+		this._userInterface.HideTower();
 	}
 }
