@@ -1,12 +1,8 @@
 public partial class UserInterface : CanvasLayer
 {
-    private int _health = 100;
+    private readonly Player _player = new();
     private Label _healthLabel;
-    
-    private int _bank = 100;
     private Label _bankLabel;
-    
-    private int _income;
     private Label _incomeLabel;
 
     private TowerSpawner _towerSpawner;
@@ -17,13 +13,13 @@ public partial class UserInterface : CanvasLayer
     public override void _Ready()
     {
         this._bankLabel = this.GetNode<Label>("PlayerStats/MoneyContainer/Bank");
-        this.SetBank(this._bank);
+        this.IncreaseBank(0);
         
         this._incomeLabel = this.GetNode<Label>("PlayerStats/MoneyContainer/Income");
         this.IncreaseIncome(0);
         
         this._healthLabel = this.GetNode<Label>("PlayerStats/Health");
-        this.SetHealth(this._health);
+        this.TakeDamage(0);
 
         this._incomeTimerRadial = this.GetNode<RadialProgress>("PlayerStats/IncomeContainer/IncomeTimerRadial");
         
@@ -40,27 +36,22 @@ public partial class UserInterface : CanvasLayer
             .GetNode<Map>(nameof(Map))!;
     }
     
-    private void SetHealth(int newHealth)
-    {
-        this._health = newHealth;
-        this._healthLabel.Text = this._health + "❤️";
-    }
-    
     public void TakeDamage(int damage)
     {
-        this.SetHealth(this._health - damage);
+        this._player.TakeDamage(damage);
+        this._healthLabel.Text = this._player.Health + "❤️";
     }
 
-    private void SetBank(int newBank)
+    private void IncreaseBank(int amount)
     {
-        this._bank = newBank;
-        this._bankLabel.Text = this._bank + "G";
+        this._player.IncreaseBank(amount);
+        this._bankLabel.Text = this._player.Bank + "G";
     }
     
     private void IncreaseIncome(int amount)
     {
-        this._income += amount;
-        this._incomeLabel.Text = this._income + "⬆️";
+        this._player.IncreaseIncome(amount);
+        this._incomeLabel.Text = this._player.Income + "⬆️";
     }
 
     public void ShowTower(Vector2 position)
@@ -75,23 +66,23 @@ public partial class UserInterface : CanvasLayer
     
     public void TrySpawnTower(Vector2 position)
     {
-        if (this._towerSpawner.Cost > this._bank)
+        if (this._towerSpawner.Cost > this._player.Bank)
             return;
 
         if (this._towerSpawner.TowerAlreadyExists(position))
             return;
 
-        this.SetBank(this._bank - this._towerSpawner.Cost);
+        this.IncreaseBank(-this._towerSpawner.Cost);
         this._towerSpawner.SpawnTower(position);
     }
 
     public void TrySpawnCritter(PackedScene critterScene)
     {
-        if (Map.Cost > this._bank)
+        if (Map.Cost > this._player.Bank)
             return;
 
         IncreaseIncome(Map.Cost);
-        this.SetBank(this._bank - Map.Cost);
+        this.IncreaseBank(-Map.Cost);
 
         this._map.SpawnCritter(critterScene);
     }
@@ -101,7 +92,7 @@ public partial class UserInterface : CanvasLayer
         if (_incomeTimerRadial.Progress >= _incomeTimerRadial.MaxValue)
         {
             this._incomeTimerRadial.Progress = 0;
-            this.SetBank(this._bank += this._income);
+            this.IncreaseBank(this._player.Income);
         }
 
         this._incomeTimerRadial.Progress += 1;
