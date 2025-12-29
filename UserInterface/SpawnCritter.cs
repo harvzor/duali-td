@@ -9,7 +9,7 @@ public partial class SpawnCritter : Panel
 	
 	public override void _Ready()
 	{
-		this._userInterface = this.FindParent(nameof(UserInterface)) as UserInterface;
+		this._userInterface = this.GetNode<UserInterface>("../../..")!;
 
 		CritterBase critterBase = this.CritterScene.Instantiate<CritterBase>();
 

@@ -15,7 +15,7 @@ public partial class RadialProgress : Control
 
 	public override void _Draw()
 	{
-		Vector2 offset = new Vector2(this.Radius, this.Radius);
+		Vector2 offset = new(this.Radius, this.Radius);
 		float angle = (this.Progress / this.MaxValue) * Mathf.Tau;
 
 		if (this.Ring)
@@ -58,9 +58,9 @@ public partial class RadialProgress : Control
 		Color color
 	)
 	{
-		var points = new List<Vector2> { center };
+		List<Vector2> points = [center];
 
-		var colors = new[] { color };
+		Color[] colors = [color];
 
 		float a = angleFrom - (Mathf.Pi / 2.0f);
 		float b = (angleTo - angleFrom) / this.NbPoints;
@@ -83,8 +83,8 @@ public partial class RadialProgress : Control
 		Color color
 	)
 	{
-		var points = new List<Vector2>();
-		var colors = new[] { color };
+		List<Vector2> points = [];
+		Color[] colors = [color];
 
 		float a = angleFrom - (Mathf.Pi / 2.0f);
 		float b = (angleTo - angleFrom) / this.NbPoints;

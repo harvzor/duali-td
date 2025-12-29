@@ -14,12 +14,12 @@ public partial class RedBulletTower : StaticBody2D
 		if (this._currentTargets.Count == 0)
 			return;
 
-		var currentTarget = this._currentTargets[0];
+		Node2D currentTarget = this._currentTargets[0];
 
 		if (!IsInstanceValid(currentTarget))
 			return;
 
-		var bullet = this.RedBullet.Instantiate<RedBullet>();
+		RedBullet bullet = this.RedBullet.Instantiate<RedBullet>();
 		bullet.Target = currentTarget;
 		bullet.Damage = BulletDamage;
 		bullet.Position = this.GetNode<Marker2D>("Aim").Position;
