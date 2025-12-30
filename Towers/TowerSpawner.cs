@@ -52,9 +52,10 @@ public partial class TowerSpawner : Node2D
 			.Any(tower => tower.Enabled && tower.Position == snappedPosition);
 	}
 	
-	public void SpawnTower(Vector2 position)
+	public void SpawnTower(Vector2 position, int player)
 	{
 		RedBulletTower tower = this._redBulletTower.Instantiate<RedBulletTower>();
+		tower.Player = player;
 		tower.Position = this.SnapPosition(position);
 
 		this.AddChild(tower);

@@ -13,8 +13,11 @@ public partial class Map : Node2D
 
 		// Copy the PathFollow2D because every critter needs its own path with progress.
 		Node pathFollow2DCopy = pathFollow2D.Duplicate();
+
+		CritterBase critter = critterScene.Instantiate<CritterBase>();
+		critter.Player = player;
 		
-		pathFollow2DCopy.AddChild(critterScene.Instantiate());
+		pathFollow2DCopy.AddChild(critter);
 		
 		path2d.AddChild(pathFollow2DCopy);
 	}

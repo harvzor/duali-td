@@ -16,9 +16,9 @@ enabled = false
 [node name="TowerSpawner" type="Node2D" parent="."]
 script = ExtResource("3_js7pq")
 
-[node name="UserInterfaceP1" parent="." instance=ExtResource("5_eu7l1")]
+[node name="UserInterfaceP0" parent="." instance=ExtResource("5_eu7l1")]
 
-[node name="UserInterfaceP2" parent="." instance=ExtResource("5_eu7l1")]
+[node name="UserInterfaceP1" parent="." instance=ExtResource("5_eu7l1")]
 offset = Vector2(720, 1280)
 rotation = -3.1415925
 transform = Transform2D(-1, -1.509958e-07, 1.509958e-07, -1, 720, 1280)

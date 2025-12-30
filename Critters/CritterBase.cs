@@ -2,6 +2,8 @@ public partial class CritterBase : CharacterBody2D
 {
 	[Export] public int Speed = 500;
 	[Export] public int Health = 5;
+
+	public int? Player = null;
 	
 	/// <summary>
 	/// How much damage to do to the player's health.

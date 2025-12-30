@@ -86,7 +86,7 @@ public partial class UserInterface : CanvasLayer
             return;
 
         this.IncreaseBank(-this._towerSpawner.Cost);
-        this._towerSpawner.SpawnTower(position);
+        this._towerSpawner.SpawnTower(position, this.Player);
     }
 
     public void TrySpawnCritter(PackedScene critterScene, int player)

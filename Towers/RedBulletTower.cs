@@ -4,6 +4,7 @@ using System.Linq;
 public partial class RedBulletTower : StaticBody2D
 {
 	public bool Enabled = true;
+	public int? Player = null;
 
 	private PackedScene RedBullet = GD.Load<PackedScene>("res://Towers/RedBullet.tscn");
 	private const int BulletDamage = 1;
@@ -55,10 +56,13 @@ public partial class RedBulletTower : StaticBody2D
 		if (!this.Enabled)
 			return;
 
-		if (body.GetType() != typeof(CritterBase))
+		if (body is not CritterBase critter)
 			return;
 
-		this._currentTargets.Add(body);
+		if (critter.Player == this.Player)
+			return;
+
+		this._currentTargets.Add(critter);
 	}
 
 	private void OnTowerBodyExited(Node2D body)
