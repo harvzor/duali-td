@@ -22,6 +22,7 @@ script = ExtResource("3_js7pq")
 offset = Vector2(720, 1280)
 rotation = -3.1415925
 transform = Transform2D(-1, -1.509958e-07, 1.509958e-07, -1, 720, 1280)
+Player = 1
 
 [node name="Gate" parent="." instance=ExtResource("5_p1v5b")]
 position = Vector2(96, 1056)

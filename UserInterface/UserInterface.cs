@@ -1,5 +1,7 @@
 public partial class UserInterface : CanvasLayer
 {
+	[Export] public int Player;
+
     private readonly Player _player = new();
     private Label _healthLabel;
     private Label _bankLabel;
@@ -87,7 +89,7 @@ public partial class UserInterface : CanvasLayer
         this._towerSpawner.SpawnTower(position);
     }
 
-    public void TrySpawnCritter(PackedScene critterScene)
+    public void TrySpawnCritter(PackedScene critterScene, int player)
     {
         if (Map.Cost > this._player.Bank)
             return;
@@ -95,7 +97,7 @@ public partial class UserInterface : CanvasLayer
         this.IncreaseIncome(Map.Cost);
         this.IncreaseBank(-Map.Cost);
 
-        this._map.SpawnCritter(critterScene);
+        this._map.SpawnCritter(critterScene, player);
     }
 
     private void OnIncomeTimerTimeout()

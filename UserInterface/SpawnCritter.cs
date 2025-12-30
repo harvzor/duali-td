@@ -27,7 +27,7 @@ public partial class SpawnCritter : Panel
 	{
 		if (inputEvent is InputEventMouseButton { ButtonIndex: MouseButton.Left, ButtonMask: MouseButtonMask.Left })
 		{
-			this._userInterface.TrySpawnCritter(this.CritterScene);
+			this._userInterface.TrySpawnCritter(this.CritterScene, this._userInterface.Player);
 		}
 	}
 }
