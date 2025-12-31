@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://8om16hwbt76k"]
+
+[ext_resource type="Script" uid="uid://dywdg0abmie8" path="res://Shapes/Pentagon.cs" id="1_eq204"]
+
+[node name="Pentagon" type="Node2D"]
+script = ExtResource("1_eq204")

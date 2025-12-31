@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://dqh35mv05vmm2"]
+
+[ext_resource type="Script" uid="uid://5pnauel6hipj" path="res://Critters/CritterBase.cs" id="1_b7d30"]
+[ext_resource type="PackedScene" uid="uid://8om16hwbt76k" path="res://Shapes/Pentagon.tscn" id="2_b7d30"]
+
+[node name="CritterPentagon" type="CharacterBody2D"]
+rotation = 1.5707964
+scale = Vector2(0.7, 0.7)
+script = ExtResource("1_b7d30")
+Speed = 250
+Health = 30
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+polygon = PackedVector2Array(0, -32, 30, -10, 19, 26, -19, 26, -30, -10)
+
+[node name="Pentagon" parent="." instance=ExtResource("2_b7d30")]
+Color = Color(2.5990605e-06, 0.7403017, 0.44699842, 1)

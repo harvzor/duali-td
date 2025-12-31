@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://c1he1ojb6jg53"]
+[gd_scene load_steps=15 format=3 uid="uid://c1he1ojb6jg53"]
 
 [ext_resource type="PackedScene" uid="uid://iexs7fm1ryop" path="res://UserInterface/SpawnCritter.tscn" id="1_j0awb"]
 [ext_resource type="Script" uid="uid://b5x8w1c1xg2nu" path="res://UserInterface/UserInterface.cs" id="1_te54r"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://bpdiyfmjtalsw" path="res://Critters/CritterCircle.tscn" id="4_r6oiv"]
 [ext_resource type="PackedScene" uid="uid://x7cceovuyuer" path="res://Critters/CritterTriangle.tscn" id="5_0joph"]
 [ext_resource type="PackedScene" uid="uid://dhf5jw6bpntv4" path="res://Critters/CritterSquare.tscn" id="6_apued"]
+[ext_resource type="PackedScene" uid="uid://dqh35mv05vmm2" path="res://Critters/CritterPentagon.tscn" id="7_oh8mj"]
 [ext_resource type="Script" uid="uid://bceysm7kn8ci" path="res://UserInterface/RadialProgress.cs" id="8_oh8mj"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_te54r"]
@@ -169,6 +170,46 @@ text = "999❤️"
 horizontal_alignment = 1
 
 [node name="Speed" type="Label" parent="CritterMenu/FlowContainer/SpawnCritterSquare/Stats"]
+custom_minimum_size = Vector2(64, 0)
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0, 1, 1)
+theme_override_font_sizes/font_size = 16
+text = "500p/s"
+horizontal_alignment = 1
+
+[node name="SpawnCritterPentagon" parent="CritterMenu/FlowContainer" instance=ExtResource("1_j0awb")]
+custom_minimum_size = Vector2(128, 64)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_fsra1")
+CritterScene = ExtResource("7_oh8mj")
+
+[node name="CritterPentagon" parent="CritterMenu/FlowContainer/SpawnCritterPentagon" instance=ExtResource("7_oh8mj")]
+position = Vector2(32, 32)
+
+[node name="Stats" type="HFlowContainer" parent="CritterMenu/FlowContainer/SpawnCritterPentagon"]
+layout_mode = 0
+offset_left = 64.0
+offset_right = 128.0
+offset_bottom = 64.0
+theme_override_constants/v_separation = -3
+
+[node name="Cost" type="Label" parent="CritterMenu/FlowContainer/SpawnCritterPentagon/Stats"]
+custom_minimum_size = Vector2(64, 0)
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0, 1, 1)
+theme_override_font_sizes/font_size = 16
+text = "100G"
+horizontal_alignment = 1
+
+[node name="Health" type="Label" parent="CritterMenu/FlowContainer/SpawnCritterPentagon/Stats"]
+custom_minimum_size = Vector2(64, 0)
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0, 1, 1)
+theme_override_font_sizes/font_size = 16
+text = "999❤️"
+horizontal_alignment = 1
+
+[node name="Speed" type="Label" parent="CritterMenu/FlowContainer/SpawnCritterPentagon/Stats"]
 custom_minimum_size = Vector2(64, 0)
 layout_mode = 2
 theme_override_colors/font_color = Color(1, 0, 1, 1)
