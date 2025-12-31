@@ -14,7 +14,7 @@ public partial class SpawnCritter : Panel
 		CritterBase critterBase = this.CritterScene.Instantiate<CritterBase>();
 
 		Label cost = this.GetNode<Label>("Stats/Cost");
-		cost.Text = Map.Cost + "G";
+		cost.Text = critterBase.Cost + "G";
 		
 		Label life = this.GetNode<Label>("Stats/Health");
 		life.Text = critterBase.Health + "❤️";

@@ -1,5 +1,6 @@
 public partial class CritterBase : CharacterBody2D
 {
+	[Export] public int Cost = 10;
 	[Export] public int Speed = 500;
 	[Export] public int Health = 5;
 

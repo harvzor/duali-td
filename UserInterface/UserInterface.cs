@@ -91,13 +91,16 @@ public partial class UserInterface : CanvasLayer
 
     public void TrySpawnCritter(PackedScene critterScene, int player)
     {
-        if (Map.Cost > this._player.Bank)
+        CritterBase critter = critterScene.Instantiate<CritterBase>();
+        critter.Player = player;
+
+        if (critter.Cost > this._player.Bank)
             return;
 
-        this.IncreaseIncome(Map.Cost);
-        this.IncreaseBank(-Map.Cost);
-
-        this._map.SpawnCritter(critterScene, player);
+        this.IncreaseIncome(critter.Cost);
+        this.IncreaseBank(-critter.Cost);
+        
+        this._map.SpawnCritter(critter, player);
     }
 
     private void OnIncomeTimerTimeout()
