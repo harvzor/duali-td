@@ -1,10 +1,12 @@
 public partial class Gate : Area2D
 {
+    [Export] public int Player;
+
     private UserInterface _userInterface;
 	
     public override void _Ready()
     {
-        this._userInterface = this.FindUserInterface()!;
+        this._userInterface = this.FindUserInterface(this.Player)!;
     }
 
     private void OnBodyEntered(Node2D body)
