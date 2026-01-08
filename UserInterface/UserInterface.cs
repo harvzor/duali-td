@@ -103,7 +103,7 @@ public partial class UserInterface : CanvasLayer
         if (critter.Cost > this._player.Bank)
             return;
 
-        this.IncreaseIncome(critter.Cost);
+        this.IncreaseIncome(critter.Cost / 3);
         this.IncreaseBank(-critter.Cost);
 
         this._map.SpawnCritter(critter, player);
