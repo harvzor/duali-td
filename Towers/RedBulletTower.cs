@@ -3,11 +3,14 @@ using System.Linq;
 
 public partial class RedBulletTower : StaticBody2D
 {
+	[Export] public int BulletDamage = 5;
+	[Export] public int BulletSpeed = 100;
+	[Export] public int Cost = 10;
+
 	public bool Enabled = true;
 	public int? Player = null;
 
-	private PackedScene RedBullet = GD.Load<PackedScene>("res://Towers/RedBullet.tscn");
-	private const int BulletDamage = 1;
+	private PackedScene _redBullet = GD.Load<PackedScene>("res://Towers/RedBullet.tscn");
 	private readonly List<Node2D> _currentTargets = [];
 
 	public void FireBullet()
@@ -20,9 +23,10 @@ public partial class RedBulletTower : StaticBody2D
 		if (!IsInstanceValid(currentTarget))
 			return;
 
-		RedBullet bullet = this.RedBullet.Instantiate<RedBullet>();
+		RedBullet bullet = this._redBullet.Instantiate<RedBullet>();
 		bullet.Target = currentTarget;
-		bullet.Damage = BulletDamage;
+		bullet.Damage = this.BulletDamage;
+		bullet.Speed = this.BulletSpeed;
 		bullet.Position = this.GetNode<Marker2D>("Aim").Position;
 		
 		this.GetNode("BulletContainer").AddChild(bullet);

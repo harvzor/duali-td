@@ -1,6 +1,6 @@
 public partial class UserInterface : CanvasLayer
 {
-	[Export] public int Player;
+    [Export] public int Player;
 
     private readonly Player _player = new();
     private Label _healthLabel;
@@ -14,20 +14,22 @@ public partial class UserInterface : CanvasLayer
     private Timer _incomeTimer;
     private RadialProgress _incomeTimerRadial;
 
+    private PackedScene _redBulletTower = GD.Load<PackedScene>("res://Towers/RedBulletTower.tscn");
+
     public override void _Ready()
     {
         this._bankLabel = this.GetNode<Label>("PlayerStats/MoneyContainer/Bank");
         this.IncreaseBank(0);
-        
+
         this._incomeLabel = this.GetNode<Label>("PlayerStats/MoneyContainer/Income");
         this.IncreaseIncome(0);
-        
+
         this._healthLabel = this.GetNode<Label>("PlayerStats/Health");
         this.TakeDamage(0);
 
         this._incomeTimer = this.GetNode<Timer>("PlayerStats/IncomeContainer/IncomeTimer");
         this._incomeTimerRadial = this.GetNode<RadialProgress>("PlayerStats/IncomeContainer/IncomeTimerRadial");
-        
+
         this._towerSpawner = this
             .GetTree()
             .GetRoot()
@@ -39,10 +41,10 @@ public partial class UserInterface : CanvasLayer
             .GetRoot()
             .GetChild(0)
             .GetNode<Map>(nameof(Map))!;
-        
+
         this._deadContainer = this.GetNode<Panel>("DeadContainer");
     }
-    
+
     public void TakeDamage(int damage)
     {
         this._player.TakeDamage(damage);
@@ -60,7 +62,7 @@ public partial class UserInterface : CanvasLayer
         this._player.IncreaseBank(amount);
         this._bankLabel.Text = this._player.Bank + "G";
     }
-    
+
     private void IncreaseIncome(int amount)
     {
         this._player.IncreaseIncome(amount);
@@ -69,24 +71,28 @@ public partial class UserInterface : CanvasLayer
 
     public void ShowTower(Vector2 position)
     {
-        this._towerSpawner.ShowTower(position);
+        RedBulletTower tower = this._redBulletTower.Instantiate<RedBulletTower>();
+
+        this._towerSpawner.ShowTower(position, tower);
     }
-    
+
     public void HideTower()
     {
         this._towerSpawner.HideTower();
     }
-    
+
     public void TrySpawnTower(Vector2 position)
     {
-        if (this._towerSpawner.Cost > this._player.Bank)
+        RedBulletTower tower = this._redBulletTower.Instantiate<RedBulletTower>();
+
+        if (tower.Cost > this._player.Bank)
             return;
 
         if (this._towerSpawner.TowerAlreadyExists(position))
             return;
 
-        this.IncreaseBank(-this._towerSpawner.Cost);
-        this._towerSpawner.SpawnTower(position, this.Player);
+        this.IncreaseBank(-tower.Cost);
+        this._towerSpawner.SpawnTower(position, this.Player, tower);
     }
 
     public void TrySpawnCritter(PackedScene critterScene, int player)
@@ -99,7 +105,7 @@ public partial class UserInterface : CanvasLayer
 
         this.IncreaseIncome(critter.Cost);
         this.IncreaseBank(-critter.Cost);
-        
+
         this._map.SpawnCritter(critter, player);
     }
 
@@ -114,3 +120,4 @@ public partial class UserInterface : CanvasLayer
         this._incomeTimerRadial.Progress += 1;
     }
 }
+

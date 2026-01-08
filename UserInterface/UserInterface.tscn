@@ -184,6 +184,7 @@ theme_override_styles/panel = SubResource("StyleBoxEmpty_fsra1")
 CritterScene = ExtResource("7_oh8mj")
 
 [node name="CritterPentagon" parent="CritterMenu/FlowContainer/SpawnCritterPentagon" instance=ExtResource("7_oh8mj")]
+process_mode = 4
 position = Vector2(32, 32)
 
 [node name="Stats" type="HFlowContainer" parent="CritterMenu/FlowContainer/SpawnCritterPentagon"]

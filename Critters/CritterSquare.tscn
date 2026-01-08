@@ -7,9 +7,9 @@
 rotation = 1.5707964
 scale = Vector2(0.7, 0.7)
 script = ExtResource("1_m00ge")
-Cost = 15
-Speed = 125
-Health = 20
+Cost = 20
+Speed = 75
+Health = 200
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
 polygon = PackedVector2Array(-31.999998, 32, -32, -31.999998, 31.999998, -32, 32, 31.999998)

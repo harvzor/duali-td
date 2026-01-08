@@ -1,6 +1,6 @@
 public partial class RedBullet : CharacterBody2D
 {
-	private const float Speed = 1000.0f;
+	public int Speed = 0;
 	
 	/// <summary>
 	/// Who this bullet is being fired at.
@@ -17,7 +17,7 @@ public partial class RedBullet : CharacterBody2D
 			return;
 		}
 
-		this.Velocity = this.GlobalPosition.DirectionTo(this.Target.GlobalPosition) * Speed;
+		this.Velocity = this.GlobalPosition.DirectionTo(this.Target.GlobalPosition) * this.Speed;
 		this.LookAt(this.Target.GlobalPosition);
 
 		this.MoveAndSlide();

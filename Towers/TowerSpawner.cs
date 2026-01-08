@@ -3,10 +3,6 @@ using System.Linq;
 
 public partial class TowerSpawner : Node2D
 {
-	public int Cost = 10;
-	
-	private PackedScene _redBulletTower = GD.Load<PackedScene>("res://Towers/RedBulletTower.tscn");
-	
 	/// <summary>
 	/// Tower that hasn't been properly placed, just the outline is shown.
 	/// </summary>
@@ -23,11 +19,11 @@ public partial class TowerSpawner : Node2D
 		return new Vector2(snappedX, snappedY);
 	}
 	
-	public void ShowTower(Vector2 position)
+	public void ShowTower(Vector2 position, RedBulletTower tower)
 	{
 		if (!IsInstanceValid(this._ghostTower))
 		{
-			this._ghostTower = this._redBulletTower.Instantiate<RedBulletTower>();
+			this._ghostTower = tower;
 			this._ghostTower.Disable();
 			this.AddChild(this._ghostTower);
 		}
@@ -52,9 +48,8 @@ public partial class TowerSpawner : Node2D
 			.Any(tower => tower.Enabled && tower.Position == snappedPosition);
 	}
 	
-	public void SpawnTower(Vector2 position, int player)
+	public void SpawnTower(Vector2 position, int player, RedBulletTower tower)
 	{
-		RedBulletTower tower = this._redBulletTower.Instantiate<RedBulletTower>();
 		tower.Player = player;
 		tower.Position = this.SnapPosition(position);
 

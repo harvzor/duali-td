@@ -4,17 +4,17 @@
 [ext_resource type="PackedScene" uid="uid://bk87hclrg88yh" path="res://Shapes/Circle.tscn" id="2_856kt"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_7w8v4"]
-radius = 32.0
 
 [node name="CritterCircle" type="CharacterBody2D"]
 scale = Vector2(0.7, 0.7)
 script = ExtResource("1_uwu01")
 Cost = 5
-Speed = 250
-Health = 10
+Speed = 100
+Health = 100
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_7w8v4")
 
 [node name="Circle" parent="." instance=ExtResource("2_856kt")]
+Radius = 10.0
 Color = Color(0, 0, 0, 1)
