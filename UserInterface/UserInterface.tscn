@@ -266,7 +266,6 @@ offset_bottom = 1216.0
 script = ExtResource("8_oh8mj")
 MaxValue = 10.0
 Radius = 32.0
-Progress = 100.0
 BgColor = Color(0.5019608, 0.5019608, 0.5019608, 0)
 Ring = true
 
