@@ -7,4 +7,4 @@
 
 # Android build files
 *.apk
-
+*.apk.idsig
