@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://sqxiarry5jwm"]
+[gd_scene load_steps=6 format=3 uid="uid://sqxiarry5jwm"]
 
 [ext_resource type="Script" uid="uid://ncjiiovj8a3b" path="res://Towers/TowerSpawner.cs" id="3_js7pq"]
 [ext_resource type="PackedScene" uid="uid://d0r06l0mp621y" path="res://Map.tscn" id="3_p1v5b"]
+[ext_resource type="PackedScene" uid="uid://dos057wp2sx4x" path="res://UserInterface/MenuControls.tscn" id="4_eu7l1"]
 [ext_resource type="PackedScene" uid="uid://c1he1ojb6jg53" path="res://UserInterface/UserInterface.tscn" id="5_eu7l1"]
 [ext_resource type="PackedScene" uid="uid://cq86j5n7p7eyl" path="res://Misc/Gate.tscn" id="5_p1v5b"]
 
@@ -23,6 +24,12 @@ offset = Vector2(720, 1280)
 rotation = -3.1415925
 transform = Transform2D(-1, -1.509958e-07, 1.509958e-07, -1, 720, 1280)
 Player = 1
+
+[node name="MenuControls" parent="." instance=ExtResource("4_eu7l1")]
+offset_left = 160.0
+offset_top = 608.0
+offset_right = 160.0
+offset_bottom = 608.0
 
 [node name="GateP0" parent="." instance=ExtResource("5_p1v5b")]
 position = Vector2(544, 1184)
