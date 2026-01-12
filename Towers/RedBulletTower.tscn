@@ -17,6 +17,7 @@ corner_radius_bottom_right = 640
 corner_radius_bottom_left = 640
 
 [node name="RedBulletTower" type="StaticBody2D"]
+position = Vector2(0, 1)
 script = ExtResource("1_1f3uh")
 BulletDamage = 25
 BulletSpeed = 500

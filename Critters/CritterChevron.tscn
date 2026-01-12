@@ -1,0 +1,39 @@
+[gd_scene load_steps=5 format=3 uid="uid://cj8hkh6xyjfxv"]
+
+[ext_resource type="Script" uid="uid://cn5dwg7di3gfo" path="res://Critters/CritterChevron.cs" id="1_ouyei"]
+[ext_resource type="PackedScene" uid="uid://bvx4n75unbbab" path="res://Shapes/Triangle.tscn" id="2_krqm5"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ouyei"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_krqm5"]
+radius = 256.0
+
+[node name="CritterChevron" type="CharacterBody2D"]
+rotation = 1.5707964
+scale = Vector2(0.7, 0.7)
+script = ExtResource("1_ouyei")
+Cost = 50
+Speed = 100
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+scale = Vector2(0.99999994, 0.99999994)
+shape = SubResource("CircleShape2D_ouyei")
+
+[node name="TriangleUpper" parent="." instance=ExtResource("2_krqm5")]
+position = Vector2(0, -8)
+Length = 20.0
+Color = Color(1, 0, 0, 1)
+
+[node name="TriangleLower" parent="." instance=ExtResource("2_krqm5")]
+position = Vector2(0, 4)
+Length = 20.0
+Color = Color(1, 0, 0, 1)
+
+[node name="Aura" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Aura"]
+scale = Vector2(0.99999994, 0.99999994)
+shape = SubResource("CircleShape2D_krqm5")
+
+[connection signal="body_entered" from="Aura" to="." method="OnAuraEntered"]
+[connection signal="body_exited" from="Aura" to="." method="OnAuraExited"]
