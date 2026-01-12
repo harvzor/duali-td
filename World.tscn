@@ -9,7 +9,7 @@
 [node name="World" type="Node2D"]
 
 [node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(360, 640)
+position = Vector2(352, 640)
 enabled = false
 
 [node name="Map" parent="." instance=ExtResource("3_p1v5b")]
@@ -20,9 +20,9 @@ script = ExtResource("3_js7pq")
 [node name="UserInterfaceP0" parent="." instance=ExtResource("5_eu7l1")]
 
 [node name="UserInterfaceP1" parent="." instance=ExtResource("5_eu7l1")]
-offset = Vector2(720, 1280)
-rotation = -3.1415925
-transform = Transform2D(-1, -1.509958e-07, 1.509958e-07, -1, 720, 1280)
+offset = Vector2(704, 1280)
+rotation = 3.1415925
+transform = Transform2D(-1, 8.742278e-08, -8.742278e-08, -1, 704, 1280)
 Player = 1
 
 [node name="MenuControls" parent="." instance=ExtResource("4_eu7l1")]
