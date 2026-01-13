@@ -14,7 +14,15 @@ public partial class CritterBase : CharacterBody2D
 	/// </summary>
 	public int? Player = null;
 	
+	/// <summary>
+	/// Speed is multiplied by this value.
+	/// </summary>
 	public float SpeedMultiplier = 1;
+	
+	/// <summary>
+	/// Reduces incoming damage by this percentage.
+	/// </summary>
+	public int ShieldPercentage = 0;
 
 	public override void _Process(double delta)
 	{
@@ -22,5 +30,11 @@ public partial class CritterBase : CharacterBody2D
 		
 		if (this.Health <= 0)
 			this.GetParent<PathFollow2D>().QueueFree();
+	}
+	
+	public void TakeDamage(int damage)
+	{
+		int effectiveDamage = damage - (damage * this.ShieldPercentage / 100);
+		this.Health -= effectiveDamage;
 	}
 }

@@ -1,0 +1,40 @@
+[gd_scene load_steps=5 format=3 uid="uid://dss3rnqh680lm"]
+
+[ext_resource type="Script" uid="uid://mchkucaoqqm3" path="res://Critters/CritterDiamondSquare.cs" id="1_yvfi7"]
+[ext_resource type="PackedScene" uid="uid://c8ideo1n8ahqw" path="res://Shapes/Square.tscn" id="2_yvfi7"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ouyei"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_krqm5"]
+radius = 256.0
+
+[node name="CritterDiamondSquare" type="CharacterBody2D"]
+rotation = 1.5707964
+scale = Vector2(0.7, 0.7)
+script = ExtResource("1_yvfi7")
+Cost = 50
+Speed = 100
+Health = 100
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+scale = Vector2(0.99999994, 0.99999994)
+shape = SubResource("CircleShape2D_ouyei")
+
+[node name="Square" parent="." instance=ExtResource("2_yvfi7")]
+scale = Vector2(0.99999994, 0.99999994)
+Color = Color(0, 0, 0, 1)
+
+[node name="InnerSquare" parent="." instance=ExtResource("2_yvfi7")]
+rotation = 0.7853982
+scale = Vector2(0.9999997, 0.9999997)
+Length = 22.5
+
+[node name="Aura" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Aura"]
+visible = false
+scale = Vector2(0.99999994, 0.99999994)
+shape = SubResource("CircleShape2D_krqm5")
+
+[connection signal="body_entered" from="Aura" to="." method="OnAuraEntered"]
+[connection signal="body_exited" from="Aura" to="." method="OnAuraExited"]

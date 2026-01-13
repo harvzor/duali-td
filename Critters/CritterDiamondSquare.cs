@@ -1,13 +1,13 @@
-public partial class CritterChevron : CritterBase
+public partial class CritterDiamondSquare : CritterBase
 {
-	private float _speedModifier = 0.25f;
+	private int _shieldModifier = 25;
 
 	private void OnAuraEntered(Node2D body)
 	{
 		if (body is not CritterBase critter)
 			return;
 
-		critter.SpeedMultiplier += this._speedModifier;
+		critter.ShieldPercentage += this._shieldModifier;
 	}
 	
 	private void OnAuraExited(Node2D body)
@@ -15,6 +15,6 @@ public partial class CritterChevron : CritterBase
 		if (body is not CritterBase critter)
 			return;
 
-		critter.SpeedMultiplier -= this._speedModifier;
+		critter.ShieldPercentage -= this._shieldModifier;
 	}
 }
