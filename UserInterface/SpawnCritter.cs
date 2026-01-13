@@ -7,6 +7,8 @@ public partial class SpawnCritter : Panel
 	/// </summary>
 	[Export] public PackedScene CritterScene;
 	
+	private DateTime ClickStartTime;
+	
 	public override void _Ready()
 	{
 		this._userInterface = this.GetNode<UserInterface>("../../../..")!;
@@ -25,9 +27,21 @@ public partial class SpawnCritter : Panel
 
 	private void OnGuiInput(InputEvent inputEvent)
 	{
+		// On left click press.
 		if (inputEvent is InputEventMouseButton { ButtonIndex: MouseButton.Left, ButtonMask: MouseButtonMask.Left })
 		{
-			this._userInterface.TrySpawnCritter(this.CritterScene, this._userInterface.Player);
+			this.ClickStartTime = DateTime.Now;
+			return;
+		}
+		
+		// On left click release.
+		if (inputEvent is InputEventMouseButton { ButtonIndex: MouseButton.Left, ButtonMask: 0 })
+		{
+			// Only trigger a click if the click was short (indicating a click rather than a drag).
+			if (DateTime.Now.Subtract(this.ClickStartTime).TotalMilliseconds < 100)
+			{
+				this._userInterface.TrySpawnCritter(this.CritterScene, this._userInterface.Player);
+			}
 		}
 	}
 }

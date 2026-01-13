@@ -37,7 +37,7 @@ public partial class TowerPlacement : Panel
 			return;
 		}
 
-		// On left click release
+		// On left click release.
 		if (inputEvent is InputEventMouseButton { ButtonIndex: MouseButton.Left, ButtonMask: 0 } inputEventMouseButton)
 		{
 			if (!this.IsBuildable(inputEventMouseButton.GlobalPosition))
