@@ -7,12 +7,18 @@ public partial class CritterChevron : CritterBase
 		if (body is not CritterBase critter)
 			return;
 
+		if (critter.Player != this.Player)
+			return;
+
 		critter.SpeedMultiplier += this._speedModifier;
 	}
 	
 	private void OnAuraExited(Node2D body)
 	{
 		if (body is not CritterBase critter)
+			return;
+
+		if (critter.Player != this.Player)
 			return;
 
 		critter.SpeedMultiplier -= this._speedModifier;

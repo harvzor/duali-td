@@ -6,6 +6,9 @@ public partial class CritterDiamondSquare : CritterBase
 	{
 		if (body is not CritterBase critter)
 			return;
+		
+		if (critter.Player != this.Player)
+			return;
 
 		critter.ShieldPercentage += this._shieldModifier;
 	}
@@ -13,6 +16,9 @@ public partial class CritterDiamondSquare : CritterBase
 	private void OnAuraExited(Node2D body)
 	{
 		if (body is not CritterBase critter)
+			return;
+		
+		if (critter.Player != this.Player)
 			return;
 
 		critter.ShieldPercentage -= this._shieldModifier;
