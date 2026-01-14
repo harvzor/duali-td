@@ -20,9 +20,9 @@ public partial class CritterBase : Node2D
 	public float SpeedMultiplier = 1;
 	
 	/// <summary>
-	/// Reduces incoming damage by this percentage.
+	/// Reduces incoming damage by this amount.
 	/// </summary>
-	public int ShieldPercentage = 0;
+	public int Shield = 0;
 
 	private int _currentHealth;
 
@@ -45,8 +45,7 @@ public partial class CritterBase : Node2D
 	
 	public void TakeDamage(int damage)
 	{
-		int effectiveDamage = damage - (damage * this.ShieldPercentage / 100);
-		this._currentHealth -= effectiveDamage;
+		this._currentHealth -= damage - this.Shield;
 
 		this._healthBar.Value = (float)this._currentHealth / this.Health * 100;
 	}

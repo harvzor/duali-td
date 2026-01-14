@@ -1,6 +1,6 @@
 public partial class CritterDiamondSquare : CritterBase
 {
-	private int _shieldModifier = 25;
+	private int _shieldModifier = 2;
 
 	private void OnAuraEntered(Node2D body)
 	{
@@ -13,7 +13,7 @@ public partial class CritterDiamondSquare : CritterBase
 		if (critter == this)
 			return;
 
-		critter.ShieldPercentage += this._shieldModifier;
+		critter.Shield += this._shieldModifier;
 	}
 	
 	private void OnAuraExited(Node2D body)
@@ -27,6 +27,6 @@ public partial class CritterDiamondSquare : CritterBase
 		if (critter == this)
 			return;
 
-		critter.ShieldPercentage -= this._shieldModifier;
+		critter.Shield -= this._shieldModifier;
 	}
 }
