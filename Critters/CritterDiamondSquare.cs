@@ -10,6 +10,9 @@ public partial class CritterDiamondSquare : CritterBase
 		if (critter.Player != this.Player)
 			return;
 
+		if (critter == this)
+			return;
+
 		critter.ShieldPercentage += this._shieldModifier;
 	}
 	
@@ -19,6 +22,9 @@ public partial class CritterDiamondSquare : CritterBase
 			return;
 		
 		if (critter.Player != this.Player)
+			return;
+
+		if (critter == this)
 			return;
 
 		critter.ShieldPercentage -= this._shieldModifier;

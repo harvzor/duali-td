@@ -10,6 +10,9 @@ public partial class CritterChevron : CritterBase
 		if (critter.Player != this.Player)
 			return;
 
+		if (critter == this)
+			return;
+
 		critter.SpeedMultiplier += this._speedModifier;
 	}
 	
@@ -19,6 +22,9 @@ public partial class CritterChevron : CritterBase
 			return;
 
 		if (critter.Player != this.Player)
+			return;
+
+		if (critter == this)
 			return;
 
 		critter.SpeedMultiplier -= this._speedModifier;
