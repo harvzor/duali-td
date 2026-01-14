@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://cj8hkh6xyjfxv"]
+[gd_scene load_steps=6 format=3 uid="uid://cj8hkh6xyjfxv"]
 
 [ext_resource type="Script" uid="uid://cn5dwg7di3gfo" path="res://Critters/CritterChevron.cs" id="1_ouyei"]
 [ext_resource type="PackedScene" uid="uid://bvx4n75unbbab" path="res://Shapes/Triangle.tscn" id="2_krqm5"]
@@ -7,6 +7,13 @@
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_krqm5"]
 radius = 256.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ouyei"]
+bg_color = Color(0.5686275, 0.3882353, 1, 0.11764706)
+corner_radius_top_left = 640
+corner_radius_top_right = 640
+corner_radius_bottom_right = 640
+corner_radius_bottom_left = 640
 
 [node name="CritterChevron" type="CharacterBody2D"]
 rotation = 1.5707964
@@ -35,6 +42,14 @@ Color = Color(1, 0, 0, 1)
 visible = false
 scale = Vector2(0.99999994, 0.99999994)
 shape = SubResource("CircleShape2D_krqm5")
+
+[node name="GhostRange" type="Panel" parent="."]
+offset_left = -256.0
+offset_top = -256.0
+offset_right = 256.0
+offset_bottom = 256.0
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_ouyei")
 
 [connection signal="body_entered" from="Aura" to="." method="OnAuraEntered"]
 [connection signal="body_exited" from="Aura" to="." method="OnAuraExited"]

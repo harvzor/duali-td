@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://dss3rnqh680lm"]
+[gd_scene load_steps=6 format=3 uid="uid://dss3rnqh680lm"]
 
 [ext_resource type="Script" uid="uid://mchkucaoqqm3" path="res://Critters/CritterDiamondSquare.cs" id="1_yvfi7"]
 [ext_resource type="PackedScene" uid="uid://c8ideo1n8ahqw" path="res://Shapes/Square.tscn" id="2_yvfi7"]
@@ -7,6 +7,13 @@
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_krqm5"]
 radius = 256.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_yvfi7"]
+bg_color = Color(1, 0, 0, 0.05882353)
+corner_radius_top_left = 640
+corner_radius_top_right = 640
+corner_radius_bottom_right = 640
+corner_radius_bottom_left = 640
 
 [node name="CritterDiamondSquare" type="CharacterBody2D"]
 rotation = 1.5707964
@@ -35,6 +42,14 @@ Length = 22.5
 visible = false
 scale = Vector2(0.99999994, 0.99999994)
 shape = SubResource("CircleShape2D_krqm5")
+
+[node name="GhostRange" type="Panel" parent="."]
+offset_left = -256.0
+offset_top = -256.0
+offset_right = 256.0
+offset_bottom = 256.0
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_yvfi7")
 
 [connection signal="body_entered" from="Aura" to="." method="OnAuraEntered"]
 [connection signal="body_exited" from="Aura" to="." method="OnAuraExited"]
