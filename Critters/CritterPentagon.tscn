@@ -1,18 +1,27 @@
-[gd_scene load_steps=3 format=3 uid="uid://dqh35mv05vmm2"]
+[gd_scene load_steps=5 format=3 uid="uid://dqh35mv05vmm2"]
 
 [ext_resource type="Script" uid="uid://5pnauel6hipj" path="res://Critters/CritterBase.cs" id="1_b7d30"]
 [ext_resource type="PackedScene" uid="uid://8om16hwbt76k" path="res://Shapes/Pentagon.tscn" id="2_b7d30"]
+[ext_resource type="PackedScene" uid="uid://efsbvefiuf17" path="res://Critters/HealthBar.tscn" id="3_bqtxv"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_bqtxv"]
 
 [node name="CritterPentagon" type="CharacterBody2D"]
-rotation = 1.5707964
-scale = Vector2(0.7, 0.7)
 script = ExtResource("1_b7d30")
 Cost = 50
-Speed = 100
 Health = 300
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
-polygon = PackedVector2Array(0, -32, 30, -10, 19, 26, -19, 26, -30, -10)
+[node name="HealthBar" parent="." instance=ExtResource("3_bqtxv")]
 
 [node name="Pentagon" parent="." instance=ExtResource("2_b7d30")]
+position = Vector2(-3, 0)
+rotation = 1.5707964
+scale = Vector2(0.99999994, 0.99999994)
+Length = 26.0
 Color = Color(2.5990605e-06, 0.7403017, 0.44699842, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-3, 0)
+rotation = 1.5707964
+scale = Vector2(0.99999994, 0.99999994)
+shape = SubResource("CircleShape2D_bqtxv")

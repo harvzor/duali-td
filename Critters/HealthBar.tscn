@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://efsbvefiuf17"]
+
+[ext_resource type="Script" uid="uid://duci1lykmgts4" path="res://Critters/HealthBar.cs" id="1_71weu"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bs5w3"]
+bg_color = Color(0.012617188, 0.012617188, 0, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_yafl8"]
+bg_color = Color(1, 1, 0, 1)
+
+[node name="HealthBar" type="ProgressBar"]
+offset_left = -24.0
+offset_top = -30.0
+offset_right = 24.0
+offset_bottom = -26.0
+pivot_offset = Vector2(24, 30)
+theme_override_styles/background = SubResource("StyleBoxFlat_bs5w3")
+theme_override_styles/fill = SubResource("StyleBoxFlat_yafl8")
+value = 100.0
+show_percentage = false
+script = ExtResource("1_71weu")

@@ -1,7 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://dss3rnqh680lm"]
+[gd_scene load_steps=7 format=3 uid="uid://dss3rnqh680lm"]
 
 [ext_resource type="Script" uid="uid://mchkucaoqqm3" path="res://Critters/CritterDiamondSquare.cs" id="1_yvfi7"]
 [ext_resource type="PackedScene" uid="uid://c8ideo1n8ahqw" path="res://Shapes/Square.tscn" id="2_yvfi7"]
+[ext_resource type="PackedScene" uid="uid://efsbvefiuf17" path="res://Critters/HealthBar.tscn" id="3_2pp6v"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ouyei"]
 
@@ -16,12 +17,9 @@ corner_radius_bottom_right = 640
 corner_radius_bottom_left = 640
 
 [node name="CritterDiamondSquare" type="CharacterBody2D"]
-rotation = 1.5707964
-scale = Vector2(0.7, 0.7)
 script = ExtResource("1_yvfi7")
-Cost = 50
-Speed = 100
-Health = 100
+
+[node name="HealthBar" parent="." instance=ExtResource("3_2pp6v")]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 scale = Vector2(0.99999994, 0.99999994)
@@ -29,12 +27,13 @@ shape = SubResource("CircleShape2D_ouyei")
 
 [node name="Square" parent="." instance=ExtResource("2_yvfi7")]
 scale = Vector2(0.99999994, 0.99999994)
+Length = 24.0
 Color = Color(0, 0, 0, 1)
 
 [node name="InnerSquare" parent="." instance=ExtResource("2_yvfi7")]
 rotation = 0.7853982
-scale = Vector2(0.9999997, 0.9999997)
-Length = 22.5
+scale = Vector2(0.99999964, 0.99999964)
+Length = 16.5
 
 [node name="Aura" type="Area2D" parent="."]
 
@@ -43,7 +42,7 @@ visible = false
 scale = Vector2(0.99999994, 0.99999994)
 shape = SubResource("CircleShape2D_krqm5")
 
-[node name="GhostRange" type="Panel" parent="."]
+[node name="VisibleAura" type="Panel" parent="."]
 offset_left = -256.0
 offset_top = -256.0
 offset_right = 256.0

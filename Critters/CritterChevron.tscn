@@ -1,6 +1,7 @@
-[gd_scene load_steps=6 format=3 uid="uid://cj8hkh6xyjfxv"]
+[gd_scene load_steps=7 format=3 uid="uid://cj8hkh6xyjfxv"]
 
 [ext_resource type="Script" uid="uid://cn5dwg7di3gfo" path="res://Critters/CritterChevron.cs" id="1_ouyei"]
+[ext_resource type="PackedScene" uid="uid://efsbvefiuf17" path="res://Critters/HealthBar.tscn" id="2_43r0c"]
 [ext_resource type="PackedScene" uid="uid://bvx4n75unbbab" path="res://Shapes/Triangle.tscn" id="2_krqm5"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ouyei"]
@@ -16,34 +17,40 @@ corner_radius_bottom_right = 640
 corner_radius_bottom_left = 640
 
 [node name="CritterChevron" type="CharacterBody2D"]
-rotation = 1.5707964
-scale = Vector2(0.7, 0.7)
 script = ExtResource("1_ouyei")
 Cost = 50
-Speed = 100
+
+[node name="HealthBar" parent="." instance=ExtResource("2_43r0c")]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-scale = Vector2(0.99999994, 0.99999994)
+rotation = 1.5707964
+scale = Vector2(0.9999998, 0.9999998)
 shape = SubResource("CircleShape2D_ouyei")
 
 [node name="TriangleUpper" parent="." instance=ExtResource("2_krqm5")]
-position = Vector2(0, -8)
-Length = 20.0
+position = Vector2(5.1428576, 2.2480145e-07)
+rotation = 1.5707964
+scale = Vector2(0.99999994, 0.99999994)
+Length = 18.0
 Color = Color(1, 0, 0, 1)
 
 [node name="TriangleLower" parent="." instance=ExtResource("2_krqm5")]
-position = Vector2(0, 4)
-Length = 20.0
+position = Vector2(-5.428571, -2.3729041e-07)
+rotation = 1.5707964
+scale = Vector2(0.99999994, 0.99999994)
+Length = 18.0
 Color = Color(1, 0, 0, 1)
 
 [node name="Aura" type="Area2D" parent="."]
+rotation = 1.5707964
+scale = Vector2(0.99999994, 0.99999994)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Aura"]
 visible = false
 scale = Vector2(0.99999994, 0.99999994)
 shape = SubResource("CircleShape2D_krqm5")
 
-[node name="GhostRange" type="Panel" parent="."]
+[node name="VisibleAura" type="Panel" parent="."]
 offset_left = -256.0
 offset_top = -256.0
 offset_right = 256.0
