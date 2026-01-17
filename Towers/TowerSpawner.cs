@@ -1,4 +1,3 @@
-using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 
 public partial class TowerSpawner : Node2D
@@ -6,7 +5,7 @@ public partial class TowerSpawner : Node2D
 	/// <summary>
 	/// Tower that hasn't been properly placed, just the outline is shown.
 	/// </summary>
-	private RedBulletTower _ghostTower;
+	private BulletTower _ghostBulletTower;
 
 	private Vector2 SnapPosition(Vector2 position)
 	{
@@ -19,23 +18,23 @@ public partial class TowerSpawner : Node2D
 		return new Vector2(snappedX, snappedY);
 	}
 	
-	public void ShowTower(Vector2 position, RedBulletTower tower)
+	public void ShowTower(Vector2 position, BulletTower bulletTower)
 	{
-		if (!IsInstanceValid(this._ghostTower))
+		if (!IsInstanceValid(this._ghostBulletTower))
 		{
-			this._ghostTower = tower;
-			this._ghostTower.Disable();
-			this.AddChild(this._ghostTower);
+			this._ghostBulletTower = bulletTower;
+			this._ghostBulletTower.Disable();
+			this.AddChild(this._ghostBulletTower);
 		}
 		
-		this._ghostTower.Position = this.SnapPosition(position);
+		this._ghostBulletTower.Position = this.SnapPosition(position);
 	}
 	
 	public void HideTower()
 	{
-		if (IsInstanceValid(this._ghostTower))
+		if (IsInstanceValid(this._ghostBulletTower))
 		{
-			this._ghostTower.QueueFree();
+			this._ghostBulletTower.QueueFree();
 		}
 	}
 
@@ -44,15 +43,15 @@ public partial class TowerSpawner : Node2D
 		Vector2 snappedPosition = this.SnapPosition(position);
 
 		return this.GetChildren()
-			.Select(tower => (RedBulletTower)tower)
+			.Select(tower => (BulletTower)tower)
 			.Any(tower => tower.Enabled && tower.Position == snappedPosition);
 	}
 	
-	public void SpawnTower(Vector2 position, int player, RedBulletTower tower)
+	public void SpawnTower(Vector2 position, int player, BulletTower bulletTower)
 	{
-		tower.Player = player;
-		tower.Position = this.SnapPosition(position);
+		bulletTower.Player = player;
+		bulletTower.Position = this.SnapPosition(position);
 
-		this.AddChild(tower);
+		this.AddChild(bulletTower);
 	}
 }

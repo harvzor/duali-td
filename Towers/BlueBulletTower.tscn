@@ -1,7 +1,7 @@
-[gd_scene load_steps=6 format=3 uid="uid://bt0udmyktv1ao"]
+[gd_scene load_steps=6 format=3 uid="uid://dhf6yswo0euiq"]
 
-[ext_resource type="Script" uid="uid://c8mx8r5ktjwty" path="res://Towers/RedBulletTower.cs" id="1_1f3uh"]
-[ext_resource type="Texture2D" uid="uid://bbxyq4hee4wqf" path="res://Towers/RedBulletTower.png" id="1_s4eav"]
+[ext_resource type="Script" uid="uid://bnyub0y3h1ga7" path="res://Towers/BlueBulletTower.cs" id="1_a65dv"]
+[ext_resource type="Texture2D" uid="uid://bbxyq4hee4wqf" path="res://Towers/RedBulletTower.png" id="2_4xfrg"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2stt3"]
 size = Vector2(64, 64)
@@ -16,8 +16,8 @@ corner_radius_top_right = 640
 corner_radius_bottom_right = 640
 corner_radius_bottom_left = 640
 
-[node name="RedBulletTower" type="StaticBody2D"]
-script = ExtResource("1_1f3uh")
+[node name="BlueBulletTower" type="StaticBody2D"]
+script = ExtResource("1_a65dv")
 BulletDamage = 25
 BulletSpeed = 500
 Cost = 5
@@ -30,8 +30,9 @@ disabled = true
 position = Vector2(32, 0)
 
 [node name="Sprite" type="Sprite2D" parent="."]
+self_modulate = Color(0, 1.3006173, 1.9708018, 1)
 rotation = 1.5707964
-texture = ExtResource("1_s4eav")
+texture = ExtResource("2_4xfrg")
 
 [node name="Tower" type="Area2D" parent="."]
 

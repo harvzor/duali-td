@@ -1,0 +1,100 @@
+[gd_scene load_steps=7 format=3 uid="uid://ceqmfmjwe56fm"]
+
+[ext_resource type="Script" uid="uid://qbj0i67nxgxs" path="res://UserInterface/TowerMenu.cs" id="1_28r77"]
+[ext_resource type="Script" uid="uid://d0fraccr2bjb" path="res://UserInterface/TowerMenuOption.cs" id="2_ottld"]
+[ext_resource type="PackedScene" uid="uid://bt0udmyktv1ao" path="res://Towers/RedBulletTower.tscn" id="3_28r77"]
+[ext_resource type="PackedScene" uid="uid://dhf6yswo0euiq" path="res://Towers/BlueBulletTower.tscn" id="4_ottld"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qavpb"]
+bg_color = Color(1, 1, 1, 1)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_s0xvl"]
+
+[node name="TowerMenu" type="Panel"]
+offset_right = 512.0
+offset_bottom = 64.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_qavpb")
+script = ExtResource("1_28r77")
+
+[node name="ScrollContainer" type="ScrollContainer" parent="."]
+layout_mode = 0
+offset_right = 512.0
+offset_bottom = 64.0
+horizontal_scroll_mode = 2
+vertical_scroll_mode = 0
+
+[node name="FlowContainer" type="FlowContainer" parent="ScrollContainer"]
+layout_mode = 2
+theme_override_constants/h_separation = 0
+theme_override_constants/v_separation = 0
+vertical = true
+
+[node name="Option1" type="Panel" parent="ScrollContainer/FlowContainer"]
+custom_minimum_size = Vector2(128, 56)
+layout_mode = 2
+mouse_filter = 1
+theme_override_styles/panel = SubResource("StyleBoxEmpty_s0xvl")
+script = ExtResource("2_ottld")
+
+[node name="Tower" parent="ScrollContainer/FlowContainer/Option1" instance=ExtResource("3_28r77")]
+position = Vector2(32, 32)
+Enabled = false
+
+[node name="Stats" type="HFlowContainer" parent="ScrollContainer/FlowContainer/Option1"]
+layout_mode = 0
+offset_left = 64.0
+offset_right = 128.0
+offset_bottom = 64.0
+theme_override_constants/v_separation = -3
+
+[node name="Cost" type="Label" parent="ScrollContainer/FlowContainer/Option1/Stats"]
+custom_minimum_size = Vector2(64, 0)
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 14
+text = "100G"
+horizontal_alignment = 1
+
+[node name="Damage" type="Label" parent="ScrollContainer/FlowContainer/Option1/Stats"]
+custom_minimum_size = Vector2(64, 0)
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 14
+text = "500p/s"
+horizontal_alignment = 1
+
+[node name="Option2" type="Panel" parent="ScrollContainer/FlowContainer"]
+custom_minimum_size = Vector2(128, 56)
+layout_mode = 2
+mouse_filter = 1
+theme_override_styles/panel = SubResource("StyleBoxEmpty_s0xvl")
+script = ExtResource("2_ottld")
+
+[node name="Tower" parent="ScrollContainer/FlowContainer/Option2" instance=ExtResource("4_ottld")]
+position = Vector2(32, 32)
+
+[node name="Stats" type="HFlowContainer" parent="ScrollContainer/FlowContainer/Option2"]
+layout_mode = 0
+offset_left = 64.0
+offset_right = 128.0
+offset_bottom = 64.0
+theme_override_constants/v_separation = -3
+
+[node name="Cost" type="Label" parent="ScrollContainer/FlowContainer/Option2/Stats"]
+custom_minimum_size = Vector2(64, 0)
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 14
+text = "100G"
+horizontal_alignment = 1
+
+[node name="Damage" type="Label" parent="ScrollContainer/FlowContainer/Option2/Stats"]
+custom_minimum_size = Vector2(64, 0)
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 14
+text = "500p/s"
+horizontal_alignment = 1
+
+[connection signal="gui_input" from="ScrollContainer/FlowContainer/Option1" to="ScrollContainer/FlowContainer/Option1" method="OnOptionGuiInput"]
+[connection signal="gui_input" from="ScrollContainer/FlowContainer/Option2" to="ScrollContainer/FlowContainer/Option2" method="OnOptionGuiInput"]

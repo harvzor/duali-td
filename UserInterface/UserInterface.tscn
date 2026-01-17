@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://c1he1ojb6jg53"]
+[gd_scene load_steps=18 format=3 uid="uid://c1he1ojb6jg53"]
 
 [ext_resource type="PackedScene" uid="uid://iexs7fm1ryop" path="res://UserInterface/SpawnCritter.tscn" id="1_j0awb"]
 [ext_resource type="Script" uid="uid://b5x8w1c1xg2nu" path="res://UserInterface/UserInterface.cs" id="1_te54r"]
@@ -10,8 +10,12 @@
 [ext_resource type="PackedScene" uid="uid://cj8hkh6xyjfxv" path="res://Critters/CritterChevron.tscn" id="8_fsra1"]
 [ext_resource type="Script" uid="uid://bceysm7kn8ci" path="res://UserInterface/RadialProgress.cs" id="8_oh8mj"]
 [ext_resource type="PackedScene" uid="uid://dss3rnqh680lm" path="res://Critters/CritterDiamondSquare.tscn" id="9_hlvh6"]
+[ext_resource type="PackedScene" uid="uid://ceqmfmjwe56fm" path="res://UserInterface/TowerMenu.tscn" id="11_62wsl"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_te54r"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_r6oiv"]
+bg_color = Color(0, 0, 0, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_te54r"]
 bg_color = Color(1, 1, 1, 1)
@@ -21,9 +25,6 @@ bg_color = Color(1, 1, 1, 1)
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_oh8mj"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_fsra1"]
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_r6oiv"]
-bg_color = Color(0, 0, 0, 1)
 
 [node name="UserInterface" type="CanvasLayer"]
 follow_viewport_enabled = true
@@ -43,6 +44,63 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxEmpty_te54r")
 script = ExtResource("2_yseya")
+
+[node name="PlayerStats" type="Panel" parent="."]
+offset_top = 1152.0
+offset_right = 192.0
+offset_bottom = 1216.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_r6oiv")
+
+[node name="MoneyContainer" type="HFlowContainer" parent="PlayerStats"]
+layout_mode = 0
+offset_right = 64.0
+offset_bottom = 64.0
+theme_override_constants/v_separation = 0
+alignment = 1
+
+[node name="Bank" type="Label" parent="PlayerStats/MoneyContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 23
+text = "123G"
+
+[node name="Income" type="Label" parent="PlayerStats/MoneyContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 23
+text = "456⬆️"
+
+[node name="Health" type="Label" parent="PlayerStats"]
+layout_mode = 0
+offset_left = 64.0
+offset_right = 128.0
+offset_bottom = 64.0
+theme_override_font_sizes/font_size = 23
+text = "999❤️"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="IncomeContainer" type="Node" parent="PlayerStats"]
+
+[node name="IncomeTimer" type="Timer" parent="PlayerStats/IncomeContainer"]
+autostart = true
+
+[node name="IncomeTimerRadial" type="Control" parent="PlayerStats/IncomeContainer"]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 132.0
+offset_top = 1156.0
+offset_right = 196.0
+offset_bottom = 1220.0
+script = ExtResource("8_oh8mj")
+MaxValue = 10.0
+Radius = 28.0
+BgColor = Color(0.5019608, 0.5019608, 0.5019608, 0)
+Ring = true
+
+[node name="TowerMenu" parent="." instance=ExtResource("11_62wsl")]
+offset_left = 192.0
+offset_top = 1152.0
+offset_right = 704.0
+offset_bottom = 1216.0
 
 [node name="CritterMenu" type="Panel" parent="."]
 offset_top = 1216.0
@@ -315,57 +373,6 @@ theme_override_colors/font_color = Color(1, 0, 1, 1)
 theme_override_font_sizes/font_size = 14
 text = "500p/s"
 horizontal_alignment = 1
-
-[node name="PlayerStats" type="Panel" parent="."]
-offset_top = 1152.0
-offset_right = 704.0
-offset_bottom = 1216.0
-theme_override_styles/panel = SubResource("StyleBoxFlat_r6oiv")
-
-[node name="MoneyContainer" type="HFlowContainer" parent="PlayerStats"]
-layout_mode = 0
-offset_right = 64.0
-offset_bottom = 64.0
-theme_override_constants/v_separation = 0
-alignment = 1
-
-[node name="Bank" type="Label" parent="PlayerStats/MoneyContainer"]
-layout_mode = 2
-theme_override_font_sizes/font_size = 23
-text = "123G"
-
-[node name="Income" type="Label" parent="PlayerStats/MoneyContainer"]
-layout_mode = 2
-theme_override_font_sizes/font_size = 23
-text = "456⬆️"
-
-[node name="Health" type="Label" parent="PlayerStats"]
-layout_mode = 0
-offset_left = 64.0
-offset_right = 128.0
-offset_bottom = 64.0
-theme_override_font_sizes/font_size = 23
-text = "999❤️"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="IncomeContainer" type="Node" parent="PlayerStats"]
-
-[node name="IncomeTimer" type="Timer" parent="PlayerStats/IncomeContainer"]
-autostart = true
-
-[node name="IncomeTimerRadial" type="Control" parent="PlayerStats/IncomeContainer"]
-layout_mode = 3
-anchors_preset = 0
-offset_left = 128.0
-offset_top = 1152.0
-offset_right = 192.0
-offset_bottom = 1216.0
-script = ExtResource("8_oh8mj")
-MaxValue = 10.0
-Radius = 32.0
-BgColor = Color(0.5019608, 0.5019608, 0.5019608, 0)
-Ring = true
 
 [node name="DeadContainer" type="Panel" parent="."]
 visible = false

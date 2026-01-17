@@ -2,6 +2,8 @@ public partial class UserInterface : CanvasLayer
 {
     [Export] public int Player;
 
+    public PackedScene SelectedTower;
+
     private readonly Player _player = new();
     private Label _healthLabel;
     private Label _bankLabel;
@@ -13,8 +15,6 @@ public partial class UserInterface : CanvasLayer
 
     private Timer _incomeTimer;
     private RadialProgress _incomeTimerRadial;
-
-    private PackedScene _redBulletTower = GD.Load<PackedScene>("res://Towers/RedBulletTower.tscn");
 
     public override void _Ready()
     {
@@ -71,9 +71,9 @@ public partial class UserInterface : CanvasLayer
 
     public void ShowTower(Vector2 position)
     {
-        RedBulletTower tower = this._redBulletTower.Instantiate<RedBulletTower>();
+        BulletTower bulletTower = this.SelectedTower.Instantiate<BulletTower>();
 
-        this._towerSpawner.ShowTower(position, tower);
+        this._towerSpawner.ShowTower(position, bulletTower);
     }
 
     public void HideTower()
@@ -83,16 +83,16 @@ public partial class UserInterface : CanvasLayer
 
     public void TrySpawnTower(Vector2 position)
     {
-        RedBulletTower tower = this._redBulletTower.Instantiate<RedBulletTower>();
+        BulletTower bulletTower = this.SelectedTower.Instantiate<BulletTower>();
 
-        if (tower.Cost > this._player.Bank)
+        if (bulletTower.Cost > this._player.Bank)
             return;
 
         if (this._towerSpawner.TowerAlreadyExists(position))
             return;
 
-        this.IncreaseBank(-tower.Cost);
-        this._towerSpawner.SpawnTower(position, this.Player, tower);
+        this.IncreaseBank(-bulletTower.Cost);
+        this._towerSpawner.SpawnTower(position, this.Player, bulletTower);
     }
 
     public void TrySpawnCritter(PackedScene critterScene, int player)
