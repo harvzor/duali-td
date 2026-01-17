@@ -1,7 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://dhf6yswo0euiq"]
+[gd_scene load_steps=7 format=3 uid="uid://dhf6yswo0euiq"]
 
 [ext_resource type="Script" uid="uid://bnyub0y3h1ga7" path="res://Towers/BlueBulletTower.cs" id="1_a65dv"]
 [ext_resource type="Texture2D" uid="uid://bbxyq4hee4wqf" path="res://Towers/RedBulletTower.png" id="2_4xfrg"]
+[ext_resource type="PackedScene" uid="uid://d28fk0opa36qd" path="res://Towers/Bullets/BlueBullet.tscn" id="2_xx66q"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2stt3"]
 size = Vector2(64, 64)
@@ -18,6 +19,7 @@ corner_radius_bottom_left = 640
 
 [node name="BlueBulletTower" type="StaticBody2D"]
 script = ExtResource("1_a65dv")
+Projectile = ExtResource("2_xx66q")
 BulletDamage = 20
 BulletSpeed = 500
 Cost = 50

@@ -2,14 +2,13 @@
 
 public abstract partial class BulletTower : StaticBody2D
 {
+    [Export] public PackedScene Projectile;
     [Export] public int BulletDamage = 5;
     [Export] public int BulletSpeed = 100;
     [Export] public int Cost = 10;
     [Export] public bool Enabled = true;
 
     public int? Player = null;
-
-    protected PackedScene Bullet;
 
     private readonly List<Node2D> _currentTargets = [];
 
@@ -23,7 +22,7 @@ public abstract partial class BulletTower : StaticBody2D
         if (!IsInstanceValid(currentTarget))
             return;
 
-        Bullet bullet = this.Bullet.Instantiate<Bullet>();
+        Bullet bullet = this.Projectile.Instantiate<Bullet>();
 
         bullet.Target = currentTarget;
         bullet.Damage = this.BulletDamage;

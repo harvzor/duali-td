@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://sfyv54t1mubp"]
 
-[ext_resource type="Script" uid="uid://dtmmy7lfxvcbg" path="res://Towers/RedBullet.cs" id="1_lgvu3"]
-[ext_resource type="Texture2D" uid="uid://d0rmicopcecna" path="res://Towers/RedBullet.png" id="2_no4yg"]
+[ext_resource type="Script" uid="uid://dtmmy7lfxvcbg" path="res://Towers/Bullets/RedBullet.cs" id="1_lgvu3"]
+[ext_resource type="Texture2D" uid="uid://d0rmicopcecna" path="res://Towers/Bullets/RedBullet.png" id="2_no4yg"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_wgniu"]
 

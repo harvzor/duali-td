@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://d0rmicopcecna"
-path="res://.godot/imported/RedBullet.png-914ade94a7d224d61e69d04e08f10702.ctex"
+path="res://.godot/imported/RedBullet.png-cc91fdda027fa017492431b99b875711.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Towers/RedBullet.png"
-dest_files=["res://.godot/imported/RedBullet.png-914ade94a7d224d61e69d04e08f10702.ctex"]
+source_file="res://Towers/Bullets/RedBullet.png"
+dest_files=["res://.godot/imported/RedBullet.png-cc91fdda027fa017492431b99b875711.ctex"]
 
 [params]
 
