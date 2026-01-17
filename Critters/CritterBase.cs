@@ -24,6 +24,7 @@ public partial class CritterBase : Node2D
 	/// </summary>
 	public int Shield = 0;
 
+	private int _currentSpeed;
 	private int _currentHealth;
 
 	private HealthBar _healthBar;
@@ -32,12 +33,13 @@ public partial class CritterBase : Node2D
 	{
 		this._healthBar = this.GetNode<HealthBar>("HealthBar");
 
+		this._currentSpeed = this.Speed;
 		this._currentHealth = this.Health;
 	}
 
 	public override void _Process(double delta)
 	{
-		this.GetParent<PathFollow2D>().Progress = this.GetParent<PathFollow2D>().Progress + this.Speed * this.SpeedMultiplier * (float)delta;
+		this.GetParent<PathFollow2D>().Progress = this.GetParent<PathFollow2D>().Progress + this._currentSpeed * this.SpeedMultiplier * (float)delta;
 		
 		if (this._currentHealth <= 0)
 			this.GetParent<PathFollow2D>().QueueFree();
@@ -48,6 +50,16 @@ public partial class CritterBase : Node2D
 		this._currentHealth -= damage - this.Shield;
 
 		this._healthBar.Value = (float)this._currentHealth / this.Health * 100;
+	}
+
+	public void SetSpeed(int speed)
+	{
+		this._currentSpeed = speed;
+	}
+	
+	public void ResetSpeed()
+	{
+		this._currentSpeed = this.Speed;
 	}
 
 	public virtual void Disable()

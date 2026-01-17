@@ -19,6 +19,7 @@ corner_radius_bottom_left = 640
 [node name="CritterChevron" type="CharacterBody2D"]
 script = ExtResource("1_ouyei")
 Cost = 50
+Speed = 150
 
 [node name="HealthBar" parent="." instance=ExtResource("2_43r0c")]
 
