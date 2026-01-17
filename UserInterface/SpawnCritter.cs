@@ -9,7 +9,7 @@ public partial class SpawnCritter : Panel
 	/// </summary>
 	[Export] public PackedScene CritterScene;
 	
-	private DateTime ClickStartTime;
+	private DateTime _clickStartTime;
 	
 	public override void _Ready()
 	{
@@ -36,7 +36,7 @@ public partial class SpawnCritter : Panel
 		// On left click press.
 		if (inputEvent is InputEventMouseButton { ButtonIndex: MouseButton.Left, ButtonMask: MouseButtonMask.Left })
 		{
-			this.ClickStartTime = DateTime.Now;
+			this._clickStartTime = DateTime.Now;
 			return;
 		}
 		
@@ -44,7 +44,7 @@ public partial class SpawnCritter : Panel
 		if (inputEvent is InputEventMouseButton { ButtonIndex: MouseButton.Left, ButtonMask: 0 })
 		{
 			// Only trigger a click if the click was short (indicating a click rather than a drag).
-			if (DateTime.Now.Subtract(this.ClickStartTime).TotalMilliseconds < 100)
+			if (DateTime.Now.Subtract(this._clickStartTime).TotalMilliseconds < 100)
 			{
 				this._userInterface.TrySpawnCritter(this.CritterScene, this._userInterface.Player);
 			}
