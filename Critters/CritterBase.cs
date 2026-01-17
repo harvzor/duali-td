@@ -49,4 +49,9 @@ public partial class CritterBase : Node2D
 
 		this._healthBar.Value = (float)this._currentHealth / this.Health * 100;
 	}
+
+	public virtual void Disable()
+	{
+		this._healthBar.Hide();
+	}
 }

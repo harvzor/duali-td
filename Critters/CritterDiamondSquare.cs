@@ -1,4 +1,4 @@
-public partial class CritterDiamondSquare : CritterBase
+public partial class CritterDiamondSquare : CritterWithAura
 {
 	private int _shieldModifier = 2;
 

@@ -1,3 +1,5 @@
+using System.Linq;
+
 public partial class SpawnCritter : Panel
 {
 	private UserInterface _userInterface;
@@ -23,6 +25,10 @@ public partial class SpawnCritter : Panel
 		
 		Label speed = this.GetNode<Label>("Stats/Speed");
 		speed.Text = critterBase.Speed + "p/s";
+
+		CritterBase critter = (this.GetChildren().First(x => x.Name.ToString().StartsWith("Critter")) as CritterBase)!;
+
+		critter.Disable();
 	}
 
 	private void OnGuiInput(InputEvent inputEvent)

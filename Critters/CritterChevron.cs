@@ -1,4 +1,4 @@
-public partial class CritterChevron : CritterBase
+public partial class CritterChevron : CritterWithAura
 {
 	private float _speedModifier = 0.25f;
 
