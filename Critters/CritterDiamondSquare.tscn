@@ -18,6 +18,7 @@ corner_radius_bottom_left = 640
 
 [node name="CritterDiamondSquare" type="CharacterBody2D"]
 script = ExtResource("1_yvfi7")
+Cost = 50
 
 [node name="HealthBar" parent="." instance=ExtResource("3_2pp6v")]
 
