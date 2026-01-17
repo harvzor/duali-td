@@ -9,7 +9,8 @@ public abstract partial class BulletTower : StaticBody2D
 
     public int? Player = null;
 
-    private PackedScene _redBullet = GD.Load<PackedScene>("res://Towers/RedBullet.tscn");
+    protected PackedScene Bullet;
+
     private readonly List<Node2D> _currentTargets = [];
 
     public void FireBullet()
@@ -22,7 +23,8 @@ public abstract partial class BulletTower : StaticBody2D
         if (!IsInstanceValid(currentTarget))
             return;
 
-        RedBullet bullet = this._redBullet.Instantiate<RedBullet>();
+        Bullet bullet = this.Bullet.Instantiate<Bullet>();
+
         bullet.Target = currentTarget;
         bullet.Damage = this.BulletDamage;
         bullet.Speed = this.BulletSpeed;

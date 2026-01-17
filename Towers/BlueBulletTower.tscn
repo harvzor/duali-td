@@ -18,7 +18,7 @@ corner_radius_bottom_left = 640
 
 [node name="BlueBulletTower" type="StaticBody2D"]
 script = ExtResource("1_a65dv")
-BulletDamage = 25
+BulletDamage = 20
 BulletSpeed = 500
 Cost = 50
 
