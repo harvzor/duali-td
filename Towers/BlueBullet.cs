@@ -5,7 +5,7 @@ public partial class BlueBullet : Bullet
 		if (body is not CritterBase critter)
 			return;
 		
-		critter.SpeedMultiplier *= 0.9f;
+		critter.SpeedMultiplier *= 0.8f;
 
 		base.OnArea2DBodyEntered(body);
 	}
