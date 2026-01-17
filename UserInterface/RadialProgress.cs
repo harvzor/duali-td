@@ -15,8 +15,10 @@ public partial class RadialProgress : Control
 
 	public override void _Draw()
 	{
+		Single progress = Engine.IsEditorHint() ? this.MaxValue : this.Progress;
+		
 		Vector2 offset = new(this.Radius, this.Radius);
-		float angle = (this.Progress / this.MaxValue) * Mathf.Tau;
+		float angle = (progress / this.MaxValue) * Mathf.Tau;
 
 		if (this.Ring)
 		{
