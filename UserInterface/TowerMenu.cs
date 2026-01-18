@@ -15,6 +15,7 @@ public partial class TowerMenu : Panel
 			.ToArray();
 		
 		this.SelectTower(this._options.First(), this._options.First().Tower);
+		this._options.First().ButtonPressed = true;
 	}
 	
 	public void SelectTower(TowerMenuOption option, BulletTower bulletTower)
