@@ -22,27 +22,13 @@ public partial class TowerMenu : Panel
 		this._userInterface.SelectedTower = GD.Load<PackedScene>(bulletTower.GetSceneFilePath());
 
 		this.DeselectOptions();
-		this.SelectOption(option);
 	}
 	
 	private void DeselectOptions()
 	{
 		foreach (TowerMenuOption option in this._options)
 		{
-			option.RemoveThemeStyleboxOverride("panel");
+			option.ButtonPressed = false;
 		}
-	}
-
-	private void SelectOption(TowerMenuOption option)
-	{
-		StyleBoxFlat style = new()
-		{
-			BorderColor = Color.FromHtml("#000000"),
-		};
-
-		style.SetBorderWidthAll(2);
-		style.BgColor = style.BgColor with { A = 0 };
-		
-		option.AddThemeStyleboxOverride("panel", style);
 	}
 }

@@ -1,4 +1,4 @@
-public partial class TowerMenuOption : Panel
+public partial class TowerMenuOption : Button
 {
 	public BulletTower Tower;
 	

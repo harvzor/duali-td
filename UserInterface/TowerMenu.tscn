@@ -1,17 +1,9 @@
-[gd_scene load_steps=7 format=3 uid="uid://ceqmfmjwe56fm"]
+[gd_scene load_steps=5 format=3 uid="uid://ceqmfmjwe56fm"]
 
 [ext_resource type="Script" uid="uid://qbj0i67nxgxs" path="res://UserInterface/TowerMenu.cs" id="1_28r77"]
 [ext_resource type="Script" uid="uid://d0fraccr2bjb" path="res://UserInterface/TowerMenuOption.cs" id="2_ottld"]
 [ext_resource type="PackedScene" uid="uid://bt0udmyktv1ao" path="res://Towers/BulletTowerRed.tscn" id="3_28r77"]
 [ext_resource type="PackedScene" uid="uid://dhf6yswo0euiq" path="res://Towers/BulletTowerBlue.tscn" id="4_ottld"]
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ottld"]
-bg_color = Color(0.6, 0.6, 0.6, 0)
-border_color = Color(0, 0, 0, 1)
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qbgq4"]
-bg_color = Color(0.6, 0.6, 0.6, 0)
-border_color = Color(0, 0, 0, 1)
 
 [node name="TowerMenu" type="Panel"]
 offset_right = 512.0
@@ -31,11 +23,11 @@ theme_override_constants/h_separation = 0
 theme_override_constants/v_separation = 0
 vertical = true
 
-[node name="Option1" type="Panel" parent="ScrollContainer/FlowContainer"]
+[node name="Option1" type="Button" parent="ScrollContainer/FlowContainer"]
 custom_minimum_size = Vector2(128, 56)
 layout_mode = 2
 mouse_filter = 1
-theme_override_styles/panel = SubResource("StyleBoxFlat_ottld")
+toggle_mode = true
 script = ExtResource("2_ottld")
 
 [node name="Tower" parent="ScrollContainer/FlowContainer/Option1" instance=ExtResource("3_28r77")]
@@ -61,11 +53,11 @@ layout_mode = 2
 text = "100💥"
 horizontal_alignment = 1
 
-[node name="Option2" type="Panel" parent="ScrollContainer/FlowContainer"]
+[node name="Option2" type="Button" parent="ScrollContainer/FlowContainer"]
 custom_minimum_size = Vector2(128, 56)
 layout_mode = 2
 mouse_filter = 1
-theme_override_styles/panel = SubResource("StyleBoxFlat_qbgq4")
+toggle_mode = true
 script = ExtResource("2_ottld")
 
 [node name="Tower" parent="ScrollContainer/FlowContainer/Option2" instance=ExtResource("4_ottld")]
