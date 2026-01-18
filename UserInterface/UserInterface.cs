@@ -8,7 +8,7 @@ public partial class UserInterface : Control
     private Label _healthLabel;
     private Label _bankLabel;
     private Label _incomeLabel;
-    private Panel _deadContainer;
+    private PanelContainer _deadContainer;
 
     private TowerSpawner _towerSpawner;
     private Map _map;
@@ -42,7 +42,7 @@ public partial class UserInterface : Control
             .GetChild(0)
             .GetNode<Map>(nameof(Map))!;
 
-        this._deadContainer = this.GetNode<Panel>("DeadContainer");
+        this._deadContainer = this.GetNode<PanelContainer>("DeadContainer");
     }
 
     public void TakeDamage(int damage)
