@@ -14,22 +14,11 @@ public partial class TowerMenu : Panel
 			.Select(x => x as TowerMenuOption)
 			.ToArray();
 		
-		this.SelectTower(this._options.First(), this._options.First().Tower);
-		this._options.First().ButtonPressed = true;
+		this.SelectTower(this._options.First().Tower);
 	}
 	
-	public void SelectTower(TowerMenuOption option, BulletTower bulletTower)
+	public void SelectTower(BulletTower bulletTower)
 	{
 		this._userInterface.SelectedTower = GD.Load<PackedScene>(bulletTower.GetSceneFilePath());
-
-		this.DeselectOptions();
-	}
-	
-	private void DeselectOptions()
-	{
-		foreach (TowerMenuOption option in this._options)
-		{
-			option.ButtonPressed = false;
-		}
 	}
 }

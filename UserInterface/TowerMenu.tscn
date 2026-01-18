@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://ceqmfmjwe56fm"]
+[gd_scene load_steps=6 format=3 uid="uid://ceqmfmjwe56fm"]
 
 [ext_resource type="Script" uid="uid://qbj0i67nxgxs" path="res://UserInterface/TowerMenu.cs" id="1_28r77"]
 [ext_resource type="Script" uid="uid://d0fraccr2bjb" path="res://UserInterface/TowerMenuOption.cs" id="2_ottld"]
+[ext_resource type="ButtonGroup" uid="uid://cbacph6t3j6b8" path="res://UserInterface/TowerButtonGroup.tres" id="2_qbgq4"]
 [ext_resource type="PackedScene" uid="uid://bt0udmyktv1ao" path="res://Towers/BulletTowerRed.tscn" id="3_28r77"]
 [ext_resource type="PackedScene" uid="uid://dhf6yswo0euiq" path="res://Towers/BulletTowerBlue.tscn" id="4_ottld"]
 
@@ -28,6 +29,8 @@ custom_minimum_size = Vector2(128, 56)
 layout_mode = 2
 mouse_filter = 1
 toggle_mode = true
+button_pressed = true
+button_group = ExtResource("2_qbgq4")
 script = ExtResource("2_ottld")
 
 [node name="Tower" parent="ScrollContainer/FlowContainer/Option1" instance=ExtResource("3_28r77")]
@@ -58,6 +61,7 @@ custom_minimum_size = Vector2(128, 56)
 layout_mode = 2
 mouse_filter = 1
 toggle_mode = true
+button_group = ExtResource("2_qbgq4")
 script = ExtResource("2_ottld")
 
 [node name="Tower" parent="ScrollContainer/FlowContainer/Option2" instance=ExtResource("4_ottld")]
