@@ -3,8 +3,8 @@
 public abstract partial class BulletTower : StaticBody2D
 {
     [Export] public PackedScene Projectile;
-    [Export] public int BulletDamage = 5;
-    [Export] public int BulletSpeed = 100;
+    [Export] public int BulletDamage = 25;
+    [Export] public int BulletSpeed = 500;
     [Export] public int Cost = 10;
     [Export] public bool Enabled = true;
 
