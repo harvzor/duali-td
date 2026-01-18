@@ -1,8 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://bt0udmyktv1ao"]
+[gd_scene load_steps=7 format=3 uid="uid://dhf6yswo0euiq"]
 
-[ext_resource type="Script" uid="uid://c8mx8r5ktjwty" path="res://Towers/RedBulletTower.cs" id="1_1f3uh"]
-[ext_resource type="Texture2D" uid="uid://bbxyq4hee4wqf" path="res://Towers/RedBulletTower.png" id="1_s4eav"]
-[ext_resource type="PackedScene" uid="uid://sfyv54t1mubp" path="res://Towers/Bullets/BulletRed.tscn" id="2_2stt3"]
+[ext_resource type="Script" uid="uid://bnyub0y3h1ga7" path="res://Towers/BulletTowerBlue.cs" id="1_2jl0k"]
+[ext_resource type="Texture2D" uid="uid://bbxyq4hee4wqf" path="res://Towers/BulletTowerRed.png" id="2_4xfrg"]
+[ext_resource type="PackedScene" uid="uid://d28fk0opa36qd" path="res://Towers/Bullets/BulletBlue.tscn" id="2_xx66q"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2stt3"]
 size = Vector2(64, 64)
@@ -17,12 +17,12 @@ corner_radius_top_right = 640
 corner_radius_bottom_right = 640
 corner_radius_bottom_left = 640
 
-[node name="RedBulletTower" type="StaticBody2D"]
-script = ExtResource("1_1f3uh")
-Projectile = ExtResource("2_2stt3")
-BulletDamage = 25
+[node name="BulletTowerBlue" type="StaticBody2D"]
+script = ExtResource("1_2jl0k")
+Projectile = ExtResource("2_xx66q")
+BulletDamage = 20
 BulletSpeed = 500
-Cost = 5
+Cost = 50
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_2stt3")
@@ -32,8 +32,9 @@ disabled = true
 position = Vector2(32, 0)
 
 [node name="Sprite" type="Sprite2D" parent="."]
+self_modulate = Color(0, 1.3006173, 1.9708018, 1)
 rotation = 1.5707964
-texture = ExtResource("1_s4eav")
+texture = ExtResource("2_4xfrg")
 
 [node name="Tower" type="Area2D" parent="."]
 

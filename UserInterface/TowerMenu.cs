@@ -11,7 +11,7 @@ public partial class TowerMenu : Panel
 		this._userInterface = this.GetNode<UserInterface>("..")!;
 		this._options = this.GetNode("ScrollContainer/FlowContainer").GetChildren().Select(x => x as TowerMenuOption);
 		
-		this._userInterface.SelectedTower = GD.Load<PackedScene>("res://Towers/RedBulletTower.tscn");
+		this._userInterface.SelectedTower = GD.Load<PackedScene>("res://Towers/BulletTowerRed.tscn");
 		
 		this.SelectOption(this._options.First());
 	}

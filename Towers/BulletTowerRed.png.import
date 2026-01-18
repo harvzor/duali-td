@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://bbxyq4hee4wqf"
-path="res://.godot/imported/RedBulletTower.png-0b2579d38acc03ee55ae88bcb5d2bffa.ctex"
+path="res://.godot/imported/BulletTowerRed.png-b32fc2f09f6481e0fc45b8dd8fa6e07f.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Towers/RedBulletTower.png"
-dest_files=["res://.godot/imported/RedBulletTower.png-0b2579d38acc03ee55ae88bcb5d2bffa.ctex"]
+source_file="res://Towers/BulletTowerRed.png"
+dest_files=["res://.godot/imported/BulletTowerRed.png-b32fc2f09f6481e0fc45b8dd8fa6e07f.ctex"]
 
 [params]
 
