@@ -1,12 +1,10 @@
 [gd_scene load_steps=8 format=3 uid="uid://ceqmfmjwe56fm"]
 
 [ext_resource type="Script" uid="uid://qbj0i67nxgxs" path="res://UserInterface/TowerMenu.cs" id="1_28r77"]
+[ext_resource type="Theme" uid="uid://b0by51poamsbr" path="res://UserInterface/Theme.tres" id="1_qbgq4"]
 [ext_resource type="Script" uid="uid://d0fraccr2bjb" path="res://UserInterface/TowerMenuOption.cs" id="2_ottld"]
 [ext_resource type="PackedScene" uid="uid://bt0udmyktv1ao" path="res://Towers/BulletTowerRed.tscn" id="3_28r77"]
 [ext_resource type="PackedScene" uid="uid://dhf6yswo0euiq" path="res://Towers/BulletTowerBlue.tscn" id="4_ottld"]
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qavpb"]
-bg_color = Color(1, 1, 1, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ottld"]
 bg_color = Color(0.6, 0.6, 0.6, 0)
@@ -19,7 +17,7 @@ border_color = Color(0, 0, 0, 1)
 [node name="TowerMenu" type="Panel"]
 offset_right = 512.0
 offset_bottom = 64.0
-theme_override_styles/panel = SubResource("StyleBoxFlat_qavpb")
+theme = ExtResource("1_qbgq4")
 script = ExtResource("1_28r77")
 
 [node name="ScrollContainer" type="ScrollContainer" parent="."]

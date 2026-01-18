@@ -29,10 +29,7 @@ public partial class TowerMenu : Panel
 	{
 		foreach (TowerMenuOption option in this._options)
 		{
-			StyleBoxFlat style = new();
-			style.BgColor = style.BgColor with { A = 0 };
-			
-			option.AddThemeStyleboxOverride("panel", style);
+			option.RemoveThemeStyleboxOverride("panel");
 		}
 	}
 
