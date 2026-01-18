@@ -1,4 +1,4 @@
-public partial class BlueBullet : Bullet
+public partial class BulletBlue : Bullet
 {
 	public override void OnArea2DBodyEntered(Node2D body)
 	{

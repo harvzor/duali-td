@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://c8mx8r5ktjwty" path="res://Towers/RedBulletTower.cs" id="1_1f3uh"]
 [ext_resource type="Texture2D" uid="uid://bbxyq4hee4wqf" path="res://Towers/RedBulletTower.png" id="1_s4eav"]
-[ext_resource type="PackedScene" uid="uid://sfyv54t1mubp" path="res://Towers/Bullets/RedBullet.tscn" id="2_2stt3"]
+[ext_resource type="PackedScene" uid="uid://sfyv54t1mubp" path="res://Towers/Bullets/BulletRed.tscn" id="2_2stt3"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2stt3"]
 size = Vector2(64, 64)

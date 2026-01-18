@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://d28fk0opa36qd"]
 
-[ext_resource type="Script" uid="uid://g54ejhixl10c" path="res://Towers/Bullets/BlueBullet.cs" id="1_fvk4c"]
-[ext_resource type="Texture2D" uid="uid://d0rmicopcecna" path="res://Towers/Bullets/RedBullet.png" id="2_fpvlt"]
+[ext_resource type="Script" uid="uid://g54ejhixl10c" path="res://Towers/Bullets/BulletBlue.cs" id="1_y25wp"]
+[ext_resource type="Texture2D" uid="uid://d0rmicopcecna" path="res://Towers/Bullets/BulletBlue.png" id="2_p74x4"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_wgniu"]
 
@@ -9,13 +9,13 @@
 radius = 14.0
 height = 42.0
 
-[node name="RedBullet" type="CharacterBody2D"]
+[node name="BulletBlue" type="CharacterBody2D"]
 modulate = Color(1, 0, 1, 1)
-script = ExtResource("1_fvk4c")
+script = ExtResource("1_y25wp")
 
 [node name="Sprite" type="Sprite2D" parent="."]
 rotation = 1.5707964
-texture = ExtResource("2_fpvlt")
+texture = ExtResource("2_p74x4")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 rotation = 1.5707964
