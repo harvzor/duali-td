@@ -9,11 +9,12 @@ public partial class TowerMenu : Panel
 	public override void _Ready()
 	{
 		this._userInterface = this.GetNode<UserInterface>("..")!;
-		this._options = this.GetNode("ScrollContainer/FlowContainer").GetChildren().Select(x => x as TowerMenuOption);
+		this._options = this.GetNode("ScrollContainer/FlowContainer")
+			.GetChildren()
+			.Select(x => x as TowerMenuOption)
+			.ToArray();
 		
-		this._userInterface.SelectedTower = GD.Load<PackedScene>("res://Towers/BulletTowerRed.tscn");
-		
-		this.SelectOption(this._options.First());
+		this.SelectTower(this._options.First(), this._options.First().Tower);
 	}
 	
 	public void SelectTower(TowerMenuOption option, BulletTower bulletTower)
