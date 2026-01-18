@@ -1,6 +1,6 @@
 using System.Linq;
 
-public partial class SpawnCritter : Panel
+public partial class SpawnCritter : Button
 {
 	private UserInterface _userInterface;
 

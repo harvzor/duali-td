@@ -24,9 +24,9 @@ rotation = 3.1415925
 Player = 1
 
 [node name="MenuControls" parent="." instance=ExtResource("4_eu7l1")]
-offset_left = 160.0
+offset_left = 192.0
 offset_top = 608.0
-offset_right = 160.0
+offset_right = 192.0
 offset_bottom = 608.0
 
 [node name="GateP0" parent="." instance=ExtResource("5_p1v5b")]
