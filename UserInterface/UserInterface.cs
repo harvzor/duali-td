@@ -1,4 +1,4 @@
-public partial class UserInterface : CanvasLayer
+public partial class UserInterface : Control
 {
     [Export] public int Player;
 

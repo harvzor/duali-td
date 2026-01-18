@@ -4,4 +4,6 @@
 bg_color = Color(1, 1, 1, 1)
 
 [resource]
+Label/colors/font_color = Color(0, 0, 0, 1)
+Label/font_sizes/font_size = 14
 Panel/styles/panel = SubResource("StyleBoxFlat_tfv34")

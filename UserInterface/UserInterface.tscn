@@ -1,5 +1,6 @@
-[gd_scene load_steps=18 format=3 uid="uid://c1he1ojb6jg53"]
+[gd_scene load_steps=15 format=3 uid="uid://c1he1ojb6jg53"]
 
+[ext_resource type="Theme" uid="uid://b0by51poamsbr" path="res://UserInterface/Theme.tres" id="1_at2vn"]
 [ext_resource type="PackedScene" uid="uid://iexs7fm1ryop" path="res://UserInterface/SpawnCritter.tscn" id="1_j0awb"]
 [ext_resource type="Script" uid="uid://b5x8w1c1xg2nu" path="res://UserInterface/UserInterface.cs" id="1_te54r"]
 [ext_resource type="Script" uid="uid://du1epvyu2cbbx" path="res://UserInterface/TowerPlacement.cs" id="2_yseya"]
@@ -17,35 +18,30 @@
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_r6oiv"]
 bg_color = Color(0, 0, 0, 1)
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_te54r"]
-bg_color = Color(1, 1, 1, 1)
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_apued"]
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_oh8mj"]
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_fsra1"]
-
-[node name="UserInterface" type="CanvasLayer"]
-follow_viewport_enabled = true
+[node name="UserInterface" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+pivot_offset = Vector2(352, 640)
+theme = ExtResource("1_at2vn")
 script = ExtResource("1_te54r")
 
 [node name="TowerPlacement" type="Panel" parent="."]
+layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -352.0
-offset_top = 64.0
-offset_right = 352.0
-offset_bottom = 512.0
+offset_top = 704.0
+offset_right = 704.0
+offset_bottom = 1152.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxEmpty_te54r")
 script = ExtResource("2_yseya")
 
 [node name="PlayerStats" type="Panel" parent="."]
+layout_mode = 0
 offset_top = 1152.0
 offset_right = 192.0
 offset_bottom = 1216.0
@@ -60,11 +56,13 @@ alignment = 1
 
 [node name="Bank" type="Label" parent="PlayerStats/MoneyContainer"]
 layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_font_sizes/font_size = 23
 text = "123G"
 
 [node name="Income" type="Label" parent="PlayerStats/MoneyContainer"]
 layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_font_sizes/font_size = 23
 text = "456⬆️"
 
@@ -73,7 +71,8 @@ layout_mode = 0
 offset_left = 64.0
 offset_right = 128.0
 offset_bottom = 64.0
-theme_override_font_sizes/font_size = 23
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 20
 text = "999❤️"
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -97,16 +96,17 @@ BgColor = Color(0.5019608, 0.5019608, 0.5019608, 0)
 Ring = true
 
 [node name="TowerMenu" parent="." instance=ExtResource("11_62wsl")]
+layout_mode = 0
 offset_left = 192.0
 offset_top = 1152.0
 offset_right = 704.0
 offset_bottom = 1216.0
 
 [node name="CritterMenu" type="Panel" parent="."]
+layout_mode = 0
 offset_top = 1216.0
 offset_right = 704.0
 offset_bottom = 1280.0
-theme_override_styles/panel = SubResource("StyleBoxFlat_te54r")
 
 [node name="ScrollContainer" type="ScrollContainer" parent="CritterMenu"]
 custom_minimum_size = Vector2(704, 64)
@@ -126,7 +126,6 @@ vertical = true
 custom_minimum_size = Vector2(128, 56)
 layout_mode = 2
 mouse_filter = 1
-theme_override_styles/panel = SubResource("StyleBoxEmpty_apued")
 CritterScene = ExtResource("4_r6oiv")
 
 [node name="CritterCircle" parent="CritterMenu/ScrollContainer/FlowContainer/SpawnCritterCircle" instance=ExtResource("4_r6oiv")]
@@ -143,24 +142,18 @@ theme_override_constants/v_separation = -3
 [node name="Cost" type="Label" parent="CritterMenu/ScrollContainer/FlowContainer/SpawnCritterCircle/Stats"]
 custom_minimum_size = Vector2(64, 0)
 layout_mode = 2
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 14
 text = "100G"
 horizontal_alignment = 1
 
 [node name="Health" type="Label" parent="CritterMenu/ScrollContainer/FlowContainer/SpawnCritterCircle/Stats"]
 custom_minimum_size = Vector2(64, 0)
 layout_mode = 2
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 14
 text = "999❤️"
 horizontal_alignment = 1
 
 [node name="Speed" type="Label" parent="CritterMenu/ScrollContainer/FlowContainer/SpawnCritterCircle/Stats"]
 custom_minimum_size = Vector2(64, 0)
 layout_mode = 2
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 14
 text = "500p/s"
 horizontal_alignment = 1
 
@@ -168,7 +161,6 @@ horizontal_alignment = 1
 custom_minimum_size = Vector2(128, 56)
 layout_mode = 2
 mouse_filter = 1
-theme_override_styles/panel = SubResource("StyleBoxEmpty_oh8mj")
 CritterScene = ExtResource("5_0joph")
 
 [node name="CritterTriangle" parent="CritterMenu/ScrollContainer/FlowContainer/SpawnCritterTriangle" instance=ExtResource("5_0joph")]
@@ -185,24 +177,18 @@ theme_override_constants/v_separation = -3
 [node name="Cost" type="Label" parent="CritterMenu/ScrollContainer/FlowContainer/SpawnCritterTriangle/Stats"]
 custom_minimum_size = Vector2(64, 0)
 layout_mode = 2
-theme_override_colors/font_color = Color(1, 0, 0, 1)
-theme_override_font_sizes/font_size = 14
 text = "100G"
 horizontal_alignment = 1
 
 [node name="Health" type="Label" parent="CritterMenu/ScrollContainer/FlowContainer/SpawnCritterTriangle/Stats"]
 custom_minimum_size = Vector2(64, 0)
 layout_mode = 2
-theme_override_colors/font_color = Color(1, 0, 0, 1)
-theme_override_font_sizes/font_size = 14
 text = "999❤️"
 horizontal_alignment = 1
 
 [node name="Speed" type="Label" parent="CritterMenu/ScrollContainer/FlowContainer/SpawnCritterTriangle/Stats"]
 custom_minimum_size = Vector2(64, 0)
 layout_mode = 2
-theme_override_colors/font_color = Color(1, 0, 0, 1)
-theme_override_font_sizes/font_size = 14
 text = "500p/s"
 horizontal_alignment = 1
 
@@ -210,7 +196,6 @@ horizontal_alignment = 1
 custom_minimum_size = Vector2(128, 56)
 layout_mode = 2
 mouse_filter = 1
-theme_override_styles/panel = SubResource("StyleBoxEmpty_fsra1")
 CritterScene = ExtResource("6_apued")
 
 [node name="CritterSquare" parent="CritterMenu/ScrollContainer/FlowContainer/SpawnCritterSquare" instance=ExtResource("6_apued")]
@@ -227,24 +212,18 @@ theme_override_constants/v_separation = -3
 [node name="Cost" type="Label" parent="CritterMenu/ScrollContainer/FlowContainer/SpawnCritterSquare/Stats"]
 custom_minimum_size = Vector2(64, 0)
 layout_mode = 2
-theme_override_colors/font_color = Color(1, 0, 1, 1)
-theme_override_font_sizes/font_size = 14
 text = "100G"
 horizontal_alignment = 1
 
 [node name="Health" type="Label" parent="CritterMenu/ScrollContainer/FlowContainer/SpawnCritterSquare/Stats"]
 custom_minimum_size = Vector2(64, 0)
 layout_mode = 2
-theme_override_colors/font_color = Color(1, 0, 1, 1)
-theme_override_font_sizes/font_size = 14
 text = "999❤️"
 horizontal_alignment = 1
 
 [node name="Speed" type="Label" parent="CritterMenu/ScrollContainer/FlowContainer/SpawnCritterSquare/Stats"]
 custom_minimum_size = Vector2(64, 0)
 layout_mode = 2
-theme_override_colors/font_color = Color(1, 0, 1, 1)
-theme_override_font_sizes/font_size = 14
 text = "500p/s"
 horizontal_alignment = 1
 
@@ -252,7 +231,6 @@ horizontal_alignment = 1
 custom_minimum_size = Vector2(128, 56)
 layout_mode = 2
 mouse_filter = 1
-theme_override_styles/panel = SubResource("StyleBoxEmpty_fsra1")
 CritterScene = ExtResource("7_oh8mj")
 
 [node name="CritterPentagon" parent="CritterMenu/ScrollContainer/FlowContainer/SpawnCritterPentagon" instance=ExtResource("7_oh8mj")]
@@ -269,24 +247,18 @@ theme_override_constants/v_separation = -3
 [node name="Cost" type="Label" parent="CritterMenu/ScrollContainer/FlowContainer/SpawnCritterPentagon/Stats"]
 custom_minimum_size = Vector2(64, 0)
 layout_mode = 2
-theme_override_colors/font_color = Color(1, 0, 1, 1)
-theme_override_font_sizes/font_size = 14
 text = "100G"
 horizontal_alignment = 1
 
 [node name="Health" type="Label" parent="CritterMenu/ScrollContainer/FlowContainer/SpawnCritterPentagon/Stats"]
 custom_minimum_size = Vector2(64, 0)
 layout_mode = 2
-theme_override_colors/font_color = Color(1, 0, 1, 1)
-theme_override_font_sizes/font_size = 14
 text = "999❤️"
 horizontal_alignment = 1
 
 [node name="Speed" type="Label" parent="CritterMenu/ScrollContainer/FlowContainer/SpawnCritterPentagon/Stats"]
 custom_minimum_size = Vector2(64, 0)
 layout_mode = 2
-theme_override_colors/font_color = Color(1, 0, 1, 1)
-theme_override_font_sizes/font_size = 14
 text = "500p/s"
 horizontal_alignment = 1
 
@@ -294,7 +266,6 @@ horizontal_alignment = 1
 custom_minimum_size = Vector2(128, 56)
 layout_mode = 2
 mouse_filter = 1
-theme_override_styles/panel = SubResource("StyleBoxEmpty_fsra1")
 CritterScene = ExtResource("8_fsra1")
 
 [node name="CritterChevron" parent="CritterMenu/ScrollContainer/FlowContainer/SpawnCritterChevon" instance=ExtResource("8_fsra1")]
@@ -311,24 +282,18 @@ theme_override_constants/v_separation = -3
 [node name="Cost" type="Label" parent="CritterMenu/ScrollContainer/FlowContainer/SpawnCritterChevon/Stats"]
 custom_minimum_size = Vector2(64, 0)
 layout_mode = 2
-theme_override_colors/font_color = Color(1, 0, 1, 1)
-theme_override_font_sizes/font_size = 14
 text = "100G"
 horizontal_alignment = 1
 
 [node name="Health" type="Label" parent="CritterMenu/ScrollContainer/FlowContainer/SpawnCritterChevon/Stats"]
 custom_minimum_size = Vector2(64, 0)
 layout_mode = 2
-theme_override_colors/font_color = Color(1, 0, 1, 1)
-theme_override_font_sizes/font_size = 14
 text = "999❤️"
 horizontal_alignment = 1
 
 [node name="Speed" type="Label" parent="CritterMenu/ScrollContainer/FlowContainer/SpawnCritterChevon/Stats"]
 custom_minimum_size = Vector2(64, 0)
 layout_mode = 2
-theme_override_colors/font_color = Color(1, 0, 1, 1)
-theme_override_font_sizes/font_size = 14
 text = "500p/s"
 horizontal_alignment = 1
 
@@ -336,7 +301,6 @@ horizontal_alignment = 1
 custom_minimum_size = Vector2(128, 56)
 layout_mode = 2
 mouse_filter = 1
-theme_override_styles/panel = SubResource("StyleBoxEmpty_fsra1")
 CritterScene = ExtResource("9_hlvh6")
 
 [node name="CritterDiamondSquare" parent="CritterMenu/ScrollContainer/FlowContainer/SpawnCritterChevon2" instance=ExtResource("9_hlvh6")]
@@ -353,29 +317,24 @@ theme_override_constants/v_separation = -3
 [node name="Cost" type="Label" parent="CritterMenu/ScrollContainer/FlowContainer/SpawnCritterChevon2/Stats"]
 custom_minimum_size = Vector2(64, 0)
 layout_mode = 2
-theme_override_colors/font_color = Color(1, 0, 1, 1)
-theme_override_font_sizes/font_size = 14
 text = "100G"
 horizontal_alignment = 1
 
 [node name="Health" type="Label" parent="CritterMenu/ScrollContainer/FlowContainer/SpawnCritterChevon2/Stats"]
 custom_minimum_size = Vector2(64, 0)
 layout_mode = 2
-theme_override_colors/font_color = Color(1, 0, 1, 1)
-theme_override_font_sizes/font_size = 14
 text = "999❤️"
 horizontal_alignment = 1
 
 [node name="Speed" type="Label" parent="CritterMenu/ScrollContainer/FlowContainer/SpawnCritterChevon2/Stats"]
 custom_minimum_size = Vector2(64, 0)
 layout_mode = 2
-theme_override_colors/font_color = Color(1, 0, 1, 1)
-theme_override_font_sizes/font_size = 14
 text = "500p/s"
 horizontal_alignment = 1
 
 [node name="DeadContainer" type="Panel" parent="."]
 visible = false
+layout_mode = 0
 offset_right = 720.0
 offset_bottom = 1280.0
 
