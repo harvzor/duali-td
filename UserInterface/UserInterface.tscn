@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://c1he1ojb6jg53"]
+[gd_scene load_steps=16 format=3 uid="uid://c1he1ojb6jg53"]
 
 [ext_resource type="Theme" uid="uid://b0by51poamsbr" path="res://UserInterface/Theme.tres" id="1_at2vn"]
 [ext_resource type="PackedScene" uid="uid://iexs7fm1ryop" path="res://UserInterface/SpawnCritter.tscn" id="1_j0awb"]
@@ -17,6 +17,8 @@
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_r6oiv"]
 bg_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_at2vn"]
 
 [node name="UserInterface" type="Control"]
 layout_mode = 3
@@ -77,18 +79,22 @@ text = "999❤️"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="IncomeContainer" type="Node" parent="PlayerStats"]
+[node name="IncomeContainer" type="Panel" parent="PlayerStats"]
+layout_mode = 0
+offset_left = 128.0
+offset_right = 192.0
+offset_bottom = 64.0
+theme_override_styles/panel = SubResource("StyleBoxEmpty_at2vn")
 
 [node name="IncomeTimer" type="Timer" parent="PlayerStats/IncomeContainer"]
 autostart = true
 
 [node name="IncomeTimerRadial" type="Control" parent="PlayerStats/IncomeContainer"]
-layout_mode = 3
 anchors_preset = 0
-offset_left = 132.0
-offset_top = 1156.0
-offset_right = 196.0
-offset_bottom = 1220.0
+offset_left = 4.0
+offset_top = 4.0
+offset_right = 60.0
+offset_bottom = 60.0
 script = ExtResource("8_oh8mj")
 MaxValue = 10.0
 Radius = 28.0

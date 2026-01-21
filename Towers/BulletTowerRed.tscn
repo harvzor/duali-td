@@ -36,6 +36,7 @@ texture = ExtResource("1_s4eav")
 [node name="Tower" type="Area2D" parent="."]
 
 [node name="Range" type="CollisionShape2D" parent="Tower"]
+visible = false
 shape = SubResource("CircleShape2D_kai3l")
 
 [node name="BulletContainer" type="Node2D" parent="."]
