@@ -8,7 +8,7 @@
 size = Vector2(64, 64)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_kai3l"]
-radius = 256.0
+radius = 96.332756
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1f3uh"]
 bg_color = Color(1, 0, 0, 0.24705882)
@@ -21,7 +21,6 @@ corner_radius_bottom_left = 640
 script = ExtResource("1_2jl0k")
 Projectile = ExtResource("2_xx66q")
 BulletDamage = 20
-BulletSpeed = 500
 Cost = 50
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -46,10 +45,10 @@ shape = SubResource("CircleShape2D_kai3l")
 
 [node name="GhostRange" type="Panel" parent="."]
 visible = false
-offset_left = -256.0
-offset_top = -256.0
-offset_right = 256.0
-offset_bottom = 256.0
+offset_left = -96.0
+offset_top = -96.0
+offset_right = 96.0
+offset_bottom = 96.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_1f3uh")
 
 [node name="FireTimer" type="Timer" parent="."]
