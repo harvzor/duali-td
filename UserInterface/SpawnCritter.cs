@@ -34,14 +34,14 @@ public partial class SpawnCritter : Button
 	private void OnGuiInput(InputEvent inputEvent)
 	{
 		// On left click press.
-		if (inputEvent is InputEventMouseButton { ButtonIndex: MouseButton.Left, ButtonMask: MouseButtonMask.Left })
+		if (inputEvent.IsLeftClickOrTouchDown(out PointerEvent _))
 		{
 			this._clickStartTime = DateTime.Now;
 			return;
 		}
 		
 		// On left click release.
-		if (inputEvent is InputEventMouseButton { ButtonIndex: MouseButton.Left, ButtonMask: 0 })
+		if (inputEvent.IsLeftClickOrTouchUp(out PointerEvent _))
 		{
 			// Only trigger a click if the click was short (indicating a click rather than a drag).
 			if (DateTime.Now.Subtract(this._clickStartTime).TotalMilliseconds < 100)

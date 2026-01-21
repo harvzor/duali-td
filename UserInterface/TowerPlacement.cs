@@ -24,28 +24,39 @@ public partial class TowerPlacement : Panel
 
 	private void OnGuiInput(InputEvent inputEvent)
 	{
-		// On hover
-		if (inputEvent is InputEventMouseMotion inputEventMouseMotion)
+		if (inputEvent.IsLeftClickOrTouchDown(out PointerEvent pointerEventDown))
 		{
-			if (!this.IsBuildable(inputEventMouseMotion.GlobalPosition))
-			{
-				this._userInterface.HideTower();
-				return;
-			}
+			this.OnHover(pointerEventDown);
+		}
+		
+		if (inputEvent.IsDrag(out PointerEvent pointerEventDrag))
+		{
+			this.OnHover(pointerEventDrag);
+		}
 
-			this._userInterface.ShowTower(inputEventMouseMotion.GlobalPosition);
+		if (inputEvent.IsLeftClickOrTouchUp(out PointerEvent pointerEventUp))
+		{
+			Vector2 globalPosition = this.GetGlobalTransform() * pointerEventUp.Position;
+
+			if (!this.IsBuildable(globalPosition))
+				return;
+			
+			this._userInterface.TrySpawnTower(globalPosition);
+			this._userInterface.HideTower();
+		}
+	}
+	
+	private void OnHover(PointerEvent pointerEvent)
+	{
+		Vector2 globalPosition = this.GetGlobalTransform() * pointerEvent.Position;
+			
+		if (!this.IsBuildable(globalPosition))
+		{
+			this._userInterface.HideTower();
 			return;
 		}
 
-		// On left click release.
-		if (inputEvent is InputEventMouseButton { ButtonIndex: MouseButton.Left, ButtonMask: 0 } inputEventMouseButton)
-		{
-			if (!this.IsBuildable(inputEventMouseButton.GlobalPosition))
-				return;
-
-			this._userInterface.TrySpawnTower(inputEventMouseButton.GlobalPosition);
-			this._userInterface.HideTower();
-		}
+		this._userInterface.ShowTower(globalPosition);
 	}
 
 	private void OnMouseExited()
