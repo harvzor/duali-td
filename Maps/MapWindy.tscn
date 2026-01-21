@@ -1,13 +1,14 @@
-[gd_scene load_steps=6 format=4 uid="uid://d0r06l0mp621y"]
+[gd_scene load_steps=7 format=4 uid="uid://d0r06l0mp621y"]
 
-[ext_resource type="Script" uid="uid://bfe148ywa34dp" path="res://Map.cs" id="1_gfjgm"]
+[ext_resource type="Script" uid="uid://bfe148ywa34dp" path="res://Maps/Map.cs" id="1_gfjgm"]
 [ext_resource type="PackedScene" uid="uid://mqahe3gnng6s" path="res://Tiles/Dirt.tscn" id="2_3h1ab"]
 [ext_resource type="PackedScene" uid="uid://cgmi2sju2t4jx" path="res://Tiles/Buildable.tscn" id="2_7if1s"]
 [ext_resource type="PackedScene" uid="uid://der2yftj7y0s3" path="res://Tiles/Grass.tscn" id="3_7if1s"]
+[ext_resource type="PackedScene" uid="uid://bhsexyer3txpg" path="res://Maps/Gate.tscn" id="5_uqepd"]
 
 [sub_resource type="Curve2D" id="Curve2D_3h1ab"]
 _data = {
-"points": PackedVector2Array(0, 0, 0, 0, 160, 97.99988, 0, 0, 0, 0, 160.00006, 737.99994, 0, 0, 0, 0, 544.00006, 737.9999, 0, 0, 0, 0, 544.0001, 865.9999, 0, 0, 0, 0, 160.00006, 865.99994, 0, 0, 0, 0, 160.00012, 993.99994, 0, 0, 0, 0, 544.0001, 993.9999, 0, 0, 0, 0, 544.0001, 1185.9999)
+"points": PackedVector2Array(0, 0, 0, 0, 159, 96, 0, 0, 0, 0, 159, 736, 0, 0, 0, 0, 543, 736, 0, 0, 0, 0, 543, 864, 0, 0, 0, 0, 159, 864, 0, 0, 0, 0, 160.00012, 993.99994, 0, 0, 0, 0, 544.0001, 993.9999, 0, 0, 0, 0, 544.0001, 1185.9999)
 }
 point_count = 8
 
@@ -28,8 +29,8 @@ position = Vector2(-63, 0)
 curve = SubResource("Curve2D_3h1ab")
 
 [node name="PathFollow2D" type="PathFollow2D" parent="Path2DP1"]
-position = Vector2(160, 96)
-rotation = 1.5707963
+position = Vector2(159, 96)
+rotation = 1.5707964
 loop = false
 
 [node name="Path2DP0" type="Path2D" parent="."]
@@ -38,6 +39,13 @@ rotation = 3.1415927
 curve = SubResource("Curve2D_3h1ab")
 
 [node name="PathFollow2D" type="PathFollow2D" parent="Path2DP0"]
-position = Vector2(160, 97.99988)
-rotation = 1.5707963
+position = Vector2(159, 96)
+rotation = 1.5707964
 loop = false
+
+[node name="GateP0" parent="." instance=ExtResource("5_uqepd")]
+position = Vector2(480, 1184)
+
+[node name="GateP1" parent="." instance=ExtResource("5_uqepd")]
+position = Vector2(224, 96)
+Player = 1
