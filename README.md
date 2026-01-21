@@ -20,5 +20,5 @@ Connect an Android device via USB and enable USB debugging, make sure the comput
 Then, run the following command in the terminal:
 
 ```bash
-godot --export-debug "Android" DualiTD.apk && adb install DualiTD.apk
+godot --headless --export-debug "Android" DualiTD.apk && adb install DualiTD.apk
 ```
