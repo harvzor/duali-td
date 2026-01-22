@@ -5,7 +5,7 @@ public static class NodeHelper
         return node
             .GetTree()
             .GetRoot()
-            .GetChild(0)
+            .GetNode<World>("World")
             .GetNode<UserInterface>("UserInterfaceP" + player)!;
     }
 }

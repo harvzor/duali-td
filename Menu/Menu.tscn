@@ -1,0 +1,34 @@
+[gd_scene load_steps=3 format=3 uid="uid://6oxej0x2ywdm"]
+
+[ext_resource type="Script" uid="uid://bbtt6sv5mt117" path="res://Menu/Menu.cs" id="1_jf1j2"]
+
+[sub_resource type="Theme" id="Theme_cjs20"]
+Button/font_sizes/font_size = 32
+
+[node name="Menu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource("Theme_cjs20")
+script = ExtResource("1_jf1j2")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 0
+offset_left = 192.0
+offset_right = 512.0
+offset_bottom = 1280.0
+alignment = 1
+
+[node name="SimpleMap" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+text = "Simple Map"
+
+[node name="WindyMap" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+text = "Windy Map"
+
+[connection signal="pressed" from="VBoxContainer/SimpleMap" to="." method="OnSimpleMapPressed"]
+[connection signal="pressed" from="VBoxContainer/WindyMap" to="." method="OnWindyMapPressed"]

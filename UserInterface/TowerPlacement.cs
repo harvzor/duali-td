@@ -4,12 +4,7 @@ public partial class TowerPlacement : Panel
 
 	private bool IsBuildable(Vector2 position)
 	{
-		TileMapLayer buildable = (this
-			.GetTree()
-			.GetRoot()
-			.GetChild(0)
-			.FindChild(nameof(Map))!
-			.FindChild("Buildable") as TileMapLayer)!;
+		TileMapLayer buildable = this.GetNode<TileMapLayer>("/root/World/Map/Buildable")!;
 
 		Vector2 mouseLocal = buildable.ToLocal(position);
 		Vector2I cell = buildable.LocalToMap(mouseLocal);

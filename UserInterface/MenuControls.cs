@@ -5,7 +5,7 @@ public partial class MenuControls : Control
 		if (inputEvent.IsLeftClickOrTouchDown(out PointerEvent _))
 		{
 			// this.GetTree().Paused = !this.GetTree().Paused;
-			this.GetTree().ReloadCurrentScene();
+			this.GetNode("/root/World").QueueFree();
 		}
 	}
 }

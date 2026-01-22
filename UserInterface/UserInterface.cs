@@ -33,13 +33,13 @@ public partial class UserInterface : Control
         this._towerSpawner = this
             .GetTree()
             .GetRoot()
-            .GetChild(0)
+            .GetNode<World>("World")
             .GetNode<TowerSpawner>(nameof(TowerSpawner))!;
 
         this._map = this
             .GetTree()
             .GetRoot()
-            .GetChild(0)
+            .GetNode<World>("World")
             .GetNode<Map>(nameof(Map))!;
 
         this._deadContainer = this.GetNode<PanelContainer>("DeadContainer");
