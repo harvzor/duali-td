@@ -10,7 +10,6 @@ script = ExtResource("1_js7pq")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(352, 640)
-enabled = false
 
 [node name="TowerSpawner" type="Node2D" parent="."]
 script = ExtResource("3_js7pq")

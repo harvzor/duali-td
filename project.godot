@@ -18,11 +18,13 @@ config/icon="res://icon.svg"
 [display]
 
 window/size/viewport_width=704
-window/size/viewport_height=1280
+window/size/viewport_height=1408
 window/size/extend_to_title=true
 window/stretch/mode="viewport"
 window/stretch/aspect="ignore"
 window/handheld/orientation=1
+window/ios/hide_status_bar=false
+window/android/allow_hidpi=true
 
 [dotnet]
 
@@ -34,3 +36,4 @@ renderer/rendering_method="gl_compatibility"
 renderer/rendering_method.mobile="gl_compatibility"
 textures/vram_compression/import_etc2_astc=true
 textures/light_projectors/filter=0
+environment/defaults/default_clear_color=Color(0, 0, 0, 1)
