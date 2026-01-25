@@ -31,6 +31,13 @@ public static class InputEventHelper
             return true;
         }
 
+        // Ignore emulated mouse events on mobile.
+        if (OS.HasFeature("mobile"))
+        {
+            pointerEvent = default;
+            return false;
+        }
+
         if (inputEvent is InputEventMouseButton { ButtonIndex: MouseButton.Left, ButtonMask: MouseButtonMask.Left } inputEventMouseButton)
         {
             pointerEvent = new PointerEvent
@@ -53,6 +60,13 @@ public static class InputEventHelper
                 Position = inputEventScreenTouch.Position,
             };
             return true;
+        }
+
+        // Ignore emulated mouse events on mobile.
+        if (OS.HasFeature("mobile"))
+        {
+            pointerEvent = default;
+            return false;
         }
 
         if (inputEvent is InputEventMouseButton { ButtonIndex: MouseButton.Left, ButtonMask: 0 } inputEventMouseButton)
