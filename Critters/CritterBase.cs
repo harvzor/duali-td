@@ -59,7 +59,7 @@ public partial class CritterBase : Node2D
 			return;
 		}
 
-		killReward = this.KillReward;
+		killReward = 0;
 	}
 
 	public void SetSpeed(int speed)
