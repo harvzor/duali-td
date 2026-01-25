@@ -51,8 +51,11 @@ public partial class CritterBase : Node2D
 
 		if (this._currentHealth <= 0)
 		{
+			this.SpawnKillRewardText(this.KillReward);
+
 			killReward = this.KillReward;
 			this.GetParent<PathFollow2D>().QueueFree();
+
 			return;
 		}
 
@@ -72,5 +75,15 @@ public partial class CritterBase : Node2D
 	public virtual void Disable()
 	{
 		this._healthBar.Hide();
+	}
+
+	private void SpawnKillRewardText(int killReward)
+	{
+		KillRewardText killRewardText = GD.Load<PackedScene>("res://Critters/KillRewardText.tscn").Instantiate<KillRewardText>();
+		killRewardText.Position = this.GlobalPosition;
+
+		killRewardText.SetKillReward(killReward);
+
+		this.FindWorld().AddChild(killRewardText);
 	}
 }

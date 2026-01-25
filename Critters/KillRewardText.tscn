@@ -1,0 +1,15 @@
+[gd_scene load_steps=2 format=3 uid="uid://ds8fm7n76den4"]
+
+[ext_resource type="Script" uid="uid://drbxc7d132wgr" path="res://Critters/KillRewardText.cs" id="1_nnuh4"]
+
+[node name="KillRewardText" type="Node2D"]
+script = ExtResource("1_nnuh4")
+
+[node name="Label" type="Label" parent="."]
+offset_left = -50.0
+offset_top = -50.0
+offset_right = 50.0
+offset_bottom = 50.0
+text = "+{0}G"
+horizontal_alignment = 1
+vertical_alignment = 1
