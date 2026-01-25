@@ -72,13 +72,14 @@ public partial class UserInterface : Control
     public void ShowTower(Vector2 position)
     {
         BulletTower bulletTower = this.SelectedTower.Instantiate<BulletTower>();
+        bulletTower.Player = this.Player;
 
         this._towerSpawner.ShowTower(position, bulletTower);
     }
 
     public void HideTower()
     {
-        this._towerSpawner.HideTower();
+        this._towerSpawner.HideTower(this.Player);
     }
 
     public void TrySpawnTower(Vector2 position)

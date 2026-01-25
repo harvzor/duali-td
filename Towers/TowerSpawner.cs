@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using System.Linq;
 
 public partial class TowerSpawner : Node2D
@@ -5,7 +6,7 @@ public partial class TowerSpawner : Node2D
 	/// <summary>
 	/// Tower that hasn't been properly placed, just the outline is shown.
 	/// </summary>
-	private BulletTower _ghostBulletTower;
+	private List<BulletTower> _ghostBulletTowers = [];
 
 	private Vector2 SnapPosition(Vector2 position)
 	{
@@ -20,21 +21,29 @@ public partial class TowerSpawner : Node2D
 	
 	public void ShowTower(Vector2 position, BulletTower bulletTower)
 	{
-		if (!IsInstanceValid(this._ghostBulletTower))
+		BulletTower existingBulletTower = this._ghostBulletTowers
+			.FirstOrDefault(ghostBulletTower => ghostBulletTower.Player == bulletTower.Player);
+
+		if (existingBulletTower == null)
 		{
-			this._ghostBulletTower = bulletTower;
-			this._ghostBulletTower.Disable();
-			this.AddChild(this._ghostBulletTower);
+			bulletTower.Disable();
+			this._ghostBulletTowers.Add(bulletTower);
+			this.AddChild(bulletTower);
+			existingBulletTower = bulletTower;
 		}
 		
-		this._ghostBulletTower.Position = this.SnapPosition(position);
+		existingBulletTower.Position = this.SnapPosition(position);
 	}
 	
-	public void HideTower()
+	public void HideTower(int forPlayer)
 	{
-		if (IsInstanceValid(this._ghostBulletTower))
+		BulletTower existingBulletTower = this._ghostBulletTowers
+			.FirstOrDefault(ghostBulletTower => ghostBulletTower.Player == forPlayer);
+
+		if (existingBulletTower != null)
 		{
-			this._ghostBulletTower.QueueFree();
+			existingBulletTower.QueueFree();
+			this._ghostBulletTowers.Remove(existingBulletTower);
 		}
 	}
 
