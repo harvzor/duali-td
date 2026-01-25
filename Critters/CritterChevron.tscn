@@ -20,6 +20,7 @@ corner_radius_bottom_left = 640
 script = ExtResource("1_ouyei")
 Cost = 50
 Speed = 150
+KillReward = 3
 
 [node name="HealthBar" parent="." instance=ExtResource("2_43r0c")]
 

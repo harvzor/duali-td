@@ -3,6 +3,7 @@ public partial class CritterBase : Node2D
 	[Export] public int Cost = 10;
 	[Export] public int Speed = 100;
 	[Export] public int Health = 100;
+	[Export] public int KillReward = 1;
 	
 	/// <summary>
 	/// How much damage to do to the player's health.
@@ -50,12 +51,12 @@ public partial class CritterBase : Node2D
 
 		if (this._currentHealth <= 0)
 		{
-			killReward = 1;
+			killReward = this.KillReward;
 			this.GetParent<PathFollow2D>().QueueFree();
 			return;
 		}
 
-		killReward = 0;
+		killReward = this.KillReward;
 	}
 
 	public void SetSpeed(int speed)

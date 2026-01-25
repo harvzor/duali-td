@@ -11,6 +11,7 @@ script = ExtResource("1_m00ge")
 Cost = 20
 Speed = 75
 Health = 200
+KillReward = 2
 
 [node name="HealthBar" parent="." instance=ExtResource("2_yafl8")]
 
