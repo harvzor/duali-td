@@ -8,7 +8,7 @@ public abstract partial class BulletTower : StaticBody2D
     [Export] public int Cost = 10;
     [Export] public bool Enabled = true;
 
-    public int? Player = null;
+    public Player Player = null;
 
     private readonly List<Node2D> _currentTargets = [];
 
@@ -25,6 +25,7 @@ public abstract partial class BulletTower : StaticBody2D
         Bullet bullet = this.Projectile.Instantiate<Bullet>();
 
         bullet.Target = currentTarget;
+        bullet.Player = this.Player;
         bullet.Damage = this.BulletDamage;
         bullet.Speed = this.BulletSpeed;
         bullet.Position = this.GetNode<Marker2D>("Aim").Position;

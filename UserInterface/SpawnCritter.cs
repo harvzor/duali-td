@@ -46,7 +46,7 @@ public partial class SpawnCritter : Button
 			// Only trigger a click if the click was short (indicating a click rather than a drag).
 			if (DateTime.Now.Subtract(this._clickStartTime).TotalMilliseconds < 100)
 			{
-				this._userInterface.TrySpawnCritter(this.CritterScene, this._userInterface.Player);
+				this._userInterface.TrySpawnCritter(this.CritterScene);
 			}
 		}
 	}

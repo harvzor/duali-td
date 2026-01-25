@@ -6,7 +6,7 @@ public partial class TowerSpawner : Node2D
 	/// <summary>
 	/// Tower that hasn't been properly placed, just the outline is shown.
 	/// </summary>
-	private List<BulletTower> _ghostBulletTowers = [];
+	private readonly List<BulletTower> _ghostBulletTowers = [];
 
 	private Vector2 SnapPosition(Vector2 position)
 	{
@@ -35,7 +35,7 @@ public partial class TowerSpawner : Node2D
 		existingBulletTower.Position = this.SnapPosition(position);
 	}
 	
-	public void HideTower(int forPlayer)
+	public void HideTower(Player forPlayer)
 	{
 		BulletTower existingBulletTower = this._ghostBulletTowers
 			.FirstOrDefault(ghostBulletTower => ghostBulletTower.Player == forPlayer);
@@ -56,9 +56,8 @@ public partial class TowerSpawner : Node2D
 			.Any(tower => tower.Enabled && tower.Position == snappedPosition);
 	}
 	
-	public void SpawnTower(Vector2 position, int player, BulletTower bulletTower)
+	public void SpawnTower(Vector2 position, BulletTower bulletTower)
 	{
-		bulletTower.Player = player;
 		bulletTower.Position = this.SnapPosition(position);
 
 		this.AddChild(bulletTower);

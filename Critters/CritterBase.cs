@@ -12,7 +12,7 @@ public partial class CritterBase : Node2D
 	/// <summary>
 	/// Which player this critter was spawned by.
 	/// </summary>
-	public int? Player = null;
+	public Player Player = null;
 	
 	/// <summary>
 	/// Speed is multiplied by this value.
@@ -40,16 +40,22 @@ public partial class CritterBase : Node2D
 	public override void _Process(double delta)
 	{
 		this.GetParent<PathFollow2D>().Progress = this.GetParent<PathFollow2D>().Progress + this._currentSpeed * this.SpeedMultiplier * (float)delta;
-		
-		if (this._currentHealth <= 0)
-			this.GetParent<PathFollow2D>().QueueFree();
 	}
 	
-	public void TakeDamage(int damage)
+	public void TakeDamage(int damage, out int killReward)
 	{
 		this._currentHealth -= damage - this.Shield;
 
 		this._healthBar.Value = (float)this._currentHealth / this.Health * 100;
+
+		if (this._currentHealth <= 0)
+		{
+			killReward = 1;
+			this.GetParent<PathFollow2D>().QueueFree();
+			return;
+		}
+
+		killReward = 0;
 	}
 
 	public void SetSpeed(int speed)

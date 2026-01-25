@@ -18,11 +18,21 @@ public partial class UserInterface : Control
 
     public override void _Ready()
     {
+        this._player.OnBankChanged += (newBank) =>
+        {
+            this._bankLabel.Text = newBank + "G";
+        };
+        
+        this._player.OnIncomeChanged += (newIncome) =>
+        {
+            this._incomeLabel.Text = newIncome + "⬆️";
+        };
+        
         this._bankLabel = this.GetNode<Label>("PlayerStats/MoneyContainer/Bank");
-        this.IncreaseBank(0);
+        this._player.IncreaseBank(0);
 
         this._incomeLabel = this.GetNode<Label>("PlayerStats/MoneyContainer/Income");
-        this.IncreaseIncome(0);
+        this._player.IncreaseIncome(0);
 
         this._healthLabel = this.GetNode<Label>("PlayerStats/Health");
         this.TakeDamage(0);
@@ -57,34 +67,23 @@ public partial class UserInterface : Control
         }
     }
 
-    private void IncreaseBank(int amount)
-    {
-        this._player.IncreaseBank(amount);
-        this._bankLabel.Text = this._player.Bank + "G";
-    }
-
-    private void IncreaseIncome(int amount)
-    {
-        this._player.IncreaseIncome(amount);
-        this._incomeLabel.Text = this._player.Income + "⬆️";
-    }
-
     public void ShowTower(Vector2 position)
     {
         BulletTower bulletTower = this.SelectedTower.Instantiate<BulletTower>();
-        bulletTower.Player = this.Player;
+        bulletTower.Player = this._player;
 
         this._towerSpawner.ShowTower(position, bulletTower);
     }
 
     public void HideTower()
     {
-        this._towerSpawner.HideTower(this.Player);
+        this._towerSpawner.HideTower(this._player);
     }
 
     public void TrySpawnTower(Vector2 position)
     {
         BulletTower bulletTower = this.SelectedTower.Instantiate<BulletTower>();
+        bulletTower.Player = this._player;
 
         if (bulletTower.Cost > this._player.Bank)
             return;
@@ -92,22 +91,22 @@ public partial class UserInterface : Control
         if (this._towerSpawner.TowerAlreadyExists(position))
             return;
 
-        this.IncreaseBank(-bulletTower.Cost);
-        this._towerSpawner.SpawnTower(position, this.Player, bulletTower);
+        this._player.IncreaseBank(-bulletTower.Cost);
+        this._towerSpawner.SpawnTower(position, bulletTower);
     }
 
-    public void TrySpawnCritter(PackedScene critterScene, int player)
+    public void TrySpawnCritter(PackedScene critterScene)
     {
         CritterBase critter = critterScene.Instantiate<CritterBase>();
-        critter.Player = player;
+        critter.Player = this._player;
 
         if (critter.Cost > this._player.Bank)
             return;
 
-        this.IncreaseIncome(critter.Cost / 3);
-        this.IncreaseBank(-critter.Cost);
+        this._player.IncreaseIncome(critter.Cost / 3);
+        this._player.IncreaseBank(-critter.Cost);
 
-        this._map.SpawnCritter(critter, player);
+        this._map.SpawnCritter(critter, this.Player);
     }
 
     private void OnIncomeTimerTimeout()
@@ -115,7 +114,7 @@ public partial class UserInterface : Control
         if (this._incomeTimerRadial.Progress >= this._incomeTimerRadial.MaxValue)
         {
             this._incomeTimerRadial.Progress = 0;
-            this.IncreaseBank(this._player.Income);
+            this._player.IncreaseBank(this._player.Income);
         }
 
         this._incomeTimerRadial.Progress += 1;

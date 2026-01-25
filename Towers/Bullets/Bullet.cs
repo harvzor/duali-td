@@ -6,6 +6,11 @@ public abstract partial class Bullet : CharacterBody2D
 	/// Who this bullet is being fired at.
 	/// </summary>
 	public Node2D Target;
+	
+	/// <summary>
+	/// Who fired this bullet.
+	/// </summary>
+	public Player Player = null;
 
 	public int Damage;
 
@@ -28,7 +33,13 @@ public abstract partial class Bullet : CharacterBody2D
 		if (body is not CritterBase critter)
 			return;
 
-		critter.TakeDamage(this.Damage);
+		critter.TakeDamage(this.Damage, out int killReward);
+		
+		if (killReward > 0)
+		{
+			this.Player.IncreaseBank(killReward);
+		}
+
 		this.QueueFree();
 	}
 }
