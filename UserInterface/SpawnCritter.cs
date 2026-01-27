@@ -10,7 +10,9 @@ public partial class SpawnCritter : Button
 	[Export] public PackedScene CritterScene;
 	
 	private DateTime _clickStartTime;
-	
+	private ProgressBar _progressBar;
+	private Timer _timer;
+
 	public override void _Ready()
 	{
 		this._userInterface = this.GetNode<UserInterface>("../../../..")!;
@@ -25,14 +27,33 @@ public partial class SpawnCritter : Button
 		
 		Label speed = this.GetNode<Label>("Stats/Speed");
 		speed.Text = critterBase.Speed + "p/s";
+		
+		this._progressBar = this.GetNode<ProgressBar>("ProgressBar");
+		this._timer = this.GetNode<Timer>("ProgressBarTimer");
+		this._timer.Timeout += () =>
+		{
+			this._progressBar.Value -= 15;
+		};
+		this._timer.Start();
 
 		CritterBase critter = (this.GetChildren().First(x => x.Name.ToString().StartsWith("Critter")) as CritterBase)!;
 
 		critter.Disable();
 	}
 
+	private void Spawn()
+	{
+		if (this._userInterface.TrySpawnCritter(this.CritterScene))
+		{
+			this._progressBar.Value = 100;
+		}
+	}
+
 	private void OnGuiInput(InputEvent inputEvent)
 	{
+		if (this._progressBar.Value > 0)
+			return;
+
 		// On left click press.
 		if (inputEvent.IsLeftClickOrTouchDown(out PointerEvent _))
 		{
@@ -46,7 +67,7 @@ public partial class SpawnCritter : Button
 			// Only trigger a click if the click was short (indicating a click rather than a drag).
 			if (DateTime.Now.Subtract(this._clickStartTime).TotalMilliseconds < 100)
 			{
-				this._userInterface.TrySpawnCritter(this.CritterScene);
+				this.Spawn();
 			}
 		}
 	}

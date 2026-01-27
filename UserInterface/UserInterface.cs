@@ -95,18 +95,20 @@ public partial class UserInterface : Control
         this._towerSpawner.SpawnTower(position, bulletTower);
     }
 
-    public void TrySpawnCritter(PackedScene critterScene)
+    public bool TrySpawnCritter(PackedScene critterScene)
     {
         CritterBase critter = critterScene.Instantiate<CritterBase>();
         critter.Player = this._player;
 
         if (critter.Cost > this._player.Bank)
-            return;
+            return false;
 
         this._player.IncreaseIncome(critter.Cost / 3);
         this._player.IncreaseBank(-critter.Cost);
 
         this._map.SpawnCritter(critter, this.Player);
+
+        return true;
     }
 
     private void OnIncomeTimerTimeout()

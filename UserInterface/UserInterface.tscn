@@ -138,31 +138,6 @@ CritterScene = ExtResource("4_r6oiv")
 process_mode = 4
 position = Vector2(32, 28)
 
-[node name="Stats" type="HFlowContainer" parent="CritterMenu/ScrollContainer/FlowContainer/SpawnCritterCircle"]
-layout_mode = 0
-offset_left = 64.0
-offset_right = 128.0
-offset_bottom = 64.0
-theme_override_constants/v_separation = -3
-
-[node name="Cost" type="Label" parent="CritterMenu/ScrollContainer/FlowContainer/SpawnCritterCircle/Stats"]
-custom_minimum_size = Vector2(64, 0)
-layout_mode = 2
-text = "100G"
-horizontal_alignment = 1
-
-[node name="Health" type="Label" parent="CritterMenu/ScrollContainer/FlowContainer/SpawnCritterCircle/Stats"]
-custom_minimum_size = Vector2(64, 0)
-layout_mode = 2
-text = "999❤️"
-horizontal_alignment = 1
-
-[node name="Speed" type="Label" parent="CritterMenu/ScrollContainer/FlowContainer/SpawnCritterCircle/Stats"]
-custom_minimum_size = Vector2(64, 0)
-layout_mode = 2
-text = "500p/s"
-horizontal_alignment = 1
-
 [node name="SpawnCritterTriangle" parent="CritterMenu/ScrollContainer/FlowContainer" instance=ExtResource("1_j0awb")]
 custom_minimum_size = Vector2(128, 56)
 layout_mode = 2
@@ -172,31 +147,6 @@ CritterScene = ExtResource("5_0joph")
 [node name="CritterTriangle" parent="CritterMenu/ScrollContainer/FlowContainer/SpawnCritterTriangle" instance=ExtResource("5_0joph")]
 process_mode = 4
 position = Vector2(32, 28)
-
-[node name="Stats" type="HFlowContainer" parent="CritterMenu/ScrollContainer/FlowContainer/SpawnCritterTriangle"]
-layout_mode = 0
-offset_left = 64.0
-offset_right = 128.0
-offset_bottom = 64.0
-theme_override_constants/v_separation = -3
-
-[node name="Cost" type="Label" parent="CritterMenu/ScrollContainer/FlowContainer/SpawnCritterTriangle/Stats"]
-custom_minimum_size = Vector2(64, 0)
-layout_mode = 2
-text = "100G"
-horizontal_alignment = 1
-
-[node name="Health" type="Label" parent="CritterMenu/ScrollContainer/FlowContainer/SpawnCritterTriangle/Stats"]
-custom_minimum_size = Vector2(64, 0)
-layout_mode = 2
-text = "999❤️"
-horizontal_alignment = 1
-
-[node name="Speed" type="Label" parent="CritterMenu/ScrollContainer/FlowContainer/SpawnCritterTriangle/Stats"]
-custom_minimum_size = Vector2(64, 0)
-layout_mode = 2
-text = "500p/s"
-horizontal_alignment = 1
 
 [node name="SpawnCritterSquare" parent="CritterMenu/ScrollContainer/FlowContainer" instance=ExtResource("1_j0awb")]
 custom_minimum_size = Vector2(128, 56)
@@ -208,31 +158,6 @@ CritterScene = ExtResource("6_apued")
 process_mode = 4
 position = Vector2(32, 28)
 
-[node name="Stats" type="HFlowContainer" parent="CritterMenu/ScrollContainer/FlowContainer/SpawnCritterSquare"]
-layout_mode = 0
-offset_left = 64.0
-offset_right = 128.0
-offset_bottom = 64.0
-theme_override_constants/v_separation = -3
-
-[node name="Cost" type="Label" parent="CritterMenu/ScrollContainer/FlowContainer/SpawnCritterSquare/Stats"]
-custom_minimum_size = Vector2(64, 0)
-layout_mode = 2
-text = "100G"
-horizontal_alignment = 1
-
-[node name="Health" type="Label" parent="CritterMenu/ScrollContainer/FlowContainer/SpawnCritterSquare/Stats"]
-custom_minimum_size = Vector2(64, 0)
-layout_mode = 2
-text = "999❤️"
-horizontal_alignment = 1
-
-[node name="Speed" type="Label" parent="CritterMenu/ScrollContainer/FlowContainer/SpawnCritterSquare/Stats"]
-custom_minimum_size = Vector2(64, 0)
-layout_mode = 2
-text = "500p/s"
-horizontal_alignment = 1
-
 [node name="SpawnCritterPentagon" parent="CritterMenu/ScrollContainer/FlowContainer" instance=ExtResource("1_j0awb")]
 custom_minimum_size = Vector2(128, 56)
 layout_mode = 2
@@ -242,31 +167,6 @@ CritterScene = ExtResource("7_oh8mj")
 [node name="CritterPentagon" parent="CritterMenu/ScrollContainer/FlowContainer/SpawnCritterPentagon" instance=ExtResource("7_oh8mj")]
 process_mode = 4
 position = Vector2(32, 28)
-
-[node name="Stats" type="HFlowContainer" parent="CritterMenu/ScrollContainer/FlowContainer/SpawnCritterPentagon"]
-layout_mode = 0
-offset_left = 64.0
-offset_right = 128.0
-offset_bottom = 64.0
-theme_override_constants/v_separation = -3
-
-[node name="Cost" type="Label" parent="CritterMenu/ScrollContainer/FlowContainer/SpawnCritterPentagon/Stats"]
-custom_minimum_size = Vector2(64, 0)
-layout_mode = 2
-text = "100G"
-horizontal_alignment = 1
-
-[node name="Health" type="Label" parent="CritterMenu/ScrollContainer/FlowContainer/SpawnCritterPentagon/Stats"]
-custom_minimum_size = Vector2(64, 0)
-layout_mode = 2
-text = "999❤️"
-horizontal_alignment = 1
-
-[node name="Speed" type="Label" parent="CritterMenu/ScrollContainer/FlowContainer/SpawnCritterPentagon/Stats"]
-custom_minimum_size = Vector2(64, 0)
-layout_mode = 2
-text = "500p/s"
-horizontal_alignment = 1
 
 [node name="SpawnCritterChevon" parent="CritterMenu/ScrollContainer/FlowContainer" instance=ExtResource("1_j0awb")]
 custom_minimum_size = Vector2(128, 56)
@@ -278,31 +178,6 @@ CritterScene = ExtResource("8_fsra1")
 process_mode = 4
 position = Vector2(32, 28)
 
-[node name="Stats" type="HFlowContainer" parent="CritterMenu/ScrollContainer/FlowContainer/SpawnCritterChevon"]
-layout_mode = 0
-offset_left = 64.0
-offset_right = 128.0
-offset_bottom = 64.0
-theme_override_constants/v_separation = -3
-
-[node name="Cost" type="Label" parent="CritterMenu/ScrollContainer/FlowContainer/SpawnCritterChevon/Stats"]
-custom_minimum_size = Vector2(64, 0)
-layout_mode = 2
-text = "100G"
-horizontal_alignment = 1
-
-[node name="Health" type="Label" parent="CritterMenu/ScrollContainer/FlowContainer/SpawnCritterChevon/Stats"]
-custom_minimum_size = Vector2(64, 0)
-layout_mode = 2
-text = "999❤️"
-horizontal_alignment = 1
-
-[node name="Speed" type="Label" parent="CritterMenu/ScrollContainer/FlowContainer/SpawnCritterChevon/Stats"]
-custom_minimum_size = Vector2(64, 0)
-layout_mode = 2
-text = "500p/s"
-horizontal_alignment = 1
-
 [node name="SpawnCritterChevon2" parent="CritterMenu/ScrollContainer/FlowContainer" instance=ExtResource("1_j0awb")]
 custom_minimum_size = Vector2(128, 56)
 layout_mode = 2
@@ -312,31 +187,6 @@ CritterScene = ExtResource("9_hlvh6")
 [node name="CritterDiamondSquare" parent="CritterMenu/ScrollContainer/FlowContainer/SpawnCritterChevon2" instance=ExtResource("9_hlvh6")]
 process_mode = 4
 position = Vector2(32, 28)
-
-[node name="Stats" type="HFlowContainer" parent="CritterMenu/ScrollContainer/FlowContainer/SpawnCritterChevon2"]
-layout_mode = 0
-offset_left = 64.0
-offset_right = 128.0
-offset_bottom = 64.0
-theme_override_constants/v_separation = -3
-
-[node name="Cost" type="Label" parent="CritterMenu/ScrollContainer/FlowContainer/SpawnCritterChevon2/Stats"]
-custom_minimum_size = Vector2(64, 0)
-layout_mode = 2
-text = "100G"
-horizontal_alignment = 1
-
-[node name="Health" type="Label" parent="CritterMenu/ScrollContainer/FlowContainer/SpawnCritterChevon2/Stats"]
-custom_minimum_size = Vector2(64, 0)
-layout_mode = 2
-text = "999❤️"
-horizontal_alignment = 1
-
-[node name="Speed" type="Label" parent="CritterMenu/ScrollContainer/FlowContainer/SpawnCritterChevon2/Stats"]
-custom_minimum_size = Vector2(64, 0)
-layout_mode = 2
-text = "500p/s"
-horizontal_alignment = 1
 
 [node name="DeadContainer" type="PanelContainer" parent="."]
 visible = false
