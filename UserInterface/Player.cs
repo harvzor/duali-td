@@ -1,7 +1,7 @@
 public class Player
 {
     public int Health { get; private set; } = 100;
-    public int Bank { get; private set; } = 10;
+    public int Bank { get; private set; } = 30;
     public int Income { get; private set; } = 10;
 
     public event Action<int> OnBankChanged;

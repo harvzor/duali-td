@@ -9,6 +9,7 @@
 [node name="CritterCircle" type="CharacterBody2D"]
 script = ExtResource("1_uwu01")
 Cost = 5
+Health = 75
 
 [node name="HealthBar" parent="." instance=ExtResource("3_e73e0")]
 
